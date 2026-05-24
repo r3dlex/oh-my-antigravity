@@ -203,3 +203,22 @@ MIT
 [![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
+
+<!-- ai-sdlc-init:start -->
+
+## AI SDLC Methodology
+
+This project uses the [AI SDLC methodology](https://github.com/r3dlex/skills/tree/main/ai-sdlc-init)
+to maintain architectural governance alongside AI-assisted development.
+
+Key practices:
+- **Architecture Decision Records** in [`docs/adr/`](docs/adr/) — significant
+  decisions are version-controlled with context and rationale.
+- **Archgate rules** in [`.rules.ts`](.rules.ts) — code quality constraints
+  across five domains, validated in CI.
+- **Karpathy baseline** — four engineering heuristics loaded by all agents
+  operating in this repo (think, simplify, be surgical, stay on goal).
+
+Contributing? Read [`AGENTS.md`](AGENTS.md) for agent-facing methodology details.
+
+<!-- ai-sdlc-init:end -->
