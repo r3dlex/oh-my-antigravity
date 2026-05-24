@@ -1,6 +1,6 @@
 # oh-my-gemini Extension Context
 
-This extension is the canonical public entry point for the `oh-my-gemini` workflow.
+This extension is the canonical public entry point for the `oh-my-gemini` workflow and is agy/Antigravity-oriented for new sessions.
 
 > **Shared context**: See `docs/architecture/omg-core.md` for the full agent catalog, workflow stages, quality gates, and state conventions.
 
@@ -20,6 +20,9 @@ This extension is the canonical public entry point for the `oh-my-gemini` workfl
 - Setup defaults to **project scope**.
 
 ## Preferred command flow
+
+Start interactive work through agy (`agy`, `agy --continue`, or `agy --sandbox`) when you need the native Antigravity/Gemini agent surface, then invoke OMG commands through the extension or CLI as needed.
+
 1. `oh-my-gemini setup --scope project` (aliases: `omg setup --scope project`, `omg setup --scope project`)
 2. ensure `.gemini/agents/catalog.json` exists (repo contributor fallback: `npm run setup:subagents`)
 3. `oh-my-gemini doctor`
@@ -27,6 +30,16 @@ This extension is the canonical public entry point for the `oh-my-gemini` workfl
 5. `oh-my-gemini verify`
 6. Optional MCP server surface: `oh-my-gemini mcp serve --dry-run --json`
 7. Optional live team bridge: `omx team 3:executor "..."`
+
+## Lifecycle hook bridge
+
+The installable extension ships `hooks/hooks.json` alongside `GEMINI.md` and `gemini-extension.json`. Treat `BeforeAgent` and `AfterTool` as first-class lifecycle hooks:
+
+- `BeforeAgent` routes prompt-start context through `oh-my-gemini hooks exec` so project memory, prompt routing, and learned-pattern guidance can be surfaced before each turn.
+- `AfterTool` routes tool results through the same bridge so recovery/tracking guidance can be attached after tool execution.
+- Hook output may appear as `hookSpecificOutput.additionalContext`; use it as advisory context, not as a replacement for explicit user instructions.
+
+Keep the root hook config and `extensions/oh-my-gemini/hooks/hooks.json` aligned when changing lifecycle behavior.
 
 ## Discoverability notes
 - Gemini's extension install preview may expose skills more visibly than command prompts.
