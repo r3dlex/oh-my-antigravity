@@ -1,7 +1,7 @@
 # REPO_OVERVIEW
 
 ## 1) 저장소 한 줄 요약
-`oh-my-gemini`는 **Gemini CLI 워크플로를 확장(extension)-우선으로 오케스트레이션**하는 TypeScript 기반 CLI 프로젝트입니다.
+`oh-my-gemini`는 **Antigravity CLI 워크플로를 확장(extension)-우선으로 오케스트레이션**하는 TypeScript 기반 CLI 프로젝트입니다.
 핵심 산출물은 `omg`/`oh-my-gemini` CLI, Gemini 확장 패키지, 팀 실행(runtime) 오케스트레이터입니다.
 
 ---

@@ -51,6 +51,8 @@ const OPTIONAL_AGENTS_NOT_IN_BLUEPRINT = new Set([
   'product-analyst',
   'ux-researcher',
   'vision',
+  'design-architect',
+  'design-validator',
 ]);
 
 interface AgentFrontmatter {
@@ -121,7 +123,7 @@ describe('reliability: native agent .md files', () => {
     .filter((f) => f.endsWith('.md'))
     .map((f) => f.replace(/\.md$/, ''));
 
-  test('all 21 blueprint agents have corresponding .md files', () => {
+  test('all 18 blueprint agents have corresponding .md files', () => {
     for (const id of blueprintIds) {
       expect(
         agentFiles,

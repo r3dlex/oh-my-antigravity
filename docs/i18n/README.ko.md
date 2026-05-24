@@ -7,15 +7,15 @@
 # oh-my-gemini
 
 [![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
-[![GitHub stars](https://img.shields.io/github/stars/jjongguet/oh-my-gemini?style=flat&color=yellow)](https://github.com/jjongguet/oh-my-gemini/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
 > **자매 프로젝트:** Claude Code 또는 Codex를 선호하시나요? [oh-my-claudecode (OMC)](https://github.com/Yeachan-Heo/oh-my-claudecode) 및 [oh-my-codex (OMX)](https://github.com/Yeachan-Heo/oh-my-codex)를 참고하세요.
 
-**Gemini CLI를 위한 멀티 에이전트 오케스트레이션. 학습 비용은 거의 없습니다.**
+**Antigravity CLI를 위한 멀티 에이전트 오케스트레이션. 학습 비용은 거의 없습니다.**
 
-_Gemini CLI를 억지로 다루지 마세요. 그냥 OMG를 실행하세요._
+_Antigravity CLI를 억지로 다루지 마세요. 그냥 OMG를 실행하세요._
 
 [빠른 시작](#빠른-시작) • [팀 모드](#팀-모드-권장) • [기능](#기능) • [CLI 참조](#cli-참조) • [요구 사항](#요구-사항)
 
@@ -45,7 +45,7 @@ omg
 
 이것으로 끝입니다.
 
-`omg`는 OMG 확장이 로드된 상태로 Gemini CLI를 실행합니다. 이미 tmux 안에 있다면 그 안에서 실행되고, 아니라면 OMG가 새 tmux 세션을 자동으로 시작합니다.
+`omg`는 OMG 확장이 로드된 상태로 Antigravity CLI를 실행합니다. 이미 tmux 안에 있다면 그 안에서 실행되고, 아니라면 OMG가 새 tmux 세션을 자동으로 시작합니다.
 
 ### 다음으로 실행하면 좋은 명령
 
@@ -66,12 +66,12 @@ npm install -g oh-my-gemini
 omg setup --scope project
 ```
 
-`omg setup`은 로컬 설정 파일을 적용하고 oh-my-gemini를 Gemini CLI 확장으로 자동 등록합니다.
+`omg setup`은 로컬 설정 파일을 적용하고 oh-my-gemini를 Antigravity CLI 확장으로 자동 등록합니다.
 
 ### Gemini Extension으로 설치하기 (확장만)
 
 ```bash
-gemini extensions install github:jjongguet/oh-my-gemini
+gemini extensions install github:r3dlex/oh-my-gemini
 ```
 
 확장만 직접 설치하는 방식입니다. `omg team run`, `omg doctor`, `omg verify` 같은 전체 CLI 기능까지 쓰려면 npm 패키지도 전역 설치하세요.
@@ -104,7 +104,7 @@ omg team shutdown --team oh-my-gemini --force
 
 ## 왜 oh-my-gemini인가요?
 
-- **Gemini 네이티브 워크플로우** - Gemini를 보조 제공자로 덧붙이는 대신 Gemini CLI 중심으로 설계되었습니다
+- **Gemini 네이티브 워크플로우** - Gemini를 보조 제공자로 덧붙이는 대신 Antigravity CLI 중심으로 설계되었습니다
 - **학습 비용이 거의 없는 진입점** - `omg`가 바로 대화형 세션을 시작하므로 외워야 할 확장 설정이 없습니다
 - **팀 중심 오케스트레이션** - 지속되는 라이프사이클 상태와 재개 가능한 실행을 갖춘 협업형 워커 실행
 - **검증 게이트 기반 전달** - `omg verify`가 typecheck, smoke, integration, reliability 스위트를 묶어서 실행합니다
@@ -121,14 +121,14 @@ omg team shutdown --team oh-my-gemini --force
 | 기능 | 설명 | 사용 목적 |
 | ---- | ---- | -------- |
 | **Team** | 지속 상태, 상태 점검, resume/shutdown/cancel 제어를 갖춘 멀티 워커 오케스트레이션이며 기본 런타임은 tmux입니다 | 병렬 구현, 리뷰, 장시간 협업 작업 |
-| **Interactive Launch** | `omg` / `omg launch`가 현재 tmux pane 또는 새 tmux 세션에서 OMG 확장을 로드한 Gemini CLI를 시작합니다 | 설정 부담 없이 일상적인 대화형 Gemini 개발 |
+| **Interactive Launch** | `omg` / `omg launch`가 현재 tmux pane 또는 새 tmux 세션에서 OMG 확장을 로드한 Antigravity CLI를 시작합니다 | 설정 부담 없이 일상적인 대화형 Gemini 개발 |
 | **Verify** | `omg verify`가 `typecheck`, `smoke`, `integration`, `reliability` 검증 단계를 패키지 형태로 실행합니다 | 릴리스 점검, 신뢰도 게이트, CI 친화적인 검증 |
 | **HUD** | `omg hud`가 저장된 팀 상태를 기반으로 실시간 상태 오버레이를 렌더링합니다 | JSON 상태 파일을 뒤지지 않고 활성 실행 모니터링 |
 | **Skills** | `omg skill`이 `deep-interview`, `review`, `verify`, `cancel`, `handoff` 같은 재사용 가능한 프롬프트를 제공합니다 | 반복 가능한 워크플로우, 가이드된 실행, 운영자 인수인계 |
 
 ### 더 큰 개발 생산성
 
-- **Doctor 명령**으로 Node, Gemini CLI, tmux, 확장 자산, `.omg/state` 쓰기 가능 여부를 점검
+- **Doctor 명령**으로 Node, Antigravity CLI, tmux, 확장 자산, `.omg/state` 쓰기 가능 여부를 점검
 - **결정론적 상태 저장**을 `.omg/state` 아래에 유지해 재개 가능한 오케스트레이션 지원
 - 패키지 루트에서 제공되는 **Gemini 네이티브 확장 패키징**과 `/omg:*` 명령 네임스페이스
 - 필요 시 더 깊은 Gemini 통합을 위한 **선택적 MCP/도구 표면**
@@ -155,7 +155,7 @@ omg team shutdown --team oh-my-gemini --force
 
 | 명령 | 설명 | 예시 |
 | ---- | ---- | ---- |
-| `omg` | OMG 확장을 로드한 상태로 Gemini CLI를 대화형으로 실행 | `omg` |
+| `omg` | OMG 확장을 로드한 상태로 Antigravity CLI를 대화형으로 실행 | `omg` |
 | `omg launch` | 기본 대화형 실행 명령의 명시적 형태 | `omg launch --yolo` |
 | `omg team run` | 새 오케스트레이션 팀 실행 시작 | `omg team run --task "smoke" --workers 3` |
 | `omg team status` | 저장된 단계, 워커, 작업 상태 점검 | `omg team status --team oh-my-gemini --json` |
@@ -176,7 +176,7 @@ omg team shutdown --team oh-my-gemini --force
 ### 필수
 
 - **Node.js 20+**
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)**
+- **[Antigravity CLI](https://github.com/google-gemini/agy)**
 - **[tmux](https://github.com/tmux/tmux)**
 
 빠른 확인:
@@ -221,13 +221,13 @@ MIT
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=jjongguet/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#jjongguet/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
 
 ## 💖 프로젝트 후원
 
-oh-my-gemini가 Gemini CLI 워크플로우를 개선해 준다면, 프로젝트 후원을 고려해 주세요.
+oh-my-gemini가 Antigravity CLI 워크플로우를 개선해 준다면, 프로젝트 후원을 고려해 주세요.
 
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
 
 ### 왜 후원해야 하나요?
 

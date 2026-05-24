@@ -635,7 +635,7 @@ describe('reliability: subagents runtime backend', () => {
               'code-simplifier',
               'critic',
               'debugger',
-              'deep-executor',
+              'writer',
               'designer',
             ],
           }),

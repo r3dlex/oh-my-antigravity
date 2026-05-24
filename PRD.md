@@ -11,7 +11,7 @@
 
 ## 0. Executive Summary
 
-`oh-my-gemini`는 Gemini CLI 환경에서 **확장(Extension)-우선**,
+`oh-my-gemini`는 Antigravity CLI 환경에서 **확장(Extension)-우선**,
 **tmux-기본**, **내구성 상태 저장(Durable State)**,
 **검증 게이트(verify)** 중심의 멀티에이전트 오케스트레이션을 제공한다.
 
@@ -63,7 +63,7 @@
 
 ### 2.1 문제
 
-Gemini CLI 단독 사용만으로는 다음이 반복적으로 어렵다.
+Antigravity CLI 단독 사용만으로는 다음이 반복적으로 어렵다.
 
 - 멀티 워커 작업의 재현 가능한 실행
 - 실패 시 어떤 단계에서 왜 실패했는지 추적

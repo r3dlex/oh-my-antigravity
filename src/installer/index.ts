@@ -89,7 +89,7 @@ const SANDBOX_DOCKERFILE_TEMPLATE = [
   '    && rm -rf /var/lib/apt/lists/*',
   '',
   '# Gemini CLI is installed at runtime in host environments too; this image is a baseline.',
-  'RUN npm install -g @google/gemini-cli@latest',
+  'RUN npm install -g @antigravity/cli@latest',
   '',
   'WORKDIR /workspace',
   '',

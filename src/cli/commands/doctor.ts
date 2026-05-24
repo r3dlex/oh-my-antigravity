@@ -860,11 +860,11 @@ async function runDoctorChecks(
     },
     {
       code: hasGemini ? 'DOC_GEMINI_OK' : DOCTOR_CODE.GEMINI,
-      name: 'gemini-cli',
+      name: 'agy-cli',
       required: true,
       status: hasGemini ? 'ok' : 'missing',
       details: hasGemini ? 'gemini command found' : 'gemini command not found in PATH',
-      hint: 'Install: npm i -g @google/gemini-cli',
+      hint: 'Install: npm i -g @antigravity/cli',
     },
     {
       code: hasTmux ? 'DOC_TMUX_OK' : DOCTOR_CODE.TMUX,

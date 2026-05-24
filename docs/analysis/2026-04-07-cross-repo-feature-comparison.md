@@ -348,7 +348,7 @@ OMG has 8 team subcommands in `commands/omg/team/`:
 | **conductor** (Google official) | 3,389 | Team orchestration — direct competitor |
 | **ralph** (Google official) | 281 | Ralph persistence loops — direct competitor |
 | **jules** (Google official) | 364 | Autonomous agent — competes with autopilot |
-| **gemini-cli-prompt-library** | 369 | Prompt/skill library |
+| **agy-prompt-library** | 369 | Prompt/skill library |
 | **skill-porter** | 150 | Skill porting |
 
 **Implication:** OMG must differentiate from Google's own extensions, not just from OMC/OMX. Features Google ships natively become OMG's liabilities.
@@ -378,7 +378,7 @@ OMG has 8 team subcommands in `commands/omg/team/`:
 | **P0** | Audit feature usage; remove/document undiscoverable features | 47 commands but only 14% visible to users. Subtraction-first. |
 | **P0** | Align with PRD P0: reliability hardening, watchdog, heartbeat | Project's own PRD says this is P0. |
 | **P1** | Deepen Gemini-native advantages (1M context, multimodal, MCP) | Competitive differentiation Google cannot replicate. |
-| **P1** | Extension marketplace presence (gemini-cli-extensions org listing) | Distribution is the bottleneck, not features. |
+| **P1** | Extension marketplace presence (agy-extensions org listing) | Distribution is the bottleneck, not features. |
 | **P2** | UltraQA mode (IF demand exists + Mode Extensibility ADR first) | Only genuine mode gap, but needs 7+ file changes. |
 | **P2** | /trace + /ai-slop-cleaner (IF demand signal from users) | Valuable but demand-contingent. |
 | **P3** | Everything else (deepinit, schedule, session-manager, CCG) | Low priority; Google may ship natively. |

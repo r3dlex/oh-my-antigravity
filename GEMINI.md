@@ -7,7 +7,7 @@ This extension is the canonical public entry point for the `oh-my-gemini` workfl
 > **Transition status (2026-04-13):** the canonical target for this repo is `oh-my-gemini` / `omg`, with extension assets under `extensions/oh-my-gemini/` and runtime state under `.omg/`. Legacy `oh-my-gemini` / `omg` / `.omg` references remain in some implementation and compatibility paths during the migration.
 
 ## Context Layers (priority order)
-1. **System/Runtime** — Gemini CLI constraints (immutable)
+1. **System/Runtime** — Antigravity CLI constraints (immutable)
 2. **Project Standards** — This file (`GEMINI.md`) + `docs/architecture/omg-core.md`
 3. **Session Memory** — `.omg/state/` (preferred) or `.omg/state/` (compatibility), memory entries
 4. **Active Task** — Current plan, taskboard, PRD

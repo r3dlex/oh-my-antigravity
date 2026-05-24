@@ -12,7 +12,7 @@ Install these tools before you start:
 
 - Node.js `>=20.10.0`
 - `npm`
-- Gemini CLI (`@google/gemini-cli`)
+- Antigravity CLI (`@antigravity/cli`)
 - `tmux` for team orchestration
 - Docker or Podman for sandbox and container checks
 - `gh` (optional, but recommended for opening pull requests from the terminal)
@@ -36,7 +36,7 @@ gh --version
 ### 1) Clone and install dependencies
 
 ```bash
-git clone https://github.com/jjongguet/oh-my-gemini.git
+git clone https://github.com/r3dlex/oh-my-gemini.git
 cd oh-my-gemini
 npm install
 ```
@@ -60,7 +60,7 @@ If you plan to exercise the experimental subagents backend locally, also run:
 npm run setup:subagents
 ```
 
-### 3) Link the local extension into Gemini CLI
+### 3) Link the local extension into Antigravity CLI
 
 For contributor workflows inside a checkout, link the in-repo extension directly from the package root:
 

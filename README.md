@@ -5,13 +5,13 @@
 # oh-my-gemini
 
 [![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
-[![GitHub stars](https://img.shields.io/github/stars/jjongguet/oh-my-gemini?style=flat&color=yellow)](https://github.com/jjongguet/oh-my-gemini/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
 > **Sister projects:** [oh-my-claudecode (OMC)](https://github.com/Yeachan-Heo/oh-my-claudecode) | [oh-my-codex (OMX)](https://github.com/Yeachan-Heo/oh-my-codex)
 
-**Multi-agent orchestration for Gemini CLI with OMG branding.**
+**Multi-agent orchestration for Google Antigravity (agy) CLI with OMG branding.**
 
 > **Transition complete (2026-04-13):** this repo uses `oh-my-gemini` / `omg` as the canonical user-facing surface. The legacy `omg` / `oh-my-gemini` bin entries have been removed. See [`docs/analysis/2026-04-13-oh-my-gemini-phase-1-doc-and-quality-review.md`](docs/analysis/2026-04-13-oh-my-gemini-phase-1-doc-and-quality-review.md) for the migration history.
 
@@ -24,12 +24,12 @@
 ```bash
 npm install -g oh-my-gemini
 omg setup --scope project
-gemini
+omg
 ```
 
-After setup, restart Gemini CLI for `/omg:*` commands to appear (`/omg:*` remains compatible during migration).
+After setup, restart agy CLI for `/omg:*` commands to appear (`/omg:*` remains compatible during migration).
 
-The packaged extension now ships a Gemini-native `hooks/hooks.json` bridge and exposes `omg_cli_tools` as the canonical MCP server id.
+The packaged extension now ships a agy-native `hooks/hooks.json` bridge and exposes `omg_cli_tools` as the canonical MCP server id.
 
 ```bash
 omg doctor                                    # check prerequisites
@@ -69,7 +69,7 @@ Default backend: `tmux` | Optional: `subagents` for role-tagged runs
 
 | Command | Description |
 |---------|-------------|
-| `omg` | Launch Gemini CLI with the oh-my-gemini extension |
+| `omg` | Launch agy CLI with the oh-my-gemini extension |
 | `omg update` | Update the globally installed package immediately |
 | `omg team run` | Start orchestrated team run |
 | `omg team status/resume/shutdown/cancel` | Team lifecycle |
@@ -78,7 +78,7 @@ Default backend: `tmux` | Optional: `subagents` for role-tagged runs
 | `omg hud` | Live team status overlay |
 | `omg skill` | List/print reusable skill prompts |
 
-### Slash Commands (inside Gemini CLI)
+### Slash Commands (inside agy CLI)
 
 | Command | Description |
 |---------|-------------|
@@ -145,21 +145,36 @@ Those internal names are deferred to a later migration to avoid breaking state, 
 ## Requirements
 
 - **Node.js 20+**
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)**
+- **[agy CLI](https://antigravity.google/docs/cli-overview)**
 - **[tmux](https://github.com/tmux/tmux)** (`brew install tmux` / `apt install tmux`)
 
 ---
 
-## Default Model
+## Available Models
 
-| Model | Free (OAuth) | Free (API Key) |
-|-------|--------------|----------------|
-| `gemini-3.1-flash-lite-preview` (default) | Yes | Yes |
-| `gemini-3.1-pro-preview` (`--pro`) | Yes | Yes |
+agy CLI (Google Antigravity) supports the following primary models (from [Google AI Docs](https://ai.google.dev/gemini-api/docs/models)):
 
-Default model on `omg` launch is `gemini-3.1-flash-lite-preview`. Use `omg --pro` for `gemini-3.1-pro-preview` (`omg --pro` also works).
+| Model | Tier (agy) | Capabilities | Context Window |
+|-------|------------|--------------|----------------|
+| `gemini-3.5-flash` | Medium, High | Fast reasoning, multi-step coding (current default) | 1M tokens |
+| `gemini-3.1-pro` | Low, High | Structural thinking, planning, debugging, daily execution | 1M tokens |
+| `gemini-3-flash` | Standard | Efficient multi-modal tasks | 1M tokens |
+| `gemini-3.1-flash-lite` | Fast | Lightweight, low-latency tasks | 1M tokens |
+| `gemini-2.5-flash` | Standard | Fast reasoning, multimodal | 1M tokens |
+| `gemini-2.5-flash-lite` | Fast | Lightweight, low latency | 1M tokens |
+| `gemini-2.5-pro` | Standard | Legacy high-tier reasoning, agentic coding | 1M tokens |
 
-All defaults work without a paid Gemini CLI coding plan — just log in via OAuth (Google Account) or use an API key. Override with `OMG_MODEL_HIGH`, `OMG_MODEL_MEDIUM`, `OMG_MODEL_LOW` env vars. Gemini 3.1, 3, and 2.5 models are all available via `-m` flag.
+### Third-Party Models (via agy)
+
+| Model | Tier (agy) | Capabilities |
+|-------|------------|--------------|
+| `claude-sonnet-4.6` | Thinking | Full agentic coding, multi-step plans |
+| `claude-opus-4.6` | Thinking | Deep reasoning, complex agentic tasks |
+| `gpt-oss-120b` | Medium | General coding and reasoning |
+
+Default model on `omg` launch is `gemini-3.5-flash`. Use `-m <model>` to override. Set `OMG_MODEL_HIGH`, `OMG_MODEL_MEDIUM`, `OMG_MODEL_LOW` env vars to override tiers.
+
+All defaults work without a paid agy CLI coding plan — just log in via OAuth (Google Account) or use an API key. Override with `OMG_MODEL_HIGH`, `OMG_MODEL_MEDIUM`, `OMG_MODEL_LOW` env vars. All Gemini models and third-party models are available via `-m` flag.
 
 ### Emergency Model Override
 
@@ -185,6 +200,6 @@ MIT
 
 </div>
 
-[![Star History Chart](https://api.star-history.com/svg?repos=jjongguet/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#jjongguet/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
 
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)

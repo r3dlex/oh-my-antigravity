@@ -7,15 +7,15 @@
 # oh-my-gemini
 
 [![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
-[![GitHub stars](https://img.shields.io/github/stars/jjongguet/oh-my-gemini?style=flat&color=yellow)](https://github.com/jjongguet/oh-my-gemini/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
 > **姐妹项目：** 更喜欢 Claude Code 或 Codex？请查看 [oh-my-claudecode (OMC)](https://github.com/Yeachan-Heo/oh-my-claudecode) 和 [oh-my-codex (OMX)](https://github.com/Yeachan-Heo/oh-my-codex)。
 
-**为 Gemini CLI 提供多智能体编排。零学习成本。**
+**为 Antigravity CLI 提供多智能体编排。零学习成本。**
 
-_别再折腾 Gemini CLI。直接运行 OMG。_
+_别再折腾 Antigravity CLI。直接运行 OMG。_
 
 [快速开始](#快速开始) • [团队模式](#团队模式推荐) • [功能](#功能) • [CLI 参考](#cli-参考) • [环境要求](#环境要求)
 
@@ -45,7 +45,7 @@ omg
 
 就是这么简单。
 
-`omg` 会在加载 OMG 扩展的情况下启动 Gemini CLI。如果你已经在 tmux 中，它会直接在当前环境运行；如果不在，OMG 会为你启动一个新的 tmux 会话。
+`omg` 会在加载 OMG 扩展的情况下启动 Antigravity CLI。如果你已经在 tmux 中，它会直接在当前环境运行；如果不在，OMG 会为你启动一个新的 tmux 会话。
 
 ### 接下来可以尝试的命令
 
@@ -66,12 +66,12 @@ npm install -g oh-my-gemini
 omg setup --scope project
 ```
 
-`omg setup` 会应用本地设置文件，并自动将 oh-my-gemini 注册为 Gemini CLI 扩展。
+`omg setup` 会应用本地设置文件，并自动将 oh-my-gemini 注册为 Antigravity CLI 扩展。
 
 ### 通过 Gemini Extension 安装（仅扩展）
 
 ```bash
-gemini extensions install github:jjongguet/oh-my-gemini
+gemini extensions install github:r3dlex/oh-my-gemini
 ```
 
 这种方式会直接安装扩展。若要使用 `omg team run`、`omg doctor`、`omg verify` 等完整 CLI 功能，还需要全局安装 npm 包。
@@ -104,7 +104,7 @@ omg team shutdown --team oh-my-gemini --force
 
 ## 为什么选择 oh-my-gemini？
 
-- **Gemini 原生工作流** - 围绕 Gemini CLI 构建，而不是把 Gemini 当作次要提供方硬塞进去
+- **Gemini 原生工作流** - 围绕 Antigravity CLI 构建，而不是把 Gemini 当作次要提供方硬塞进去
 - **零学习曲线入口** - `omg` 直接启动交互式会话，无需记忆扩展配置细节
 - **团队优先编排** - 具备持久化生命周期状态和可恢复运行的协同 worker 执行
 - **以验证为门槛的交付** - `omg verify` 将 typecheck、smoke、integration、reliability 测试打包在一起
@@ -121,14 +121,14 @@ omg team shutdown --team oh-my-gemini --force
 | 功能 | 它是什么 | 适用场景 |
 | ------- | ---------- | ---------- |
 | **Team** | 具备持久化状态、健康检查、resume/shutdown/cancel 控制，并以 tmux 作为默认运行时的多 worker 编排 | 并行实现、代码审查和长时间协同任务 |
-| **Interactive Launch** | `omg` / `omg launch` 会在当前 tmux pane 或新的 tmux 会话中，加载 OMG 扩展后启动 Gemini CLI | 无需反复配置的日常交互式 Gemini 开发 |
+| **Interactive Launch** | `omg` / `omg launch` 会在当前 tmux pane 或新的 tmux 会话中，加载 OMG 扩展后启动 Antigravity CLI | 无需反复配置的日常交互式 Gemini 开发 |
 | **Verify** | `omg verify` 运行跨 `typecheck`、`smoke`、`integration`、`reliability` 的打包验证层级 | 发布前检查、可信度门槛、适合 CI 的验证 |
 | **HUD** | `omg hud` 根据持久化团队状态渲染实时状态覆盖层 | 无需翻找 JSON 状态文件即可监控活动运行 |
 | **Skills** | `omg skill` 暴露 `deep-interview`、`review`、`verify`、`cancel`、`handoff` 等可复用提示 | 可重复工作流、引导式执行、操作者交接 |
 
 ### 更多开发者杠杆
 
-- **Doctor 命令**：检查 Node、Gemini CLI、tmux、扩展资源以及 `.omg/state` 的可写性
+- **Doctor 命令**：检查 Node、Antigravity CLI、tmux、扩展资源以及 `.omg/state` 的可写性
 - **确定性的状态持久化**：在 `.omg/state` 下支持可恢复的编排
 - 从包根目录提供的 **Gemini 原生扩展打包** 与 `/omg:*` 命名空间命令
 - 在需要时提供更深层 Gemini 集成的 **可选 MCP/工具接口**
@@ -155,7 +155,7 @@ omg team shutdown --team oh-my-gemini --force
 
 | 命令 | 作用 | 示例 |
 | ------- | ------------ | ------- |
-| `omg` | 在加载 OMG 扩展的情况下交互式启动 Gemini CLI | `omg` |
+| `omg` | 在加载 OMG 扩展的情况下交互式启动 Antigravity CLI | `omg` |
 | `omg launch` | 默认交互式启动命令的显式形式 | `omg launch --yolo` |
 | `omg team run` | 启动新的团队编排运行 | `omg team run --task "smoke" --workers 3` |
 | `omg team status` | 查看持久化的 phase、worker 和 task 健康状态 | `omg team status --team oh-my-gemini --json` |
@@ -176,7 +176,7 @@ omg team shutdown --team oh-my-gemini --force
 ### 必需
 
 - **Node.js 20+**
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)**
+- **[Antigravity CLI](https://github.com/google-gemini/agy)**
 - **[tmux](https://github.com/tmux/tmux)**
 
 快速检查：
@@ -221,13 +221,13 @@ MIT
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=jjongguet/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#jjongguet/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
 
 ## 💖 支持这个项目
 
-如果 oh-my-gemini 改善了你的 Gemini CLI 工作流，可以考虑赞助这个项目：
+如果 oh-my-gemini 改善了你的 Antigravity CLI 工作流，可以考虑赞助这个项目：
 
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
 
 ### 为什么赞助？
 
