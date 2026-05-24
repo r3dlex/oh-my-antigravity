@@ -54,12 +54,6 @@ const BASE_SUBAGENT_BLUEPRINTS: ReadonlyArray<{
       'Isolate deterministic root causes and propose reproducible bug fixes.',
   },
   {
-    id: 'deep-executor',
-    role: 'deep-executor',
-    mission:
-      'Execute complex multi-step implementation tasks end-to-end with verification.',
-  },
-  {
     id: 'designer',
     role: 'designer',
     mission:
@@ -140,16 +134,6 @@ const BASE_SUBAGENT_BLUEPRINTS: ReadonlyArray<{
     aliases: ['handoff'],
     mission:
       'Publish concise technical docs, migration notes, and implementation handoff.',
-  },
-  {
-    id: 'design-architect',
-    role: 'design-architect',
-    mission: 'Evaluate design system structural completeness, token consistency, and extensibility.',
-  },
-  {
-    id: 'design-validator',
-    role: 'design-validator',
-    mission: 'Verify UI code consistency with DESIGN.md design tokens and rules.',
   },
 ] as const;
 

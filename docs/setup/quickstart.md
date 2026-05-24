@@ -24,7 +24,7 @@ Install required tools:
 
 - Node.js 20+
 - `npm`
-- Gemini CLI (`@google/gemini-cli`)
+- agy CLI (`@antigravity/cli`)
 - `tmux`
 - Docker or Podman (or compatible container runtime)
 
@@ -110,7 +110,7 @@ npm run doctor
 `doctor --fix` safely remediates managed issues (for example missing/invalid
 `.omg/setup-scope.json` or missing `.omg/state` directory) and then re-runs diagnostics.
 
-Doctor checks include: `node`, `npm`, `gemini-cli`, `tmux`, container runtime
+Doctor checks include: `node`, `npm`, `agy`, `tmux`, container runtime
 health, the optional `oh-my-gemini` PATH check for MCP availability, setup
 scope validity, extension manifest/command/skill integrity, and `.omg/state`
 writeability.

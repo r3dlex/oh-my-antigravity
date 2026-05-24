@@ -41,7 +41,7 @@ describe('reliability: version command', () => {
           return 'tmux 3.4';
         }
         if (command === 'gemini') {
-          return 'gemini-cli 1.5.0';
+          return 'agy 1.5.0';
         }
         return null;
       },

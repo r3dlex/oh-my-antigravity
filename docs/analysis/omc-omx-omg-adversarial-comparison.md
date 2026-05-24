@@ -18,7 +18,7 @@
 - **OmX** (Codex): `Yeachan-Heo/oh-my-codex`
   - Fresh clone HEAD: `812d211` (`/tmp/om-suite-compare/omx`)
   - 로컬 설치 패키지 스냅샷도 함께 검토.
-- **OMG** (Gemini): `jjongguet/oh-my-gemini`
+- **OMG** (Gemini): `r3dlex/oh-my-gemini`
   - 현재 작업 리포지토리 HEAD(로컬): `/Users/teamipsiwikidev/jjk/jjong/oh-my-gemini`
 
 ### 1.2 팀 실행 근거
