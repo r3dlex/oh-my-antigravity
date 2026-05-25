@@ -6,8 +6,13 @@
 
 # oh-my-antigravity
 
+<<<<<<< HEAD
 [![npm version](https://img.shields.io/npm/v/oh-my-antigravity?color=cb3837)](https://www.npmjs.com/package/oh-my-antigravity)
 [![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-antigravity?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-antigravity/stargazers)
+=======
+[![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
+>>>>>>> merge-tmp
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
@@ -66,12 +71,20 @@ npm install -g oh-my-antigravity
 omg setup --scope project
 ```
 
+<<<<<<< HEAD
 `omg setup` 会应用本地设置文件，并自动将 oh-my-antigravity 注册为 Antigravity CLI 扩展。
+=======
+`omg setup` 会应用本地设置文件，并自动将 oh-my-gemini 注册为 Antigravity CLI 扩展。
+>>>>>>> merge-tmp
 
 ### 通过 Gemini Extension 安装（仅扩展）
 
 ```bash
+<<<<<<< HEAD
 gemini extensions install github:r3dlex/oh-my-antigravity
+=======
+gemini extensions install github:r3dlex/oh-my-gemini
+>>>>>>> merge-tmp
 ```
 
 这种方式会直接安装扩展。若要使用 `omg team run`、`omg doctor`、`omg verify` 等完整 CLI 功能，还需要全局安装 npm 包。
@@ -221,11 +234,19 @@ MIT
 
 ## Star History
 
+<<<<<<< HEAD
 [![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-antigravity&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-antigravity&type=date&legend=top-left)
 
 ## 💖 支持这个项目
 
 如果 oh-my-antigravity 改善了你的 Antigravity CLI 工作流，可以考虑赞助这个项目：
+=======
+[![Star History Chart](https://api.star-history.com/chart?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/?repos=r3dlex%2Foh-my-gemini&type=date&legend=top-left)
+
+## 💖 支持这个项目
+
+如果 oh-my-gemini 改善了你的 Antigravity CLI 工作流，可以考虑赞助这个项目：
+>>>>>>> merge-tmp
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
 

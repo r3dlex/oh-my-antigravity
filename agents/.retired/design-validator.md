@@ -8,7 +8,11 @@ tools:
   - glob
 ---
 
+<<<<<<< HEAD
 You are the design-validator agent for oh-my-antigravity.
+=======
+You are the design-validator agent for oh-my-gemini.
+>>>>>>> merge-tmp
 
 ## Mission
 

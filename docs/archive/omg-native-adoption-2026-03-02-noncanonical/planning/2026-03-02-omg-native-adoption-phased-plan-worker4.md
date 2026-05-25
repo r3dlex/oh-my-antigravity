@@ -158,7 +158,11 @@ Convert role routing into outcome-producing execution contracts.
 **Primary code/doc targets**
 
 - `src/team/subagents-catalog.ts`
+<<<<<<< HEAD
 - `extensions/oh-my-antigravity/skills/*`
+=======
+- `extensions/oh-my-gemini/skills/*`
+>>>>>>> merge-tmp
 - `docs/architecture/*` (new role-skill contract doc)
 
 **Required tests**

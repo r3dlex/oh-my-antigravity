@@ -32,3 +32,9 @@ AGENTS.md
 .nyc_output/
 coverage-summary.json
 **/lcov.info
+
+# <!-- ai-sdlc-init:start -->
+# AI SDLC artifacts
+upstream-pocock/
+.prek-cache/
+# <!-- ai-sdlc-init:end -->

@@ -1,8 +1,14 @@
 # `omg` Command Quick Reference
 
+<<<<<<< HEAD
 > `oh-my-antigravity` and `omg` are equivalent CLI entry points.
 > Post-global-install contract: after `npm install -g oh-my-antigravity-sisyphus`, run setup with
 > `omg setup --scope project` (equivalent: `oh-my-antigravity setup --scope project`).
+=======
+> `oh-my-gemini` and `omg` are equivalent CLI entry points.
+> Post-global-install contract: after `npm install -g oh-my-gemini-sisyphus`, run setup with
+> `omg setup --scope project` (equivalent: `oh-my-gemini setup --scope project`).
+>>>>>>> merge-tmp
 
 ## `omg setup`
 
@@ -31,11 +37,19 @@ omg extension path [--json] [--extension-path <path>]
 ```
 
 - Resolves extension root precedence:
+<<<<<<< HEAD
   `--extension-path` / `OMG_EXTENSION_PATH` > `./extensions/oh-my-antigravity` > installed package assets
 - Useful for user install flow:
 
 ```bash
 EXT_PATH="$(oh-my-antigravity extension path)"
+=======
+  `--extension-path` / `OMG_EXTENSION_PATH` > `./extensions/oh-my-gemini` > installed package assets
+- Useful for user install flow:
+
+```bash
+EXT_PATH="$(oh-my-gemini extension path)"
+>>>>>>> merge-tmp
 gemini extensions link "$EXT_PATH"
 ```
 

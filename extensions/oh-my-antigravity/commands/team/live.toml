@@ -11,7 +11,11 @@ Actions:
    - Ensure current session is a tmux leader pane (`$TMUX` set).
 2. Start team:
    - If args exist: omx team 3:executor "{{args}}"
+<<<<<<< HEAD
    - If args are empty: omx team 3:executor "oh-my-antigravity live-team smoke"
+=======
+   - If args are empty: omx team 3:executor "oh-my-gemini live-team smoke"
+>>>>>>> merge-tmp
 3. Capture startup evidence:
    - `Team started: <name>` line,
    - tmux target / pane evidence,

@@ -2,7 +2,11 @@
 
 Date: 2026-03-02  
 Status: Draft for execution planning  
+<<<<<<< HEAD
 Scope: `oh-my-antigravity` implementation and docs in this repository
+=======
+Scope: `oh-my-gemini` implementation and docs in this repository
+>>>>>>> merge-tmp
 
 This is the canonical synthesis document for the current analysis cycle.
 

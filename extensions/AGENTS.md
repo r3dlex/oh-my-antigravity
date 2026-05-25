@@ -13,7 +13,11 @@ No direct files at this level.
 
 | Directory | Purpose |
 |-----------|---------|
+<<<<<<< HEAD
 | `oh-my-antigravity/` | Canonical extension package for this repository. See `oh-my-antigravity/AGENTS.md`. |
+=======
+| `oh-my-gemini/` | Canonical extension package for this repository. See `oh-my-gemini/AGENTS.md`. |
+>>>>>>> merge-tmp
 
 ## For AI Agents
 

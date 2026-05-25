@@ -38,7 +38,11 @@ CLI + extension command surface
 3. `src/team/team-orchestrator.ts`
    - success checklist must include control-plane and artifact truth
 4. `src/cli/index.ts` + new team command handlers
+<<<<<<< HEAD
 5. `extensions/oh-my-antigravity/commands/team/*` and `extensions/oh-my-antigravity/skills/*`
+=======
+5. `extensions/oh-my-gemini/commands/team/*` and `extensions/oh-my-gemini/skills/*`
+>>>>>>> merge-tmp
 6. `docs/architecture/state-schema.md`, `docs/testing/gates.md`, `docs/testing/live-team-e2e.md`
 
 ---

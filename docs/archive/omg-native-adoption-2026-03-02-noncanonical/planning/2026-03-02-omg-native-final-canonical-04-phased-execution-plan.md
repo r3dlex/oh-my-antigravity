@@ -78,7 +78,11 @@ npm run test:reliability
 - `src/cli/commands/team-*.ts`
 - `src/team/team-orchestrator.ts`
 - `docs/omg/commands.md`
+<<<<<<< HEAD
 - `extensions/oh-my-antigravity/commands/team/*.toml`
+=======
+- `extensions/oh-my-gemini/commands/team/*.toml`
+>>>>>>> merge-tmp
 
 **Exit criteria**
 - human + JSON output contract exists
@@ -132,7 +136,11 @@ npm run team:e2e
 
 **Primary files**
 - `src/team/subagents-*.ts`
+<<<<<<< HEAD
 - `extensions/oh-my-antigravity/skills/*`
+=======
+- `extensions/oh-my-gemini/skills/*`
+>>>>>>> merge-tmp
 - new/updated architecture docs for role contracts
 
 **Exit criteria**

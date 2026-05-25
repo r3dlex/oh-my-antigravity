@@ -5,7 +5,11 @@ primaryRole: coordinator
 description: Produce a structured handoff document summarizing completed work and next steps.
 ---
 
+<<<<<<< HEAD
 # Handoff Skill (oh-my-antigravity)
+=======
+# Handoff Skill (oh-my-gemini)
+>>>>>>> merge-tmp
 
 Use this skill when transitioning work between sessions, agents, or team members.
 

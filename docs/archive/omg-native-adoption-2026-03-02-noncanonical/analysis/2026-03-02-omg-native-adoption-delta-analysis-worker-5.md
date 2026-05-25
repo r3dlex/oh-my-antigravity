@@ -2,7 +2,11 @@
 
 Date: 2026-03-02  
 Author: worker-5  
+<<<<<<< HEAD
 Scope: concrete capability deltas and architecture-level adoption blueprint for `oh-my-antigravity`
+=======
+Scope: concrete capability deltas and architecture-level adoption blueprint for `oh-my-gemini`
+>>>>>>> merge-tmp
 
 ---
 
@@ -15,7 +19,11 @@ Define **how OmG should adopt the strongest parts of OmC/OmX** for:
 
 …while preserving OmG’s product identity:
 
+<<<<<<< HEAD
 - extension-first Gemini UX (`extensions/oh-my-antigravity`)
+=======
+- extension-first Gemini UX (`extensions/oh-my-gemini`)
+>>>>>>> merge-tmp
 - typed orchestration core (`src/team/*`)
 - deterministic durable state under `.omg/state`
 
@@ -32,7 +40,11 @@ Define **how OmG should adopt the strongest parts of OmC/OmX** for:
 - State contract: `src/state/team-state-store.ts`, `docs/architecture/state-schema.md`
 - Reliability expectations: `docs/architecture/runtime-backend.md`, `docs/testing/gates.md`
 - Role inventory + catalog loading: `src/team/subagents-blueprint.ts`, `src/team/subagents-catalog.ts`, `.gemini/agents/catalog.json`
+<<<<<<< HEAD
 - Extension skill surface: `extensions/oh-my-antigravity/skills/plan/SKILL.md`
+=======
+- Extension skill surface: `extensions/oh-my-gemini/skills/plan/SKILL.md`
+>>>>>>> merge-tmp
 
 ### 2.2 OmX evidence
 

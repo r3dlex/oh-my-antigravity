@@ -94,6 +94,17 @@ jobs:
           "
           npm publish --tag pre --access public --provenance
 
+      - name: Publish oh-my-antigravity-agy pre-release
+        run: |
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json'));
+            pkg.name = 'oh-my-antigravity-agy';
+            pkg.bin = { omg: 'dist/cli/index.js' };
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          npm publish --tag pre --access public --provenance
+
       - name: Configure GH Packages registry
         uses: actions/setup-node@v4
         with:
@@ -171,6 +182,17 @@ jobs:
             const fs = require('fs');
             const pkg = JSON.parse(fs.readFileSync('package.json'));
             pkg.name = 'omg-cli';
+            pkg.bin = { omg: 'dist/cli/index.js' };
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          npm publish --tag latest --access public --provenance || echo "::warning::Publish skipped — version already exists or package not yet on npmjs.com (idempotent)"
+
+      - name: Publish oh-my-antigravity-agy
+        run: |
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json'));
+            pkg.name = 'oh-my-antigravity-agy';
             pkg.bin = { omg: 'dist/cli/index.js' };
             fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
           "

@@ -37,7 +37,11 @@ Job pipeline:
 | Job | Depends On | Condition | Purpose |
 |-----|-----------|-----------|---------|
 | `pre_release_blocking` | — | Always | Full gate: legacy-bypass, global-install-contract, typecheck, build, smoke, integration, reliability, verify |
+<<<<<<< HEAD
 | `check_version` | — | Always | Compares `package.json` version against `npm view @r3dlex/oh-my-antigravity version`; outputs `should_publish` |
+=======
+| `check_version` | — | Always | Compares `package.json` version against `npm view oh-my-gemini-sisyphus version`; outputs `should_publish` |
+>>>>>>> merge-tmp
 | `publish_npm` | `pre_release_blocking`, `check_version` | `should_publish == 'true'` OR `workflow_dispatch` with `publish=true` | Publishes to npm with `--provenance` using `NPM_TOKEN` |
 
 ## Publishing Workflow
@@ -62,7 +66,11 @@ Manual publish (without version bump): trigger `workflow_dispatch` with `publish
 
 ### Testing Requirements
 - Rehearse workflow commands locally (`npm run typecheck`, `npm run build`, suite commands) before finalizing CI changes.
+<<<<<<< HEAD
 - Validate `check_version` logic with `npm view @r3dlex/oh-my-antigravity version` to confirm registry state before testing release logic.
+=======
+- Validate `check_version` logic with `npm view oh-my-gemini-sisyphus version` to confirm registry state before testing release logic.
+>>>>>>> merge-tmp
 
 ### Common Patterns
 - `ci.yml` is linear and fail-fast for blocking jobs; non-blocking signals use `continue-on-error: true` with `if: always()`.

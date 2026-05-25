@@ -1,12 +1,20 @@
 # Oh-My-Gemini Repository Structure
 
 ## Overview
+<<<<<<< HEAD
 oh-my-antigravity is a multi-agent orchestration system with team lifecycle management, control-plane hardening, and runtime state commands. The project is organized into source code, tests, documentation, extensions, and scripts.
+=======
+oh-my-gemini is a multi-agent orchestration system with team lifecycle management, control-plane hardening, and runtime state commands. The project is organized into source code, tests, documentation, extensions, and scripts.
+>>>>>>> merge-tmp
 
 ## Directory Tree
 
 ```
+<<<<<<< HEAD
 oh-my-antigravity/
+=======
+oh-my-gemini/
+>>>>>>> merge-tmp
 │
 ├── .claude/
 │   ├── AGENTS.md
@@ -50,7 +58,11 @@ oh-my-antigravity/
 │
 ├── extensions/
 │   ├── AGENTS.md
+<<<<<<< HEAD
 │   └── oh-my-antigravity/
+=======
+│   └── oh-my-gemini/
+>>>>>>> merge-tmp
 │       ├── AGENTS.md
 │       ├── commands/
 │       │   ├── doctor.toml
@@ -270,7 +282,11 @@ Persistent state storage and retrieval for team execution.
 **Responsibility:** Durability contracts, state recovery, checkpointing
 
 #### `/src/installer` - Installation System
+<<<<<<< HEAD
 Handles installation and integration of oh-my-antigravity.
+=======
+Handles installation and integration of oh-my-gemini.
+>>>>>>> merge-tmp
 
 **Files:**
 - `index.ts` - Main installer logic
@@ -341,13 +357,21 @@ Test utilities and helpers for test execution.
 ### `/extensions` - Extension System
 
 **Structure:**
+<<<<<<< HEAD
 - `/oh-my-antigravity/` - Main extension
+=======
+- `/oh-my-gemini/` - Main extension
+>>>>>>> merge-tmp
   - `gemini-extension.json` - Extension manifest
   - `/commands/` - TOML command definitions
     - `setup.toml`, `doctor.toml` - Top-level commands
     - `/team/` - Team subcommands (run, live, subagents, verify)
 
+<<<<<<< HEAD
 **Purpose:** Integration with oh-my-antigravity environment
+=======
+**Purpose:** Integration with oh-my-gemini environment
+>>>>>>> merge-tmp
 
 ### `/scripts` - Automation Scripts
 

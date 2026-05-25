@@ -4,7 +4,11 @@
 
 Date: 2026-03-02  
 Author: worker-2  
+<<<<<<< HEAD
 Scope: `oh-my-antigravity` repository baseline + existing OmC/OmX comparison artifacts
+=======
+Scope: `oh-my-gemini` repository baseline + existing OmC/OmX comparison artifacts
+>>>>>>> merge-tmp
 
 ---
 

@@ -1,8 +1,13 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, lstatSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { describe, expect, test } from 'vitest';
+
+type ExtensionHookRule = {
+  matcher?: string;
+  hooks?: Array<{ command?: string; type?: string }>;
+};
 
 const packageRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -28,11 +33,15 @@ describe('smoke: native Gemini extension package layout', () => {
     expect(existsSync(manifestPath)).toBe(true);
     expect(existsSync(contextFilePath)).toBe(true);
     expect(existsSync(hooksFilePath)).toBe(true);
+    expect(lstatSync(path.dirname(hooksFilePath)).isSymbolicLink()).toBe(false);
 
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
       contextFileName?: string;
       settings?: Array<{ envVar?: string }>;
       mcpServers?: Record<string, { command?: string; args?: string[]; cwd?: string }>;
+    };
+    const hooksConfig = JSON.parse(readFileSync(hooksFilePath, 'utf8')) as {
+      hooks?: Record<string, ExtensionHookRule[]>;
     };
     const rootManifest = JSON.parse(readFileSync(rootManifestPath, 'utf8')) as {
       settings?: Array<{ envVar?: string }>;
@@ -49,6 +58,10 @@ describe('smoke: native Gemini extension package layout', () => {
     expect(rootManifest.mcpServers?.omp_cli_tools?.command).toBe('oh-my-antigravity');
     expect(rootManifest.mcpServers?.omp_cli_tools?.args).toStrictEqual(['tools', 'serve']);
     expect(rootManifest.mcpServers?.omp_cli_tools?.cwd).toBe('${extensionPath}');
+    expect(hooksConfig.hooks?.BeforeAgent?.[0]?.matcher).toBe('.*');
+    expect(hooksConfig.hooks?.BeforeAgent?.[0]?.hooks?.[0]?.command).toBe('oh-my-gemini hooks exec');
+    expect(hooksConfig.hooks?.AfterTool?.[0]?.matcher).toBe('.*');
+    expect(hooksConfig.hooks?.AfterTool?.[0]?.hooks?.[0]?.command).toBe('oh-my-gemini hooks exec');
 
     for (const commandFile of commandFiles) {
       expect(existsSync(commandFile)).toBe(true);

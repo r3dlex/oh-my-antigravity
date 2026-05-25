@@ -6,8 +6,13 @@
 
 # oh-my-antigravity
 
+<<<<<<< HEAD
 [![npm version](https://img.shields.io/npm/v/oh-my-antigravity?color=cb3837)](https://www.npmjs.com/package/oh-my-antigravity)
 [![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-antigravity?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-antigravity/stargazers)
+=======
+[![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
+>>>>>>> merge-tmp
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
@@ -66,12 +71,20 @@ npm install -g oh-my-antigravity
 omg setup --scope project
 ```
 
+<<<<<<< HEAD
 `omg setup` はローカル設定ファイルを適用し、oh-my-antigravity を Antigravity CLI 拡張として自動登録します。
+=======
+`omg setup` はローカル設定ファイルを適用し、oh-my-gemini を Antigravity CLI 拡張として自動登録します。
+>>>>>>> merge-tmp
 
 ### Gemini Extension 経由 (拡張のみ)
 
 ```bash
+<<<<<<< HEAD
 gemini extensions install github:r3dlex/oh-my-antigravity
+=======
+gemini extensions install github:r3dlex/oh-my-gemini
+>>>>>>> merge-tmp
 ```
 
 この方法では拡張のみを直接インストールします。`omg team run`、`omg doctor`、`omg verify` などの完全な CLI 機能を使う場合は、npm パッケージもグローバルにインストールしてください。
@@ -221,11 +234,19 @@ MIT
 
 ## Star History
 
+<<<<<<< HEAD
 [![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-antigravity&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-antigravity&type=date&legend=top-left)
 
 ## 💖 このプロジェクトを支援する
 
 oh-my-antigravity が Antigravity CLI ワークフローを改善したなら、プロジェクトのスポンサーをご検討ください。
+=======
+[![Star History Chart](https://api.star-history.com/chart?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/?repos=r3dlex%2Foh-my-gemini&type=date&legend=top-left)
+
+## 💖 このプロジェクトを支援する
+
+oh-my-gemini が Antigravity CLI ワークフローを改善したなら、プロジェクトのスポンサーをご検討ください。
+>>>>>>> merge-tmp
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
 

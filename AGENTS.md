@@ -1,18 +1,31 @@
 <!-- Generated: 2026-02-25T05:26:01Z | Updated: 2026-03-03T07:46:00Z -->
 
+<<<<<<< HEAD
 # oh-my-antigravity
 
 ## Purpose
 `oh-my-antigravity` is an extension-first orchestration layer for Gemini CLI workflows. It provides a TypeScript CLI (`omg`) with setup/doctor/team-run/verify commands, runtime backends (tmux default + experimental subagents), reliability-focused state persistence, and verification harnesses for smoke/integration/reliability gates.
 
 The package publishes to npm as `@r3dlex/oh-my-antigravity` (currently v0.1.0). Releasing a new version requires bumping `package.json` version and pushing to `main`; the `release.yml` workflow auto-publishes when the local version differs from the npm registry version.
+=======
+# oh-my-gemini
+
+## Purpose
+`oh-my-gemini` is an extension-first orchestration layer for Gemini CLI workflows. It provides a TypeScript CLI (`omg`) with setup/doctor/team-run/verify commands, runtime backends (tmux default + experimental subagents), reliability-focused state persistence, and verification harnesses for smoke/integration/reliability gates.
+
+The package publishes to npm as `oh-my-gemini-sisyphus` (currently v0.1.0). Releasing a new version requires bumping `package.json` version and pushing to `main`; the `release.yml` workflow auto-publishes when the local version differs from the npm registry version.
+>>>>>>> merge-tmp
 
 ## Key Files
 
 | File | Description |
 |------|-------------|
 | `README.md` | Project overview, quickstart, command surface, and roadmap status. |
+<<<<<<< HEAD
 | `package.json` | npm package name (`@r3dlex/oh-my-antigravity`), version, scripts, CLI bins, and dev dependency definitions. Bump version here to trigger a new npm release. |
+=======
+| `package.json` | npm package name (`oh-my-gemini-sisyphus`), version, scripts, CLI bins, and dev dependency definitions. Bump version here to trigger a new npm release. |
+>>>>>>> merge-tmp
 | `tsconfig.json` | Strict typechecking config for source + tests. |
 | `tsconfig.build.json` | Build-specific emit config for `dist/`. |
 | `vitest.config.ts` | Node-based test runner configuration and timeouts. |
@@ -35,11 +48,19 @@ The package publishes to npm as `@r3dlex/oh-my-antigravity` (currently v0.1.0). 
 ## For AI Agents
 
 ### Working In This Directory
+<<<<<<< HEAD
 - Treat `extensions/oh-my-antigravity/` as canonical public UX and `src/` as implementation internals.
 - Keep runtime defaults aligned with roadmap intent: tmux default backend, subagents opt-in.
 - Do **not** hand-edit generated artifacts in `dist/`, `.omg/`, or `.omx/` unless the task is explicitly about generated state behavior.
 - Keep code ESM-compatible (`type: module`, NodeNext imports).
 - The npm package name is `@r3dlex/oh-my-antigravity`; the CLI bin names remain `omg` and `oh-my-antigravity`.
+=======
+- Treat `extensions/oh-my-gemini/` as canonical public UX and `src/` as implementation internals.
+- Keep runtime defaults aligned with roadmap intent: tmux default backend, subagents opt-in.
+- Do **not** hand-edit generated artifacts in `dist/`, `.omg/`, or `.omx/` unless the task is explicitly about generated state behavior.
+- Keep code ESM-compatible (`type: module`, NodeNext imports).
+- The npm package name is `oh-my-gemini-sisyphus`; the CLI bin names remain `omg` and `oh-my-gemini`.
+>>>>>>> merge-tmp
 - To trigger a new npm release: bump `version` in `package.json` and push to `main`. The `release.yml` workflow detects the version difference and publishes automatically.
 
 ### Testing Requirements
@@ -73,3 +94,59 @@ The package publishes to npm as `@r3dlex/oh-my-antigravity` (currently v0.1.0). 
 - `NPM_TOKEN` GitHub secret must be set in repository settings to enable npm publishing via `release.yml`.
 
 <!-- MANUAL: Any manually added notes below this line are preserved on regeneration -->
+<<<<<<< HEAD
+=======
+
+<!-- ai-sdlc-init:start -->
+
+## AI SDLC Methodology
+
+This repository uses the AI SDLC methodology scaffolded by `ai-sdlc-init`.
+
+### Architecture Decision Records
+
+Significant architectural decisions are recorded in [`docs/adr/`](docs/adr/).
+Before making a change that affects module boundaries, API contracts, data
+schemas, or dependency direction, check whether a relevant ADR exists.
+If your change contradicts an existing ADR, either update the ADR or open a
+discussion before proceeding.
+
+### Archgate Rules
+
+Code quality rules are defined in [`.rules.ts`](.rules.ts) across five domains:
+`backend`, `frontend`, `data`, `architecture`, `general`. Rules carry a severity
+(`error`, `warn`, `info`). Structural validation of `.rules.ts` runs in CI via
+the `validate-rules` prek hook. Semantic enforcement (did the PR violate a rule?)
+is an agent behavior at PR review time.
+
+### Karpathy Baseline
+
+All agents operating in this repository load
+[`.agents/skills/karpathy-guidelines/SKILL.md`](.agents/skills/karpathy-guidelines/SKILL.md)
+as a baseline. Four rules apply to every task: Think Before Coding, Simplicity
+First, Surgical Changes, Goal-Driven Execution. See the SKILL.md for violation
+and correction examples.
+
+### Drift Verification Protocol
+
+At PR review time, the reviewing agent:
+1. Loads the PR diff alongside the BRD, PRD, acceptance criteria, and any ADRs
+   whose scope overlaps with the changed files.
+2. Produces a drift report identifying whether changes match ACs, conflict with
+   ADRs, or violate architectural constraints from `.rules.ts`.
+3. Leaves the drift report as a PR comment or review summary.
+
+This is a documented agent behavior. It is not enforced as a CI gate in this
+iteration.
+
+### Circuit Breaker Protocol
+
+Before starting work on an issue:
+1. Check whether ≥ 3 prior attempts exist without resolution (look for
+   `attempts:N` labels or a comment history showing repeated failures).
+2. If the circuit is tripped (≥ 3 attempts, no resolution), escalate to a
+   human with a written summary of what was tried and what blocked each attempt.
+3. Do not make a fourth attempt without human acknowledgement.
+
+<!-- ai-sdlc-init:end -->
+>>>>>>> merge-tmp
