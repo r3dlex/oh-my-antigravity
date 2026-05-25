@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "@r3dlex/oh-my-antigravity",
   "version": "1.5.0",
-=======
-  "name": "@r3dlex/oh-my-gemini",
-  "version": "1.4.0",
->>>>>>> merge-tmp
   "private": false,
   "description": "Orchestration layer for Gemini CLI workflows",
   "type": "module",

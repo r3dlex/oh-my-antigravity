@@ -1,20 +1,11 @@
-<<<<<<< HEAD
-description = "Run verification gates for oh-my-antigravity."
-=======
 description = "Run verification gates for oh-my-gemini."
->>>>>>> merge-tmp
 prompt = """
 Run the verification workflow for this repository.
 
 Actions:
 1. Execute:
-<<<<<<< HEAD
-   - If args exist: oh-my-antigravity verify {{args}}
-   - If args are empty: oh-my-antigravity verify
-=======
    - If args exist: oh-my-gemini verify {{args}}
    - If args are empty: oh-my-gemini verify
->>>>>>> merge-tmp
    - alias: omg verify
    - contributor fallback from repository root: npm run verify
 2. Confirm default suites are typecheck + smoke + integration + reliability when no explicit `--suite` filter is provided.

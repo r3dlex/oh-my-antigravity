@@ -5,11 +5,7 @@ primaryRole: reviewer
 description: Perform a structured code review of recent changes or a specific scope.
 ---
 
-<<<<<<< HEAD
-# Review Skill (oh-my-antigravity)
-=======
 # Review Skill (oh-my-gemini)
->>>>>>> merge-tmp
 
 Use this skill when the user wants to perform a code review.
 

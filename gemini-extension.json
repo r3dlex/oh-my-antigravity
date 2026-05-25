@@ -1,15 +1,8 @@
 {
-<<<<<<< HEAD
-  "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/packages/cli/schemas/gemini-extension.json",
-  "name": "oh-my-antigravity",
-  "version": "1.0.2",
-  "description": "Multi-agent orchestration for Gemini CLI with OMG branding, hook bridging, and OMP compatibility aliases.",
-=======
   "$schema": "https://raw.githubusercontent.com/google-gemini/antigravity-cli/main/packages/cli/schemas/gemini-extension.json",
   "name": "oh-my-gemini",
   "version": "1.4.0",
   "description": "Agy/Antigravity-native multi-agent orchestration with OMG branding, hook bridging, and OMP compatibility aliases.",
->>>>>>> merge-tmp
   "author": "r3dlex",
   "license": "MIT",
   "homepage": "https://github.com/r3dlex/oh-my-antigravity",

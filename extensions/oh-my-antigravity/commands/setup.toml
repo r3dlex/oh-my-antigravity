@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-description = "Run oh-my-antigravity setup with project scope (or custom args)."
-prompt = """
-Run oh-my-antigravity setup.
-
-Post-global-install contract:
-  after `npm install -g oh-my-antigravity-sisyphus`, run `omg setup --scope project`
-  (equivalent: `oh-my-antigravity setup --scope project`).
-
-If args are provided:
-  oh-my-antigravity setup {{args}}
-  # alias: omg setup {{args}}
-Else:
-  oh-my-antigravity setup --scope project
-  # contributor fallback from repo root: npm run setup
-
-Then ensure subagents catalog is present:
-  - if `oh-my-antigravity setup` created `.gemini/agents/catalog.json`, continue.
-=======
 description = "Run oh-my-gemini setup with project scope (or custom args)."
 prompt = """
 Run oh-my-gemini setup.
@@ -34,7 +15,6 @@ Else:
 
 Then ensure subagents catalog is present:
   - if `oh-my-gemini setup` created `.gemini/agents/catalog.json`, continue.
->>>>>>> merge-tmp
   - contributor fallback from repo root: npm run setup:subagents
 
 After running, summarize:

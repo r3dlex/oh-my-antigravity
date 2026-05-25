@@ -15,11 +15,7 @@ Scope: constraints that must shape implementation order, and a risk register for
    - Migration must be additive first (`status/resume/shutdown`), then progressive hardening.
 
 2. **Preserve extension-first experience**
-<<<<<<< HEAD
-   - `extensions/oh-my-antigravity` remains first-class UX surface.
-=======
    - `extensions/oh-my-gemini` remains first-class UX surface.
->>>>>>> merge-tmp
    - New lifecycle and role/skill features must appear consistently in both CLI docs and extension command prompts.
 
 3. **Do not regress minimal default posture**

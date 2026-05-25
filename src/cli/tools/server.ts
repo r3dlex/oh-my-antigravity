@@ -17,11 +17,7 @@ export function createCliToolsMcpServer(
 ): OmpMcpServer {
   return new OmpMcpServer({
     serverInfo: {
-<<<<<<< HEAD
-      name: options.serverName ?? 'oh-my-antigravity-omg-tools',
-=======
       name: options.serverName ?? 'oh-my-gemini-omg-tools',
->>>>>>> merge-tmp
       version: options.serverVersion ?? '0.1.0',
     },
     tools: createCliToolRegistry({

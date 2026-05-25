@@ -1,31 +1,18 @@
 <!-- Generated: 2026-02-25T05:26:01Z | Updated: 2026-03-03T07:46:00Z -->
 
-<<<<<<< HEAD
-# oh-my-antigravity
-
-## Purpose
-`oh-my-antigravity` is an extension-first orchestration layer for Gemini CLI workflows. It provides a TypeScript CLI (`omg`) with setup/doctor/team-run/verify commands, runtime backends (tmux default + experimental subagents), reliability-focused state persistence, and verification harnesses for smoke/integration/reliability gates.
-
-The package publishes to npm as `@r3dlex/oh-my-antigravity` (currently v0.1.0). Releasing a new version requires bumping `package.json` version and pushing to `main`; the `release.yml` workflow auto-publishes when the local version differs from the npm registry version.
-=======
 # oh-my-gemini
 
 ## Purpose
 `oh-my-gemini` is an extension-first orchestration layer for Gemini CLI workflows. It provides a TypeScript CLI (`omg`) with setup/doctor/team-run/verify commands, runtime backends (tmux default + experimental subagents), reliability-focused state persistence, and verification harnesses for smoke/integration/reliability gates.
 
 The package publishes to npm as `oh-my-gemini-sisyphus` (currently v0.1.0). Releasing a new version requires bumping `package.json` version and pushing to `main`; the `release.yml` workflow auto-publishes when the local version differs from the npm registry version.
->>>>>>> merge-tmp
 
 ## Key Files
 
 | File | Description |
 |------|-------------|
 | `README.md` | Project overview, quickstart, command surface, and roadmap status. |
-<<<<<<< HEAD
-| `package.json` | npm package name (`@r3dlex/oh-my-antigravity`), version, scripts, CLI bins, and dev dependency definitions. Bump version here to trigger a new npm release. |
-=======
 | `package.json` | npm package name (`oh-my-gemini-sisyphus`), version, scripts, CLI bins, and dev dependency definitions. Bump version here to trigger a new npm release. |
->>>>>>> merge-tmp
 | `tsconfig.json` | Strict typechecking config for source + tests. |
 | `tsconfig.build.json` | Build-specific emit config for `dist/`. |
 | `vitest.config.ts` | Node-based test runner configuration and timeouts. |
@@ -48,19 +35,11 @@ The package publishes to npm as `oh-my-gemini-sisyphus` (currently v0.1.0). Rele
 ## For AI Agents
 
 ### Working In This Directory
-<<<<<<< HEAD
-- Treat `extensions/oh-my-antigravity/` as canonical public UX and `src/` as implementation internals.
-- Keep runtime defaults aligned with roadmap intent: tmux default backend, subagents opt-in.
-- Do **not** hand-edit generated artifacts in `dist/`, `.omg/`, or `.omx/` unless the task is explicitly about generated state behavior.
-- Keep code ESM-compatible (`type: module`, NodeNext imports).
-- The npm package name is `@r3dlex/oh-my-antigravity`; the CLI bin names remain `omg` and `oh-my-antigravity`.
-=======
 - Treat `extensions/oh-my-gemini/` as canonical public UX and `src/` as implementation internals.
 - Keep runtime defaults aligned with roadmap intent: tmux default backend, subagents opt-in.
 - Do **not** hand-edit generated artifacts in `dist/`, `.omg/`, or `.omx/` unless the task is explicitly about generated state behavior.
 - Keep code ESM-compatible (`type: module`, NodeNext imports).
 - The npm package name is `oh-my-gemini-sisyphus`; the CLI bin names remain `omg` and `oh-my-gemini`.
->>>>>>> merge-tmp
 - To trigger a new npm release: bump `version` in `package.json` and push to `main`. The `release.yml` workflow detects the version difference and publishes automatically.
 
 ### Testing Requirements
@@ -94,8 +73,6 @@ The package publishes to npm as `oh-my-gemini-sisyphus` (currently v0.1.0). Rele
 - `NPM_TOKEN` GitHub secret must be set in repository settings to enable npm publishing via `release.yml`.
 
 <!-- MANUAL: Any manually added notes below this line are preserved on regeneration -->
-<<<<<<< HEAD
-=======
 
 <!-- ai-sdlc-init:start -->
 
@@ -149,4 +126,3 @@ Before starting work on an issue:
 3. Do not make a fourth attempt without human acknowledgement.
 
 <!-- ai-sdlc-init:end -->
->>>>>>> merge-tmp

@@ -29,11 +29,7 @@ without losing:
 ### Existing layers
 
 1. **Public UX**
-<<<<<<< HEAD
-   - `extensions/oh-my-antigravity/**`
-=======
    - `extensions/oh-my-gemini/**`
->>>>>>> merge-tmp
    - `src/cli/**`
 2. **Orchestrator**
    - `src/team/team-orchestrator.ts`
@@ -105,11 +101,7 @@ And expand:
 
 - `src/cli/index.ts`
 - `docs/omg/commands.md`
-<<<<<<< HEAD
-- extension command TOMLs under `extensions/oh-my-antigravity/commands/team/`
-=======
 - extension command TOMLs under `extensions/oh-my-gemini/commands/team/`
->>>>>>> merge-tmp
 
 ## 3.4 Role contract layer
 

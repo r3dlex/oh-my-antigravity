@@ -2,11 +2,7 @@
 
 Date: 2026-03-02  
 Author: worker-6  
-<<<<<<< HEAD
-Scope: evidence-based capability deltas and target architecture decisions for `oh-my-antigravity`
-=======
 Scope: evidence-based capability deltas and target architecture decisions for `oh-my-gemini`
->>>>>>> merge-tmp
 
 ---
 
@@ -14,11 +10,7 @@ Scope: evidence-based capability deltas and target architecture decisions for `o
 
 Define, in implementation terms, **how OmG should adopt OmC/OmX orchestration strengths** while preserving OmG’s identity:
 
-<<<<<<< HEAD
-- extension-first UX (`extensions/oh-my-antigravity`),
-=======
 - extension-first UX (`extensions/oh-my-gemini`),
->>>>>>> merge-tmp
 - tmux-default runtime policy,
 - typed/durable state and CI gate discipline.
 
@@ -35,11 +27,7 @@ Define, in implementation terms, **how OmG should adopt OmC/OmX orchestration st
 - State contract/store: `src/state/team-state-store.ts`, `docs/architecture/state-schema.md`
 - Runtime policy/reliability: `docs/architecture/runtime-backend.md`, `src/team/monitor.ts`, `docs/testing/gates.md`
 - Role inventory/catalog: `src/team/subagents-blueprint.ts`, `src/team/subagents-catalog.ts`, `.gemini/agents/catalog.json`
-<<<<<<< HEAD
-- Extension skill surface: `extensions/oh-my-antigravity/skills/plan/SKILL.md`
-=======
 - Extension skill surface: `extensions/oh-my-gemini/skills/plan/SKILL.md`
->>>>>>> merge-tmp
 
 ### 2.2 OmX / OmC (comparison anchors)
 

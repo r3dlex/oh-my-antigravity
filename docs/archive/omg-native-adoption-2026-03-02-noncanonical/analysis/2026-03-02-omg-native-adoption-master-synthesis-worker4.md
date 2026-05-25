@@ -5,11 +5,7 @@ _Author: worker-4 (team: analyze-in-extreme-detail-how)_
 
 ## 1) Objective
 
-<<<<<<< HEAD
-Define how **oh-my-antigravity (OmG)** should adopt the strongest orchestration patterns from **oh-my-codex (OmX)** and **oh-my-claudecode (OmC)** while preserving OmG’s own constraints:
-=======
 Define how **oh-my-gemini (OmG)** should adopt the strongest orchestration patterns from **oh-my-codex (OmX)** and **oh-my-claudecode (OmC)** while preserving OmG’s own constraints:
->>>>>>> merge-tmp
 
 - extension-first UX,
 - tmux as default backend,
@@ -40,13 +36,8 @@ This document is the master synthesis; detailed execution artifacts are linked i
   - `docs/architecture/runtime-backend.md`
   - `docs/architecture/state-schema.md`
 - Current skill/extension surface:
-<<<<<<< HEAD
-  - `extensions/oh-my-antigravity/skills/plan/SKILL.md`
-  - `extensions/oh-my-antigravity/commands/team/*.toml`
-=======
   - `extensions/oh-my-gemini/skills/plan/SKILL.md`
   - `extensions/oh-my-gemini/commands/team/*.toml`
->>>>>>> merge-tmp
 
 ### Existing comparison/planning artifacts in this repo
 
@@ -144,11 +135,7 @@ Today tmux is largely pane/process orchestration. Add protocol-level correctness
 Current state:
 
 - role catalog is strong (`src/team/subagents-blueprint.ts`),
-<<<<<<< HEAD
-- extension skill catalog is minimal (`extensions/oh-my-antigravity/skills/plan`).
-=======
 - extension skill catalog is minimal (`extensions/oh-my-gemini/skills/plan`).
->>>>>>> merge-tmp
 
 Add contract mapping:
 
@@ -190,11 +177,7 @@ Legacy toggles can remain temporarily, but must be:
 
 ## 6) Migration Constraints (non-negotiable)
 
-<<<<<<< HEAD
-1. **Extension-first must remain primary** (`extensions/oh-my-antigravity` is canonical UX surface).
-=======
 1. **Extension-first must remain primary** (`extensions/oh-my-gemini` is canonical UX surface).
->>>>>>> merge-tmp
 2. **tmux stays default backend**, subagents remain opt-in until parity is proven.
 3. **No generated-state hand edits** outside sanctioned state APIs for runtime operations.
 4. **ESM compatibility must be preserved** (`type: module`, NodeNext import shape).

@@ -1,10 +1,6 @@
 # oh-my-antigravity Extension Context
 
-<<<<<<< HEAD
-This extension is the canonical public entry point for the `oh-my-antigravity` workflow.
-=======
 This extension is the canonical public entry point for the `oh-my-gemini` workflow and is agy/Antigravity-oriented for new sessions.
->>>>>>> merge-tmp
 
 > **Shared context**: See `docs/architecture/omg-core.md` for the full agent catalog, workflow stages, quality gates, and state conventions.
 
@@ -24,14 +20,10 @@ This extension is the canonical public entry point for the `oh-my-gemini` workfl
 - Setup defaults to **project scope**.
 
 ## Preferred command flow
-<<<<<<< HEAD
-1. `oh-my-antigravity setup --scope project` (aliases: `omg setup --scope project`, `omg setup --scope project`)
-=======
 
 Start interactive work through agy (`agy`, `agy --continue`, or `agy --sandbox`) when you need the native Antigravity/Gemini agent surface, then invoke OMG commands through the extension or CLI as needed.
 
 1. `oh-my-gemini setup --scope project` (aliases: `omg setup --scope project`, `omg setup --scope project`)
->>>>>>> merge-tmp
 2. ensure `.gemini/agents/catalog.json` exists (repo contributor fallback: `npm run setup:subagents`)
 3. `oh-my-antigravity doctor`
 4. `oh-my-antigravity team run --task "..."`

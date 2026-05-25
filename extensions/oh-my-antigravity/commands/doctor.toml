@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-description = "Diagnose local prerequisites for oh-my-antigravity workflows."
-=======
 description = "Diagnose local prerequisites for oh-my-gemini workflows."
->>>>>>> merge-tmp
 prompt = """
 Run prerequisite diagnostics for this repository.
 
 Command:
-<<<<<<< HEAD
-  oh-my-antigravity doctor --json --fix --no-strict
-=======
   oh-my-gemini doctor --json --fix --no-strict
->>>>>>> merge-tmp
   # alias: omg doctor --json --fix --no-strict
   # contributor fallback from repo root: npm run omg -- doctor --json --fix --no-strict
 

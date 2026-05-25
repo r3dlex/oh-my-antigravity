@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-description = "Run oh-my-antigravity team orchestration (plan -> exec -> verify -> fix -> completed|failed)."
-prompt = """
-You are executing the oh-my-antigravity team orchestration flow.
-=======
 description = "Run oh-my-gemini team orchestration (plan -> exec -> verify -> fix -> completed|failed)."
 prompt = """
 You are executing the oh-my-gemini team orchestration flow.
->>>>>>> merge-tmp
 
 User task input:
 {{args}}
@@ -14,13 +8,8 @@ User task input:
 Actions:
 1. Validate prerequisites quickly (workspace, dependencies, sandbox assumptions).
 2. Run the orchestration command using the installed CLI:
-<<<<<<< HEAD
-   - If args exist: oh-my-antigravity team run --task "{{args}}"
-   - If args are empty: oh-my-antigravity team run --task "smoke"
-=======
    - If args exist: oh-my-gemini team run --task "{{args}}"
    - If args are empty: oh-my-gemini team run --task "smoke"
->>>>>>> merge-tmp
    - Alias command: omg team run ...
    - Contributor fallback from repository root: npm run omg -- team run ...
    - Respect worker-count contract (`--workers 1..8`, default 3).

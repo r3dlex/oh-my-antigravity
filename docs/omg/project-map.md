@@ -5,11 +5,7 @@
 | Path | Purpose |
 | --- | --- |
 | `src/` | TypeScript implementation (`cli`, `installer`, `team`, `state`) |
-<<<<<<< HEAD
-| `extensions/` | Gemini extension package (`extensions/oh-my-antigravity`) |
-=======
 | `extensions/` | Gemini extension package (`extensions/oh-my-gemini`) |
->>>>>>> merge-tmp
 | `scripts/` | bootstrap/smoke/docker/e2e automation |
 | `tests/` | smoke/integration/reliability suites |
 | `docs/` | setup, testing, architecture docs |

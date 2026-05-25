@@ -111,11 +111,7 @@ npm run doctor
 `.omg/setup-scope.json` or missing `.omg/state` directory) and then re-runs diagnostics.
 
 Doctor checks include: `node`, `npm`, `agy`, `tmux`, container runtime
-<<<<<<< HEAD
-health, the optional `oh-my-antigravity` PATH check for MCP availability, setup
-=======
 health, the optional `oh-my-gemini` PATH check for MCP availability, setup
->>>>>>> merge-tmp
 scope validity, extension manifest/command/skill integrity, and `.omg/state`
 writeability.
 

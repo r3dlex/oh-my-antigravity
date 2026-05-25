@@ -4,11 +4,7 @@
 # tests
 
 ## Purpose
-<<<<<<< HEAD
-Verification harness for `oh-my-antigravity`, organized by smoke, integration, and reliability scopes with shared runtime helpers.
-=======
 Verification harness for `oh-my-gemini`, organized by smoke, integration, and reliability scopes with shared runtime helpers.
->>>>>>> merge-tmp
 
 ## Key Files
 No direct test files at this level.

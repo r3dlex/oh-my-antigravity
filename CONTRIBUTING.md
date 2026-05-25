@@ -36,13 +36,8 @@ gh --version
 ### 1) Clone and install dependencies
 
 ```bash
-<<<<<<< HEAD
-git clone https://github.com/r3dlex/oh-my-antigravity.git
-cd oh-my-antigravity
-=======
 git clone https://github.com/r3dlex/oh-my-gemini.git
 cd oh-my-gemini
->>>>>>> merge-tmp
 npm install
 ```
 

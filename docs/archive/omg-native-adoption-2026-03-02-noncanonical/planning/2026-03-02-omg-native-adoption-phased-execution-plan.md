@@ -128,13 +128,8 @@ npm run team:e2e -- "omg worker protocol smoke"
 
 ### Candidate file areas
 
-<<<<<<< HEAD
-- `extensions/oh-my-antigravity/skills/*`
-- `extensions/oh-my-antigravity/commands/team/*`
-=======
 - `extensions/oh-my-gemini/skills/*`
 - `extensions/oh-my-gemini/commands/team/*`
->>>>>>> merge-tmp
 - new docs under `docs/architecture/` for role/skill contracts
 
 ### Acceptance criteria

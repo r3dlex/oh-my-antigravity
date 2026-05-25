@@ -1,36 +1,20 @@
-<<<<<<< HEAD
-description = "Run oh-my-antigravity team orchestration with subagents backend and explicit role assignment."
-prompt = """
-You are executing the oh-my-antigravity subagents orchestration flow.
-=======
 description = "Run oh-my-gemini team orchestration with subagents backend and explicit role assignment."
 prompt = """
 You are executing the oh-my-gemini subagents orchestration flow.
->>>>>>> merge-tmp
 
 User task input:
 {{args}}
 
 Actions:
 1. Ensure setup baseline is ready:
-<<<<<<< HEAD
-   - oh-my-antigravity setup --scope project
-=======
    - oh-my-gemini setup --scope project
->>>>>>> merge-tmp
    - alias: omg setup --scope project
    - ensure `.gemini/agents/catalog.json` exists (contributor fallback: npm run setup:subagents)
 2. Run a subagents team command:
    - If args exist:
-<<<<<<< HEAD
-     oh-my-antigravity team run --backend subagents --task "{{args}}"
-   - If args are empty:
-     oh-my-antigravity team run --backend subagents --subagents planner,executor --workers 2 --task "phase-c-subagents-smoke"
-=======
      oh-my-gemini team run --backend subagents --task "{{args}}"
    - If args are empty:
      oh-my-gemini team run --backend subagents --subagents planner,executor --workers 2 --task "phase-c-subagents-smoke"
->>>>>>> merge-tmp
    - alias: omg team run ...
    - contributor fallback from repository root: npm run omg -- team run ...
    - Ensure worker/subagent contract is valid (`--workers` must match explicit assignment count when provided).
