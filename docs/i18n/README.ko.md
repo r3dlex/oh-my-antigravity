@@ -221,7 +221,7 @@ MIT
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/chart?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/?repos=r3dlex%2Foh-my-gemini&type=date&legend=top-left)
 
 ## 💖 프로젝트 후원
 
