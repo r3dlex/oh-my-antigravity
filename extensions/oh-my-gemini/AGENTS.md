@@ -21,6 +21,8 @@ Implements the `oh-my-gemini` extension package metadata and context used by Gem
 | `commands/` | Prompt templates for setup/doctor/team/verify command entrypoints. See `commands/AGENTS.md`. |
 | `skills/` | Extension-specific skills for planning workflows. See `skills/AGENTS.md`. |
 | `hooks/` | Extension-packaged hook registration, kept aligned with the root hook bridge. |
+| `commands/` | Prompt templates for setup/doctor/team/verify command entrypoints. See `commands/AGENTS.md`. |
+| `skills/` | Extension-specific skills for planning workflows. See `skills/AGENTS.md`. |
 
 ## For AI Agents
 
