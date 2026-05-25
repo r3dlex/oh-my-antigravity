@@ -143,7 +143,7 @@ export async function executeVersionCommand(
 
   if (hasFlag(parsed.options, ['json'])) {
     io.stdout(JSON.stringify({
-      name: 'oh-my-gemini',
+      name: 'oh-my-antigravity',
       version: report.omg,
       node: report.node,
       tmux: report.tmux,
@@ -153,7 +153,7 @@ export async function executeVersionCommand(
   }
 
   io.stdout([
-    `oh-my-gemini v${report.omg}`,
+    `oh-my-antigravity v${report.omg}`,
     `  node:    ${report.node}`,
     `  tmux:    ${report.tmux}`,
     `  gemini:  ${report.gemini}`,

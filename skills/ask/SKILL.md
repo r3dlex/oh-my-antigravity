@@ -5,7 +5,7 @@ primaryRole: advisor
 description: Run a focused Gemini advisor prompt and save the reusable result artifact. Use when the user wants a quick advisor-style answer without a full workflow.
 ---
 
-# Ask Skill (oh-my-gemini)
+# Ask Skill (oh-my-antigravity)
 
 ## Quick Start
 

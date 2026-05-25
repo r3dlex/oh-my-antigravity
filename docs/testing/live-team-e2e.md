@@ -1,4 +1,4 @@
-# Live `omx team` E2E for oh-my-gemini
+# Live `omx team` E2E for oh-my-antigravity
 
 This runbook validates the **real tmux-backed `omx team` lifecycle** against this repository.
 
@@ -17,7 +17,7 @@ It complements `omg team run` by exercising the operator path:
 ## One-command e2e
 
 ```bash
-npm run team:e2e -- "oh-my-gemini live team smoke"
+npm run team:e2e -- "oh-my-antigravity live team smoke"
 ```
 
 The script (`scripts/e2e-omx-team.sh`) prints:

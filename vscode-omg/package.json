@@ -1,7 +1,7 @@
 {
-  "name": "oh-my-gemini-vscode",
-  "displayName": "oh-my-gemini (OMG)",
-  "description": "Visualize oh-my-gemini agents and workflows in VS Code",
+  "name": "oh-my-antigravity-vscode",
+  "displayName": "oh-my-antigravity (OMG)",
+  "description": "Visualize oh-my-antigravity agents and workflows in VS Code",
   "version": "0.1.0",
   "publisher": "r3dlex",
   "license": "MIT",
@@ -16,7 +16,7 @@
       { "command": "omg.clearState", "title": "OMG: Clear State" }
     ],
     "viewsContainers": {
-      "activitybar": [{ "id": "omg-explorer", "title": "oh-my-gemini", "icon": "resources/icons/omg-activity.svg" }]
+      "activitybar": [{ "id": "omg-explorer", "title": "oh-my-antigravity", "icon": "resources/icons/omg-activity.svg" }]
     },
     "views": {
       "omg-explorer": [

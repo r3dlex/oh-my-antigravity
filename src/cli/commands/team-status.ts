@@ -48,7 +48,7 @@ function printTeamStatusHelp(io: CliIo): void {
     'Usage: omg team status [--team <name>] [--json]',
     '',
     'Options:',
-    '  --team <name>   Team state namespace (default: oh-my-gemini)',
+    '  --team <name>   Team state namespace (default: oh-my-antigravity)',
     '  --json          Print machine-readable output',
     '  --help          Show command help',
   ].join('\n'));

@@ -1,11 +1,11 @@
 description = "Generate a UI implementation plan from DESIGN.md."
 prompt = """
-Run oh-my-gemini design plan to generate an implementation plan.
+Run oh-my-antigravity design plan to generate an implementation plan.
 
 If args are provided:
-  oh-my-gemini design plan {{args}}
+  oh-my-antigravity design plan {{args}}
 Else:
-  oh-my-gemini design plan
+  oh-my-antigravity design plan
 
 Reads DESIGN.md and generates IMPLEMENTATION.md with tasks for each design section.
 Report the result to the user.

@@ -5,7 +5,7 @@ primaryRole: verifier
 description: Verify acceptance criteria with build, test, state, and smoke-check evidence. Use when the user wants proof that work is complete.
 ---
 
-# Verify Skill (oh-my-gemini)
+# Verify Skill (oh-my-antigravity)
 
 ## Quick Start
 

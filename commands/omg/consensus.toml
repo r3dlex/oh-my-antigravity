@@ -1,6 +1,6 @@
 description = "Converge multiple design options into a single decision through structured scoring."
 prompt = """
-Run oh-my-gemini consensus protocol for multi-option decision making.
+Run oh-my-antigravity consensus protocol for multi-option decision making.
 
 {{args}}
 

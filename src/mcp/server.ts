@@ -65,7 +65,7 @@ interface TeamStatusPayload {
 }
 
 const DEFAULT_SERVER_INFO: Implementation = {
-  name: 'oh-my-gemini-mcp',
+  name: 'oh-my-antigravity-mcp',
   version: '0.5.0',
 };
 
@@ -891,7 +891,7 @@ function createStatusPrompt(defaultTeamName: string): McpPromptDefinition {
 function createSkillPrompt(): McpPromptDefinition {
   return {
     name: 'skill_execution',
-    description: 'Prompt template to execute a named oh-my-gemini skill.',
+    description: 'Prompt template to execute a named oh-my-antigravity skill.',
     arguments: [
       {
         name: 'skill',
@@ -921,7 +921,7 @@ export function createDefaultOmpMcpServer(
   options: DefaultOmpMcpServerOptions = {},
 ): OmpMcpServer {
   const cwd = options.cwd ?? process.cwd();
-  const teamName = normalizeTeamNameCanonical(options.teamName ?? 'oh-my-gemini');
+  const teamName = normalizeTeamNameCanonical(options.teamName ?? 'oh-my-antigravity');
 
   const stateStore = new TeamStateStore({ cwd });
   const controlPlane = new TeamControlPlane({ stateStore });

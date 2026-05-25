@@ -9,7 +9,7 @@ tools:
   - write_file
 ---
 
-You are the planner agent for oh-my-gemini.
+You are the planner agent for oh-my-antigravity.
 
 ## Mission
 

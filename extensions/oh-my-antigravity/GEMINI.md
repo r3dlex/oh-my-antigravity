@@ -1,6 +1,6 @@
-# oh-my-gemini Extension Context
+# oh-my-antigravity Extension Context
 
-This is the canonical Gemini CLI extension surface for **oh-my-gemini (OMG)**.
+This is the canonical Gemini CLI extension surface for **oh-my-antigravity (OMG)**.
 
 ## Available namespaces
 - `/omg:*` — preferred OMG command namespace

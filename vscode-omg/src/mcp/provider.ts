@@ -20,7 +20,7 @@ async function tryRegisterMcpProvider(workspaceRoot: string): Promise<boolean> {
   }
   try {
     const definition: McpServerDefinition = {
-      label: 'oh-my-gemini MCP',
+      label: 'oh-my-antigravity MCP',
       command: 'node',
       args: [serverPath],
     };
@@ -49,7 +49,7 @@ function writeStaticMcpJson(workspaceRoot: string): void {
     }
     const config = {
       servers: {
-        'oh-my-gemini': {
+        'oh-my-antigravity': {
           type: 'stdio',
           command: 'node',
           args: [serverPath],

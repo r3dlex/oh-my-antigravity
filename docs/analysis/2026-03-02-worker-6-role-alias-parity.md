@@ -4,7 +4,7 @@ Date: 2026-03-02
 
 ## Problem slice
 
-`oh-my-gemini` already supported canonical subagent ids like `planner` and
+`oh-my-antigravity` already supported canonical subagent ids like `planner` and
 `executor`, but OmX/OmC-style operator flows often use skill-flavored inputs
 like `plan`, `execute`, `review`, `verify`, and `handoff`. Without alias-aware
 resolution, those inputs either failed or depended on ad-hoc catalog naming.

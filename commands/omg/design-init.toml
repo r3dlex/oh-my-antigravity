@@ -1,12 +1,12 @@
 description = "Initialize a DESIGN.md file with Google Stitch format."
 prompt = """
-Run oh-my-gemini design init to create a DESIGN.md file.
+Run oh-my-antigravity design init to create a DESIGN.md file.
 
 If args are provided:
-  oh-my-gemini design init {{args}}
+  oh-my-antigravity design init {{args}}
   # alias: omg design init {{args}}
 Else:
-  oh-my-gemini design init
+  oh-my-antigravity design init
   # alias: omg design init
 
 Creates a Google Stitch-compatible DESIGN.md in the project root.

@@ -5,7 +5,7 @@ primaryRole: designer
 description: Produce structured web and UI design artifacts following the DESIGN.md pattern. Use when the user wants a design brief, DESIGN.md, or UI design spec.
 ---
 
-# Web Design Skill (oh-my-gemini)
+# Web Design Skill (oh-my-antigravity)
 
 ## Quick Start
 

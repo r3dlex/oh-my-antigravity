@@ -79,7 +79,7 @@ export class OmgStateAdapter implements StateReader {
   }
 
   getTasks(): TaskInfo[] {
-    // oh-my-gemini tracks tasks via Claude Code's native task system, not a local file
+    // oh-my-antigravity tracks tasks via Claude Code's native task system, not a local file
     return [];
   }
 }

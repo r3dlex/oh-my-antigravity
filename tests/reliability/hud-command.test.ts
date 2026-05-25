@@ -30,10 +30,10 @@ function createIoCapture(): {
 function createHudContext(): HudRenderContext {
   return {
     version: '0.1.0',
-    gitBranch: 'oh-my-gemini/dev',
+    gitBranch: 'oh-my-antigravity/dev',
     generatedAt: '2026-03-05T00:00:00.000Z',
     team: {
-      teamName: 'oh-my-gemini',
+      teamName: 'oh-my-antigravity',
       hasState: true,
       phase: 'exec',
       runtimeStatus: 'running',
@@ -245,7 +245,7 @@ describe('reliability: hud command', () => {
     expect(observed).toStrictEqual({
       preset: undefined,
       intervalMs: 2500,
-      teamName: 'oh-my-gemini',
+      teamName: 'oh-my-antigravity',
     });
   });
 
@@ -266,7 +266,7 @@ describe('reliability: hud command', () => {
       team: { teamName: string };
       gemini: { model: string };
     };
-    expect(payload.team.teamName).toBe('oh-my-gemini');
+    expect(payload.team.teamName).toBe('oh-my-antigravity');
     expect(payload.gemini.model).toBe('gemini-2.5-pro');
   });
 });

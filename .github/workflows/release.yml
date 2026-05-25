@@ -104,7 +104,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm pkg set name="@r3dlex/oh-my-gemini"
+          npm pkg set name="@r3dlex/oh-my-antigravity"
           # --provenance omitted: GitHub Packages does not support npm provenance attestations
           npm publish --tag pre --access public --ignore-scripts
 
@@ -186,7 +186,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm pkg set name="@r3dlex/oh-my-gemini"
+          npm pkg set name="@r3dlex/oh-my-antigravity"
           # --provenance omitted: GitHub Packages does not support npm provenance attestations
           npm publish --tag latest --access public --ignore-scripts
 

@@ -16,7 +16,7 @@ import {
 
 function createSamplePrd(): PrdDocument {
   return {
-    project: 'oh-my-gemini',
+    project: 'oh-my-antigravity',
     branchName: 'feature/prd-workflow',
     description: 'Add PRD workflow support.',
     userStories: [
@@ -56,7 +56,7 @@ function requireDefined<T>(value: T | undefined | null, label: string): T {
 describe('reliability: prd workflow', () => {
   test('parser normalizes ralph-style PRD with string acceptance criteria', () => {
     const raw = JSON.stringify({
-      project: 'oh-my-gemini',
+      project: 'oh-my-antigravity',
       branchName: 'feature/prd',
       description: 'PRD parser test',
       userStories: [
@@ -101,7 +101,7 @@ describe('reliability: prd workflow', () => {
   test('parser defaults invalid passes values to false and emits warning', () => {
     const parsed = parsePrdJson(
       JSON.stringify({
-        project: 'oh-my-gemini',
+        project: 'oh-my-antigravity',
         branchName: 'feature/prd',
         description: 'PRD parser test',
         userStories: [
@@ -126,7 +126,7 @@ describe('reliability: prd workflow', () => {
 
   test('validator fails on duplicate story ids and missing acceptance criteria', () => {
     const prd: PrdDocument = {
-      project: 'oh-my-gemini',
+      project: 'oh-my-antigravity',
       branchName: 'main',
       description: 'dup test',
       userStories: [

@@ -1,6 +1,6 @@
 description = "Toggle approval posture for orchestrated team execution."
 prompt = """
-Set or display the approval posture for oh-my-gemini team orchestration.
+Set or display the approval posture for oh-my-antigravity team orchestration.
 
 Modes:
 - **suggest** (default): Director proposes roster/plan, waits for user approval before execution

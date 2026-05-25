@@ -7,7 +7,7 @@ import { repoRoot } from '../utils/runtime.js';
 
 const AGENT_CONTEXT_FILES = [
   'GEMINI.md',
-  path.join('extensions', 'oh-my-gemini', 'GEMINI.md'),
+  path.join('extensions', 'oh-my-antigravity', 'GEMINI.md'),
 ] as const;
 
 const SKILL_DIRS = [

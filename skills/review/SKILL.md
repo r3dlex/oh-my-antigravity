@@ -5,7 +5,7 @@ primaryRole: reviewer
 description: Perform a structured review of code or recent changes. Use when the user wants correctness, security, maintainability, and coverage findings.
 ---
 
-# Review Skill (oh-my-gemini)
+# Review Skill (oh-my-antigravity)
 
 ## Quick Start
 

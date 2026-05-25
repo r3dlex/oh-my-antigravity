@@ -1,8 +1,8 @@
 # REPO_OVERVIEW
 
 ## 1) 저장소 한 줄 요약
-`oh-my-gemini`는 **Antigravity CLI 워크플로를 확장(extension)-우선으로 오케스트레이션**하는 TypeScript 기반 CLI 프로젝트입니다.
-핵심 산출물은 `omg`/`oh-my-gemini` CLI, Gemini 확장 패키지, 팀 실행(runtime) 오케스트레이터입니다.
+`oh-my-antigravity`는 **Antigravity CLI 워크플로를 확장(extension)-우선으로 오케스트레이션**하는 TypeScript 기반 CLI 프로젝트입니다.
+핵심 산출물은 `omg`/`oh-my-antigravity` CLI, Gemini 확장 패키지, 팀 실행(runtime) 오케스트레이터입니다.
 
 ---
 
@@ -40,8 +40,8 @@
 ---
 
 ## 4) 패키지/배포 관점 (`package.json`)
-- 패키지명: `oh-my-gemini-sisyphus` (현재 `0.1.0`)
-- CLI bin: `omg`, `oh-my-gemini` → `dist/cli/index.js`
+- 패키지명: `oh-my-antigravity-sisyphus` (현재 `0.1.0`)
+- CLI bin: `omg`, `oh-my-antigravity` → `dist/cli/index.js`
 - 검증 체인: `typecheck` + `test:smoke/integration/reliability` + `verify`
 - 배포 가드: `prepublishOnly -> gate:publish`로 스모크/검증 통과 강제
 

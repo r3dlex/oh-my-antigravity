@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/omg-banner.png" alt="oh-my-gemini" width="600" />
+  <img src="assets/omg-banner.png" alt="oh-my-antigravity" width="600" />
 </p>
 
-# oh-my-gemini
+# oh-my-antigravity
 
-[![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
-[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
+[![npm version](https://img.shields.io/npm/v/oh-my-antigravity?color=cb3837)](https://www.npmjs.com/package/oh-my-antigravity)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-antigravity?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-antigravity/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
@@ -13,7 +13,7 @@
 
 **Multi-agent orchestration for Google Antigravity (agy) CLI with OMG branding.**
 
-> **Transition complete (2026-04-13):** this repo uses `oh-my-gemini` / `omg` as the canonical user-facing surface. The legacy `omg` / `oh-my-gemini` bin entries have been removed. See [`docs/analysis/2026-04-13-oh-my-gemini-phase-1-doc-and-quality-review.md`](docs/analysis/2026-04-13-oh-my-gemini-phase-1-doc-and-quality-review.md) for the migration history.
+> **Transition complete (2026-04-13):** this repo uses `oh-my-antigravity` / `omg` as the canonical user-facing surface. The legacy `omg` / `oh-my-antigravity` bin entries have been removed. See [`docs/analysis/2026-04-13-oh-my-antigravity-phase-1-doc-and-quality-review.md`](docs/analysis/2026-04-13-oh-my-antigravity-phase-1-doc-and-quality-review.md) for the migration history.
 
 [Quick Start](#quick-start) | [Team Mode](#team-mode) | [Commands](#commands) | [Docs](docs/)
 
@@ -22,7 +22,7 @@
 ## Quick Start
 
 ```bash
-npm install -g oh-my-gemini
+npm install -g oh-my-antigravity
 omg setup --scope project
 omg
 ```
@@ -37,7 +37,7 @@ omg team run --task "..." --workers 2         # parallel work
 omg hud --watch                               # live status
 ```
 
-Primary CLI launches (`omg` / `omg launch`) perform a throttled TTY-only update check (12h cache) and can prompt to run `npm install -g oh-my-gemini@latest`.  
+Primary CLI launches (`omg` / `omg launch`) perform a throttled TTY-only update check (12h cache) and can prompt to run `npm install -g oh-my-antigravity@latest`.  
 Disable the prompt with `OMG_AUTO_UPDATE=0` (compatibility alias: `OMG_AUTO_UPDATE=0`).
 
 ---
@@ -48,9 +48,9 @@ tmux-first multi-worker orchestration with persistent state and lifecycle contro
 
 ```bash
 omg team run --task "review src/ for reliability gaps" --workers 4
-omg team status --team oh-my-gemini --json
-omg team resume --team oh-my-gemini
-omg team shutdown --team oh-my-gemini --force
+omg team status --team oh-my-antigravity --json
+omg team resume --team oh-my-antigravity
+omg team shutdown --team oh-my-antigravity --force
 ```
 
 Default backend: `tmux` | Optional: `subagents` for role-tagged runs
@@ -69,7 +69,7 @@ Default backend: `tmux` | Optional: `subagents` for role-tagged runs
 
 | Command | Description |
 |---------|-------------|
-| `omg` | Launch agy CLI with the oh-my-gemini extension |
+| `omg` | Launch agy CLI with the oh-my-antigravity extension |
 | `omg update` | Update the globally installed package immediately |
 | `omg team run` | Start orchestrated team run |
 | `omg team status/resume/shutdown/cancel` | Team lifecycle |
@@ -128,7 +128,7 @@ npm run build
 
 ## Compatibility Note
 
-User-facing command and documentation surfaces use `omg` / `oh-my-gemini`. The legacy `omg` / `oh-my-gemini` bin entries have been removed from the package.
+User-facing command and documentation surfaces use `omg` / `oh-my-antigravity`. The legacy `omg` / `oh-my-antigravity` bin entries have been removed from the package.
 
 Some internal identifiers intentionally remain unchanged for now:
 
@@ -200,6 +200,6 @@ MIT
 
 </div>
 
-[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-antigravity&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-antigravity&type=date&legend=top-left)
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)

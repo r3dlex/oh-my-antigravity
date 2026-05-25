@@ -28,7 +28,7 @@ function printTeamCancelHelp(io: CliIo): void {
     'Usage: omg team cancel [--team <name>] [--force] [--json]',
     '',
     'Options:',
-    '  --team <name>   Team state namespace (default: oh-my-gemini)',
+    '  --team <name>   Team state namespace (default: oh-my-antigravity)',
     '  --force         Succeed even when no persisted phase or tasks are present',
     '  --json          Print machine-readable output',
     '  --help          Show command help',

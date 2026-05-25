@@ -1,6 +1,6 @@
 description = "Switch operating profile for the current session."
 prompt = """
-Set or display the active operating profile for oh-my-gemini.
+Set or display the active operating profile for oh-my-antigravity.
 
 Profiles:
 - **balanced** (default): Standard engineering workflow with review gates

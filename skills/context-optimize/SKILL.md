@@ -5,7 +5,7 @@ primaryRole: optimizer
 description: Analyze and compress context for higher signal-to-noise ratio. Use when GEMINI.md or session context is bloated and needs cleanup.
 ---
 
-# Context Optimize Skill (oh-my-gemini)
+# Context Optimize Skill (oh-my-antigravity)
 
 ## Quick Start
 
@@ -46,7 +46,7 @@ Savings: 33% token reduction
 
 ## 5-Layer Context Model
 
-oh-my-gemini contexts follow this priority hierarchy:
+oh-my-antigravity contexts follow this priority hierarchy:
 
 1. **System/Runtime**: Gemini CLI constraints (immutable)
 2. **Project Standards**: GEMINI.md + context/omg-core.md

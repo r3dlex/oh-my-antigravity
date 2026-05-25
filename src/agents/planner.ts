@@ -3,7 +3,7 @@
  *
  * Strategic planning consultant.
  *
- * Ported from oh-my-gemini's agent definitions.
+ * Ported from oh-my-antigravity's agent definitions.
  */
 
 import type { AgentConfig, AgentPromptMetadata } from './types.js';

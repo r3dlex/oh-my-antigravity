@@ -8,12 +8,12 @@
 
 ## 1. Repository Profiles
 
-| | oh-my-gemini (OMG) | oh-my-claudecode (OMC) | oh-my-codex (OMX) |
+| | oh-my-antigravity (OMG) | oh-my-claudecode (OMC) | oh-my-codex (OMX) |
 |---|---|---|---|
 | **Target CLI** | Gemini CLI (extension) | Claude Code (hooks/plugin) | OpenAI Codex CLI (hooks) |
 | **Stars** | 74 | 25,404 | 17,895 |
 | **Language** | TypeScript | TypeScript | TypeScript + Rust |
-| **npm Package** | oh-my-gemini | oh-my-claude-sisyphus | oh-my-codex |
+| **npm Package** | oh-my-antigravity | oh-my-claude-sisyphus | oh-my-codex |
 | **Version** | 0.5.9 | latest | 0.12.0 |
 | **Extension Model** | Native `gemini-extension.json` | Claude `settings.json` hooks | `.codex/hooks.json` |
 | **CLI Binary** | `omg` | (hooks-based, no binary) | `omx` |

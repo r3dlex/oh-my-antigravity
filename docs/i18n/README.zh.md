@@ -1,13 +1,13 @@
 [English](README.md) | [Korean](README.ko.md) | **Chinese** | [Japanese](README.ja.md)
 
 <p align="center">
-  <img src="docs/assets/omp_logo.png" alt="oh-my-gemini" width="240" />
+  <img src="docs/assets/omp_logo.png" alt="oh-my-antigravity" width="240" />
 </p>
 
-# oh-my-gemini
+# oh-my-antigravity
 
-[![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
-[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
+[![npm version](https://img.shields.io/npm/v/oh-my-antigravity?color=cb3837)](https://www.npmjs.com/package/oh-my-antigravity)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-antigravity?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-antigravity/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
@@ -26,7 +26,7 @@ _别再折腾 Antigravity CLI。直接运行 OMG。_
 **第 1 步：安装**
 
 ```bash
-npm install -g oh-my-gemini
+npm install -g oh-my-antigravity
 ```
 
 **第 2 步：设置**
@@ -35,7 +35,7 @@ npm install -g oh-my-gemini
 omg setup --scope project
 ```
 
-`omg setup` 现在也会为当前安装自动注册 oh-my-gemini 扩展。
+`omg setup` 现在也会为当前安装自动注册 oh-my-antigravity 扩展。
 
 **第 3 步：启动 Gemini**
 
@@ -62,16 +62,16 @@ omg hud --watch
 ### 通过 npm 安装（CLI + Extension）
 
 ```bash
-npm install -g oh-my-gemini
+npm install -g oh-my-antigravity
 omg setup --scope project
 ```
 
-`omg setup` 会应用本地设置文件，并自动将 oh-my-gemini 注册为 Antigravity CLI 扩展。
+`omg setup` 会应用本地设置文件，并自动将 oh-my-antigravity 注册为 Antigravity CLI 扩展。
 
 ### 通过 Gemini Extension 安装（仅扩展）
 
 ```bash
-gemini extensions install github:r3dlex/oh-my-gemini
+gemini extensions install github:r3dlex/oh-my-antigravity
 ```
 
 这种方式会直接安装扩展。若要使用 `omg team run`、`omg doctor`、`omg verify` 等完整 CLI 功能，还需要全局安装 npm 包。
@@ -90,11 +90,11 @@ omg team run --task "review src/team and src/cli for reliability gaps" --workers
 omg team run --task "/subagents $planner /review /verify ship the release checklist" --workers 3
 
 # 查看或恢复现有运行
-omg team status --team oh-my-gemini --json
-omg team resume --team oh-my-gemini --max-fix-loop 1
+omg team status --team oh-my-antigravity --json
+omg team resume --team oh-my-antigravity --max-fix-loop 1
 
 # 完成后优雅关闭
-omg team shutdown --team oh-my-gemini --force
+omg team shutdown --team oh-my-antigravity --force
 ```
 
 **默认后端：** `tmux`  
@@ -102,7 +102,7 @@ omg team shutdown --team oh-my-gemini --force
 
 ---
 
-## 为什么选择 oh-my-gemini？
+## 为什么选择 oh-my-antigravity？
 
 - **Gemini 原生工作流** - 围绕 Antigravity CLI 构建，而不是把 Gemini 当作次要提供方硬塞进去
 - **零学习曲线入口** - `omg` 直接启动交互式会话，无需记忆扩展配置细节
@@ -158,10 +158,10 @@ omg team shutdown --team oh-my-gemini --force
 | `omg` | 在加载 OMG 扩展的情况下交互式启动 Antigravity CLI | `omg` |
 | `omg launch` | 默认交互式启动命令的显式形式 | `omg launch --yolo` |
 | `omg team run` | 启动新的团队编排运行 | `omg team run --task "smoke" --workers 3` |
-| `omg team status` | 查看持久化的 phase、worker 和 task 健康状态 | `omg team status --team oh-my-gemini --json` |
-| `omg team resume` | 从持久化元数据恢复之前的运行 | `omg team resume --team oh-my-gemini --max-fix-loop 1` |
-| `omg team shutdown` | 优雅关闭持久化运行时句柄 | `omg team shutdown --team oh-my-gemini --force` |
-| `omg team cancel` | 将活动任务标记为已取消并停止后续生命周期推进 | `omg team cancel --team oh-my-gemini --force --json` |
+| `omg team status` | 查看持久化的 phase、worker 和 task 健康状态 | `omg team status --team oh-my-antigravity --json` |
+| `omg team resume` | 从持久化元数据恢复之前的运行 | `omg team resume --team oh-my-antigravity --max-fix-loop 1` |
+| `omg team shutdown` | 优雅关闭持久化运行时句柄 | `omg team shutdown --team oh-my-antigravity --force` |
+| `omg team cancel` | 将活动任务标记为已取消并停止后续生命周期推进 | `omg team cancel --team oh-my-antigravity --force --json` |
 | `omg doctor` | 诊断本地前置条件，并可选择自动修复安全问题 | `omg doctor --fix --json` |
 | `omg verify` | 运行验证套件或分层验证计划 | `omg verify --tier thorough` |
 | `omg hud` | 渲染实时团队 HUD 或持续监视 | `omg hud --watch --interval-ms 1000` |
@@ -221,11 +221,11 @@ MIT
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=r3dlex/oh-my-antigravity&type=date&legend=top-left)](https://www.star-history.com/#r3dlex/oh-my-antigravity&type=date&legend=top-left)
 
 ## 💖 支持这个项目
 
-如果 oh-my-gemini 改善了你的 Antigravity CLI 工作流，可以考虑赞助这个项目：
+如果 oh-my-antigravity 改善了你的 Antigravity CLI 工作流，可以考虑赞助这个项目：
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
 

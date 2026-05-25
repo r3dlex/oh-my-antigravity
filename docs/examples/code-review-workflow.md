@@ -36,14 +36,14 @@ npm run omg -- team run \
   --workers 4
 ```
 
-The default backend is `tmux`, so this will start a local orchestration run and persist state under `.omg/state/team/oh-my-gemini/`. If you launch the run with a non-default `--team` value, reuse that same team name for every `hud`, `status`, `resume`, and `shutdown` command that follows.
+The default backend is `tmux`, so this will start a local orchestration run and persist state under `.omg/state/team/oh-my-antigravity/`. If you launch the run with a non-default `--team` value, reuse that same team name for every `hud`, `status`, `resume`, and `shutdown` command that follows.
 
 ## 3) Watch the run in real time
 
 Open the focused HUD view in one terminal:
 
 ```bash
-npm run omg -- hud --team oh-my-gemini --preset focused
+npm run omg -- hud --team oh-my-antigravity --preset focused
 ```
 
 Or continuously refresh it while the workers run:
@@ -55,7 +55,7 @@ npm run omg -- hud --watch --interval-ms 1000
 If you want a JSON snapshot for scripting or debugging:
 
 ```bash
-npm run omg -- team status --team oh-my-gemini --json
+npm run omg -- team status --team oh-my-antigravity --json
 ```
 
 ## 4) Retry or resume if the run needs one more pass
@@ -63,13 +63,13 @@ npm run omg -- team status --team oh-my-gemini --json
 If the review surfaced fixable issues and you want to give the team one more iteration:
 
 ```bash
-npm run omg -- team resume --team oh-my-gemini --max-fix-loop 1
+npm run omg -- team resume --team oh-my-antigravity --max-fix-loop 1
 ```
 
 If you only want to inspect what would be resumed, use:
 
 ```bash
-npm run omg -- team resume --team oh-my-gemini --dry-run --json
+npm run omg -- team resume --team oh-my-antigravity --dry-run --json
 ```
 
 ## 5) Shut the run down cleanly
@@ -77,7 +77,7 @@ npm run omg -- team resume --team oh-my-gemini --dry-run --json
 When you are done collecting the review output, stop the runtime and leave state in a known place:
 
 ```bash
-npm run omg -- team shutdown --team oh-my-gemini --force --json
+npm run omg -- team shutdown --team oh-my-antigravity --force --json
 ```
 
 ## 6) Record the findings in your PR
@@ -97,5 +97,5 @@ Pair that summary with the exact commands you ran:
 ```text
 npm run omg -- team run --task "review src/team, src/cli, and tests for correctness, reliability, and missing coverage" --workers 4
 npm run omg -- hud --watch --interval-ms 1000
-npm run omg -- team status --team oh-my-gemini --json
+npm run omg -- team status --team oh-my-antigravity --json
 ```

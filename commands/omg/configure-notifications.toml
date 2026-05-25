@@ -1,12 +1,12 @@
 description = "Configure notification delivery for Slack, Discord, or Telegram."
 prompt = """
-Run the oh-my-gemini configure-notifications skill.
+Run the oh-my-antigravity configure-notifications skill.
 
 If args are provided:
-  oh-my-gemini skill configure-notifications {{args}}
+  oh-my-antigravity skill configure-notifications {{args}}
   # alias: omg skill configure-notifications {{args}}
 Else:
-  oh-my-gemini skill configure-notifications
+  oh-my-antigravity skill configure-notifications
   # alias: omg skill configure-notifications
 
 Supports Slack webhook, Discord webhook, and Telegram bot message configuration. Sends a test notification after setup.

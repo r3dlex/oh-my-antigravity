@@ -5,7 +5,7 @@ primaryRole: analyst
 description: Transform a request into a measurable PRD with acceptance criteria, non-goals, and constraints. Use when a request needs a locked definition of done.
 ---
 
-# PRD Skill (oh-my-gemini)
+# PRD Skill (oh-my-antigravity)
 
 ## Quick Start
 

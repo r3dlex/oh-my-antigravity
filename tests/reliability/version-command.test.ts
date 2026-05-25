@@ -51,7 +51,7 @@ describe('reliability: version command', () => {
     expect(ioCapture.stderr).toStrictEqual([]);
     expect(ioCapture.stdout).toHaveLength(1);
     expect(ioCapture.stdout[0]).toBe([
-      'oh-my-gemini v0.4.0',
+      'oh-my-antigravity v0.4.0',
       '  node:    v25.1.0',
       '  tmux:    3.4',
       '  gemini:  1.5.0',
@@ -92,7 +92,7 @@ describe('reliability: version command', () => {
     };
 
     expect(payload).toStrictEqual({
-      name: 'oh-my-gemini',
+      name: 'oh-my-antigravity',
       version: '0.4.0',
       node: 'v25.1.0',
       tmux: '3.4',

@@ -1,6 +1,6 @@
 description = "Set reasoning effort level globally or per teammate."
 prompt = """
-Configure reasoning effort allocation for oh-my-gemini workers.
+Configure reasoning effort allocation for oh-my-antigravity workers.
 
 Levels:
 - **low** (default): Standard responses using the default model (gemini-3.1-flash-lite-preview)

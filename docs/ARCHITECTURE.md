@@ -1,6 +1,6 @@
 # OMG Architecture
 
-`oh-my-gemini` is an extension-first orchestration layer for Gemini CLI workflows. At runtime it combines:
+`oh-my-antigravity` is an extension-first orchestration layer for Gemini CLI workflows. At runtime it combines:
 
 - a TypeScript CLI entry point,
 - a hook pipeline that can reroute work into execution modes,
@@ -513,7 +513,7 @@ The extension package defines:
 - `.gemini/sandbox.Dockerfile`
 - `.gemini/agents/catalog.json`
 
-It also registers the built-in MCP tools servers (`oh-my-gemini tools serve`) in Gemini settings when needed, using the canonical `omg_cli_tools` id plus the temporary `omp_cli_tools` compatibility alias.
+It also registers the built-in MCP tools servers (`oh-my-antigravity tools serve`) in Gemini settings when needed, using the canonical `omg_cli_tools` id plus the temporary `omp_cli_tools` compatibility alias.
 
 ### Why it matters
 

@@ -1,6 +1,6 @@
 description = "Maintain a task ledger with stable IDs, ownership, dependencies, and verifier-backed state."
 prompt = """
-Manage the oh-my-gemini taskboard at `.omg/state/taskboard.md`.
+Manage the oh-my-antigravity taskboard at `.omg/state/taskboard.md`.
 
 Subcommands (inferred from args):
 - **show** (default): Display all tasks with ID, owner, status, dependencies

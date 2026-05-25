@@ -2,7 +2,7 @@
 
 ## 0) 목적
 
-OmC/OmX에서 검증된 핵심 축을 기준으로, 현재 `oh-my-gemini`의
+OmC/OmX에서 검증된 핵심 축을 기준으로, 현재 `oh-my-antigravity`의
 
 1. **Team Orchestration**
 2. **Agent role/skill 기반 작업 분담**
@@ -13,7 +13,7 @@ OmC/OmX에서 검증된 핵심 축을 기준으로, 현재 `oh-my-gemini`의
 
 ## 1) 기준 범위 및 근거
 
-### 1.1 코드/문서 근거 (oh-my-gemini)
+### 1.1 코드/문서 근거 (oh-my-antigravity)
 
 - 오케스트레이션 진입점: `src/cli/commands/team-run.ts`
 - 런타임 계약/구현:
@@ -246,7 +246,7 @@ OmC/OmX에서 검증된 핵심 축을 기준으로, 현재 `oh-my-gemini`의
 ### 6.2 오퍼레이터 검증
 
 - `npm run omg -- team run --task "smoke" --dry-run --json`
-- (live) `npm run team:e2e -- "oh-my-gemini live team smoke"`
+- (live) `npm run team:e2e -- "oh-my-antigravity live team smoke"`
 
 ### 6.3 문서 정합 검증
 

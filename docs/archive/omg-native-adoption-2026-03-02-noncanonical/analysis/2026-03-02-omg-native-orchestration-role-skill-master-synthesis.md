@@ -2,7 +2,7 @@
 
 ## 0) 목적과 결론 요약
 
-이 문서는 `oh-my-gemini (OmG)`가 `oh-my-codex (OmX)`/`oh-my-claudecode (OmC)`의 강점을 가져오되, **OmG 고유 철학(Extension-first + tmux-default + deterministic durable-state + verify-gated delivery)**을 유지하는 통합 설계 결론(SSOT)이다.
+이 문서는 `oh-my-antigravity (OmG)`가 `oh-my-codex (OmX)`/`oh-my-claudecode (OmC)`의 강점을 가져오되, **OmG 고유 철학(Extension-first + tmux-default + deterministic durable-state + verify-gated delivery)**을 유지하는 통합 설계 결론(SSOT)이다.
 
 핵심 결론:
 
@@ -24,7 +24,7 @@
 - 런타임 백엔드: `src/team/runtime/runtime-backend.ts`, `tmux-backend.ts`, `subagents-backend.ts`
 - 상태 저장소: `src/state/team-state-store.ts`, `src/state/types.ts`
 - 아키텍처/게이트 문서: `docs/architecture/runtime-backend.md`, `docs/architecture/state-schema.md`, `docs/testing/gates.md`
-- Extension 표면: `extensions/oh-my-gemini/commands/team/*.toml`, `extensions/oh-my-gemini/skills/plan/SKILL.md`
+- Extension 표면: `extensions/oh-my-antigravity/commands/team/*.toml`, `extensions/oh-my-antigravity/skills/plan/SKILL.md`
 
 ### 1.2 OmX/OmC 비교 근거 (로컬 미러)
 

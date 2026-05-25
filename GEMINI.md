@@ -1,10 +1,10 @@
-# oh-my-gemini Extension Context
+# oh-my-antigravity Extension Context
 
-This extension is the canonical public entry point for the `oh-my-gemini` workflow.
+This extension is the canonical public entry point for the `oh-my-antigravity` workflow.
 
 > **Shared context**: See `docs/architecture/omg-core.md` for the full agent catalog, workflow stages, quality gates, and state conventions.
 
-> **Transition status (2026-04-13):** the canonical target for this repo is `oh-my-gemini` / `omg`, with extension assets under `extensions/oh-my-gemini/` and runtime state under `.omg/`. Legacy `oh-my-gemini` / `omg` / `.omg` references remain in some implementation and compatibility paths during the migration.
+> **Transition status (2026-04-13):** the canonical target for this repo is `oh-my-antigravity` / `omg`, with extension assets under `extensions/oh-my-antigravity/` and runtime state under `.omg/`. Legacy `oh-my-antigravity` / `omg` / `.omg` references remain in some implementation and compatibility paths during the migration.
 
 ## Context Layers (priority order)
 1. **System/Runtime** — Antigravity CLI constraints (immutable)
@@ -20,12 +20,12 @@ This extension is the canonical public entry point for the `oh-my-gemini` workfl
 - Setup defaults to **project scope**.
 
 ## Preferred command flow
-1. `oh-my-gemini setup --scope project` (aliases: `omg setup --scope project`, `omg setup --scope project`)
+1. `oh-my-antigravity setup --scope project` (aliases: `omg setup --scope project`, `omg setup --scope project`)
 2. ensure `.gemini/agents/catalog.json` exists (repo contributor fallback: `npm run setup:subagents`)
-3. `oh-my-gemini doctor`
-4. `oh-my-gemini team run --task "..."`
-5. `oh-my-gemini verify`
-6. Optional MCP server surface: `oh-my-gemini mcp serve --dry-run --json`
+3. `oh-my-antigravity doctor`
+4. `oh-my-antigravity team run --task "..."`
+5. `oh-my-antigravity verify`
+6. Optional MCP server surface: `oh-my-antigravity mcp serve --dry-run --json`
 7. Optional live team bridge: `omx team 3:executor "..."`
 
 ## Discoverability notes

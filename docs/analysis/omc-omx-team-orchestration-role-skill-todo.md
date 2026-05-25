@@ -1,14 +1,14 @@
-# OmC/OmX 핵심축 정리 + oh-my-gemini TODO 명세
+# OmC/OmX 핵심축 정리 + oh-my-antigravity TODO 명세
 
 날짜: 2026-03-02  
-대상: `oh-my-gemini` 현재 코드/문서 기준  
+대상: `oh-my-antigravity` 현재 코드/문서 기준  
 축: **(1) Team Orchestration** + **(2) Agent role/skill 기반 작업 분담**
 
 ---
 
 ## 0) 목적
 
-이 문서는 OmC/OmX에서 실제로 강하게 쓰는 두 축을 기준으로, `oh-my-gemini`의 현재 상태(As-Is)를 구조적으로 정리하고, **바로 실행 가능한 TODO 명세**로 고정하기 위한 문서다.
+이 문서는 OmC/OmX에서 실제로 강하게 쓰는 두 축을 기준으로, `oh-my-antigravity`의 현재 상태(As-Is)를 구조적으로 정리하고, **바로 실행 가능한 TODO 명세**로 고정하기 위한 문서다.
 
 - 축 1: 팀 실행/상태/복구를 다루는 Team Orchestration
 - 축 2: 역할/스킬 기반으로 작업을 나눠 병렬 실행하는 Agent role/skill 분담
@@ -139,7 +139,7 @@
    - 현재 `team run` 중심, `status/resume/shutdown` 운영 명령은 `omg` 자체 표면에서 얇음
 
 2. **Control-plane mutation 갭**
-   - task claim/lease/transition을 강하게 표준화한 작업 API 표면이 `oh-my-gemini` 기본 UX에서 충분히 전면화되지 않음
+   - task claim/lease/transition을 강하게 표준화한 작업 API 표면이 `oh-my-antigravity` 기본 UX에서 충분히 전면화되지 않음
 
 3. **Role -> Skill -> Verification 연결 갭**
    - role 선택은 가능하지만, role별 “입력 템플릿/출력 스키마/검증 체크리스트”가 부족
@@ -261,10 +261,10 @@ npm run verify
 
 ## 9) 결론
 
-`oh-my-gemini`는 **team orchestration의 뼈대(phase/state/monitor/backend)**는 이미 갖췄다.  
+`oh-my-antigravity`는 **team orchestration의 뼈대(phase/state/monitor/backend)**는 이미 갖췄다.  
 다음 점프는 명확하다:
 
 1. 운영 제어면(status/resume/shutdown + mutation contract) 강화  
 2. role 선택을 넘어 role별 skill 실행/검증 계약까지 연결  
 
-즉, OmC/OmX의 핵심 강점은 “많은 기능” 자체보다 **역할 분담 + 상태 전이 + 검증 루프를 한 시스템으로 묶는 운영 규율**이고, 이 문서의 TODO는 그 규율을 `oh-my-gemini`에 이식하기 위한 실행 명세다.
+즉, OmC/OmX의 핵심 강점은 “많은 기능” 자체보다 **역할 분담 + 상태 전이 + 검증 루프를 한 시스템으로 묶는 운영 규율**이고, 이 문서의 TODO는 그 규율을 `oh-my-antigravity`에 이식하기 위한 실행 명세다.

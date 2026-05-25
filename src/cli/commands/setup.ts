@@ -26,7 +26,7 @@ export interface SetupCommandContext {
 
 /**
  * Remove skill folders from ~/.agents/skills/ that conflict with the
- * oh-my-gemini extension's built-in skills. Gemini CLI loads skills from
+ * oh-my-antigravity extension's built-in skills. Gemini CLI loads skills from
  * both locations, and duplicates cause "Skill conflict detected" warnings.
  */
 export function cleanLegacySkillConflicts(
@@ -70,8 +70,8 @@ function printSetupHelp(io: CliIo): void {
     'Usage: omg setup [--scope <project|user>] [--dry-run] [--json]',
     '',
     'Post-install contract:',
-    '  After npm install -g oh-my-gemini, run setup to apply local files.',
-    '  Supported entrypoints: omg setup ... / omg setup ... / oh-my-gemini setup ...',
+    '  After npm install -g oh-my-antigravity, run setup to apply local files.',
+    '  Supported entrypoints: omg setup ... / omg setup ... / oh-my-antigravity setup ...',
     '',
     'Options:',
     '  --scope <scope>   Installation scope (project | user)',
@@ -100,7 +100,7 @@ function defaultLinkGeminiExtension(input: {
 
 function defaultEnableGeminiExtension(input: { cwd: string }): void {
   try {
-    execFileSync('gemini', ['extensions', 'enable', 'oh-my-gemini'], {
+    execFileSync('gemini', ['extensions', 'enable', 'oh-my-antigravity'], {
       cwd: input.cwd,
       stdio: 'pipe',
       timeout: 15_000,

@@ -15,7 +15,7 @@ usage() {
   cat <<'USAGE'
 Usage: bash scripts/docker-ci-full.sh [options]
 
-Run clean-room Docker validation + in-container Gemini CLI live smoke for oh-my-gemini.
+Run clean-room Docker validation + in-container Gemini CLI live smoke for oh-my-antigravity.
 Requires API key auth for Gemini CLI (`GEMINI_API_KEY`).
 
 Options:

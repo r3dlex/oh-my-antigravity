@@ -5,7 +5,7 @@ primaryRole: orchestrator
 description: Drive a task from clarified objective through implementation and verification. Use when the user wants end-to-end autonomous execution.
 ---
 
-# Autopilot Skill (oh-my-gemini)
+# Autopilot Skill (oh-my-antigravity)
 
 ## Quick Start
 

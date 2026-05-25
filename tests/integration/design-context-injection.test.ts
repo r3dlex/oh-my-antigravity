@@ -184,7 +184,7 @@ describe('integration: design context injection', () => {
     const content = capturedContent();
     expect(content).not.toContain('## Design System');
     // Core content still present
-    expect(content).toContain('oh-my-gemini Team Context');
+    expect(content).toContain('oh-my-antigravity Team Context');
   });
 
   test('Budget overflow: design section dropped first, skill catalog preserved', async () => {

@@ -44,7 +44,7 @@ describe('reliability: launch-time auto-update prompt', () => {
         {
           isInteractive: () => true,
           nowMs: () => Date.parse('2026-04-17T10:00:00.000Z'),
-          resolvePackageName: async () => '@r3dlex/oh-my-gemini',
+          resolvePackageName: async () => '@r3dlex/oh-my-antigravity',
           resolveCurrentVersion: async () => '1.0.0',
           fetchLatestVersion: async () => '1.1.0',
           askYesNo: async (question) => {
@@ -69,7 +69,7 @@ describe('reliability: launch-time auto-update prompt', () => {
       expect(prompts[0]).toContain('Update available: v1.0.0 → v1.1.0');
       expect(ioCapture.stderr).toStrictEqual([]);
       expect(ioCapture.stdout).toContain(
-        '[omg] Running: npm install -g @r3dlex/oh-my-gemini@latest',
+        '[omg] Running: npm install -g @r3dlex/oh-my-antigravity@latest',
       );
       expect(ioCapture.stdout).toContain(
         '[omg] Updated to v1.1.0. Restart to use the new version.',
@@ -96,7 +96,7 @@ describe('reliability: launch-time auto-update prompt', () => {
         {
           isInteractive: () => true,
           nowMs: () => Date.parse('2026-04-17T10:00:00.000Z'),
-          resolvePackageName: async () => '@r3dlex/oh-my-gemini',
+          resolvePackageName: async () => '@r3dlex/oh-my-antigravity',
           resolveCurrentVersion: async () => '1.0.0',
           fetchLatestVersion: async () => '1.1.0',
           askYesNo: async () => false,
@@ -154,7 +154,7 @@ describe('reliability: launch-time auto-update prompt', () => {
       const deps = {
         isInteractive: () => true,
         nowMs: () => now,
-        resolvePackageName: async () => '@r3dlex/oh-my-gemini',
+        resolvePackageName: async () => '@r3dlex/oh-my-antigravity',
         resolveCurrentVersion: async () => '1.0.0',
         fetchLatestVersion: async () => {
           checks += 1;

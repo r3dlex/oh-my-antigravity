@@ -1,10 +1,10 @@
-# Contributing to oh-my-gemini
+# Contributing to oh-my-antigravity
 
-Thanks for contributing to `oh-my-gemini`. This repository ships the `omg` / `oh-my-gemini` CLI runtime and the Gemini extension assets that power setup, orchestration, and verification workflows.
+Thanks for contributing to `oh-my-antigravity`. This repository ships the `omg` / `oh-my-antigravity` CLI runtime and the Gemini extension assets that power setup, orchestration, and verification workflows.
 
 This guide is intentionally practical: it focuses on the commands and file locations you will actually use while preparing a change.
 
-> **OMG branding (2026-04-13):** the repo uses canonical `oh-my-gemini` / `omg` surfaces, including `extensions/oh-my-gemini/` and `.omg/`. The legacy `oh-my-gemini` / `omg` bin names have been removed. Review [`docs/analysis/2026-04-13-oh-my-gemini-phase-1-doc-and-quality-review.md`](docs/analysis/2026-04-13-oh-my-gemini-phase-1-doc-and-quality-review.md) before changing branding, extension layout, or runtime-state paths.
+> **OMG branding (2026-04-13):** the repo uses canonical `oh-my-antigravity` / `omg` surfaces, including `extensions/oh-my-antigravity/` and `.omg/`. The legacy `oh-my-antigravity` / `omg` bin names have been removed. Review [`docs/analysis/2026-04-13-oh-my-antigravity-phase-1-doc-and-quality-review.md`](docs/analysis/2026-04-13-oh-my-antigravity-phase-1-doc-and-quality-review.md) before changing branding, extension layout, or runtime-state paths.
 
 ## Prerequisites
 
@@ -36,8 +36,8 @@ gh --version
 ### 1) Clone and install dependencies
 
 ```bash
-git clone https://github.com/r3dlex/oh-my-gemini.git
-cd oh-my-gemini
+git clone https://github.com/r3dlex/oh-my-antigravity.git
+cd oh-my-antigravity
 npm install
 ```
 
@@ -239,7 +239,7 @@ Do not hand-edit generated or managed runtime artifacts unless the task is expli
 
 ## Contributing skills and prompts
 
-`oh-my-gemini` has two related contribution surfaces:
+`oh-my-antigravity` has two related contribution surfaces:
 
 - `src/skills/` for repo-local skill runtime behavior used by `npm run omg -- skill ...`
 - `skills/` for extension-facing packaged skills
@@ -324,16 +324,16 @@ npm run omg -- team run --task "review src/team lifecycle behavior" --workers 4
 ### Monitor progress
 
 ```bash
-npm run omg -- hud --team oh-my-gemini --preset focused
+npm run omg -- hud --team oh-my-antigravity --preset focused
 npm run omg -- hud --watch --interval-ms 1000
-npm run omg -- team status --team oh-my-gemini --json
+npm run omg -- team status --team oh-my-antigravity --json
 ```
 
 ### Resume or stop a run
 
 ```bash
-npm run omg -- team resume --team oh-my-gemini --max-fix-loop 1
-npm run omg -- team shutdown --team oh-my-gemini --force --json
+npm run omg -- team resume --team oh-my-antigravity --max-fix-loop 1
+npm run omg -- team shutdown --team oh-my-antigravity --force --json
 ```
 
 If you want a quick integration-style smoke instead of a manual task, use the helper script:

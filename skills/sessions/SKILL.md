@@ -5,7 +5,7 @@ primaryRole: coordinator
 description: Inspect recorded session history and summarize recent runs with metadata. Use when the user wants resumable history or recent run status.
 ---
 
-# Sessions Skill (oh-my-gemini)
+# Sessions Skill (oh-my-antigravity)
 
 ## Quick Start
 

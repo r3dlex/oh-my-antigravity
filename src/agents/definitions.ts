@@ -1,5 +1,5 @@
 /**
- * Agent definitions for oh-my-gemini.
+ * Agent definitions for oh-my-antigravity.
  *
  * This module provides:
  * 1. Re-exports of base agents from individual files

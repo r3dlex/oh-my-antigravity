@@ -1,12 +1,12 @@
 # Oh-My-Gemini Repository Structure
 
 ## Overview
-oh-my-gemini is a multi-agent orchestration system with team lifecycle management, control-plane hardening, and runtime state commands. The project is organized into source code, tests, documentation, extensions, and scripts.
+oh-my-antigravity is a multi-agent orchestration system with team lifecycle management, control-plane hardening, and runtime state commands. The project is organized into source code, tests, documentation, extensions, and scripts.
 
 ## Directory Tree
 
 ```
-oh-my-gemini/
+oh-my-antigravity/
 │
 ├── .claude/
 │   ├── AGENTS.md
@@ -50,7 +50,7 @@ oh-my-gemini/
 │
 ├── extensions/
 │   ├── AGENTS.md
-│   └── oh-my-gemini/
+│   └── oh-my-antigravity/
 │       ├── AGENTS.md
 │       ├── commands/
 │       │   ├── doctor.toml
@@ -270,7 +270,7 @@ Persistent state storage and retrieval for team execution.
 **Responsibility:** Durability contracts, state recovery, checkpointing
 
 #### `/src/installer` - Installation System
-Handles installation and integration of oh-my-gemini.
+Handles installation and integration of oh-my-antigravity.
 
 **Files:**
 - `index.ts` - Main installer logic
@@ -341,13 +341,13 @@ Test utilities and helpers for test execution.
 ### `/extensions` - Extension System
 
 **Structure:**
-- `/oh-my-gemini/` - Main extension
+- `/oh-my-antigravity/` - Main extension
   - `gemini-extension.json` - Extension manifest
   - `/commands/` - TOML command definitions
     - `setup.toml`, `doctor.toml` - Top-level commands
     - `/team/` - Team subcommands (run, live, subagents, verify)
 
-**Purpose:** Integration with oh-my-gemini environment
+**Purpose:** Integration with oh-my-antigravity environment
 
 ### `/scripts` - Automation Scripts
 

@@ -5,7 +5,7 @@ primaryRole: orchestrator
 description: Run iterative planner, architect, and critic consensus on an execution plan. Use when a task needs structured plan review before implementation.
 ---
 
-# Ralplan Skill (oh-my-gemini)
+# Ralplan Skill (oh-my-antigravity)
 
 ## Quick Start
 

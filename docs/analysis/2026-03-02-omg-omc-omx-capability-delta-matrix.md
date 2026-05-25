@@ -1,8 +1,8 @@
 # OMG-native Adoption Delta Matrix (OMG vs OmX vs OmC)
 
 Date: 2026-03-02  
-Audience: oh-my-gemini maintainers  
-Intent: identify concrete, implementation-level deltas required for `oh-my-gemini` (OMG) to adopt proven OmX/OmC orchestration + role/skill capabilities **without losing OMG’s extension-first identity**.
+Audience: oh-my-antigravity maintainers  
+Intent: identify concrete, implementation-level deltas required for `oh-my-antigravity` (OMG) to adopt proven OmX/OmC orchestration + role/skill capabilities **without losing OMG’s extension-first identity**.
 
 ---
 
@@ -113,7 +113,7 @@ In OMG, add state/control-plane APIs:
 
 ### As-is (OMG)
 
-- tmux default worker command falls back to a minimal bootstrap print (`printf '[oh-my-gemini] tmux runtime started\n'`).
+- tmux default worker command falls back to a minimal bootstrap print (`printf '[oh-my-antigravity] tmux runtime started\n'`).
 - subagents backend monitor currently emits deterministic `completed` with all workers marked `done` once started.
 
 ### Delta

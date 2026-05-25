@@ -5,7 +5,7 @@ primaryRole: orchestrator
 description: Orchestrate parallel tmux workers for a multi-agent team task. Use when the user wants coordinated multi-worker execution.
 ---
 
-# Team Skill (oh-my-gemini)
+# Team Skill (oh-my-antigravity)
 
 ## Quick Start
 

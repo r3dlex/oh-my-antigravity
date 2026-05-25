@@ -1,13 +1,13 @@
-# oh-my-gemini (OMG) for VS Code
+# oh-my-antigravity (OMG) for VS Code
 
-Visualize oh-my-gemini agents and workflows directly in VS Code.
+Visualize oh-my-antigravity agents and workflows directly in VS Code.
 
 ## Installation
 
 Install from the VS Code Marketplace or via `.vsix`:
 
 ```
-code --install-extension oh-my-gemini-vscode-0.1.0.vsix
+code --install-extension oh-my-antigravity-vscode-0.1.0.vsix
 ```
 
 ## What it shows
@@ -16,7 +16,7 @@ code --install-extension oh-my-gemini-vscode-0.1.0.vsix
 |---|---|
 | Active Workflows | `.omc/state/*-state.json` files — mode name, active/stopped, current phase |
 | Agents | `.omc/state/subagent-tracker.json` — agent type, status icon, summary |
-| Tasks | oh-my-gemini uses Claude Code's native task system — no local file to display |
+| Tasks | oh-my-antigravity uses Claude Code's native task system — no local file to display |
 
 ## Status bar
 

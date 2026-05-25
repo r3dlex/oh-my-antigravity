@@ -5,7 +5,7 @@ primaryRole: analyst
 description: Summarize token usage and spend-style session metrics across time windows. Use when the user wants usage volume or cost trends.
 ---
 
-# Cost Skill (oh-my-gemini)
+# Cost Skill (oh-my-antigravity)
 
 ## Quick Start
 

@@ -1,6 +1,6 @@
-# oh-my-gemini Core Context
+# oh-my-antigravity Core Context
 
-Shared context layer loaded by all oh-my-gemini sessions. This provides stable runtime rules, role catalogs, and workflow definitions.
+Shared context layer loaded by all oh-my-antigravity sessions. This provides stable runtime rules, role catalogs, and workflow definitions.
 
 ## Agent Catalog
 

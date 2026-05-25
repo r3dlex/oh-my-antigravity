@@ -48,26 +48,26 @@ export async function executeVerifyCommand(
     return { exitCode: 0 };
   }
 
-  // Guard: verify only works inside the oh-my-gemini development repository.
+  // Guard: verify only works inside the oh-my-antigravity development repository.
   try {
     const pkgJson = JSON.parse(
       readFileSync(path.join(context.cwd, 'package.json'), 'utf8'),
     ) as { name?: string };
     if (
-      pkgJson.name !== 'oh-my-gemini' &&
-      pkgJson.name !== 'oh-my-gemini' &&
-      pkgJson.name !== '@r3dlex/oh-my-gemini'
+      pkgJson.name !== 'oh-my-antigravity' &&
+      pkgJson.name !== 'oh-my-antigravity' &&
+      pkgJson.name !== '@r3dlex/oh-my-antigravity'
     ) {
       io.stderr(
-        'omg verify is a development command for the oh-my-gemini repository.\n' +
-        'Run it from the oh-my-gemini project root (where package.json has name "oh-my-gemini", "@r3dlex/oh-my-gemini", or legacy "oh-my-gemini").',
+        'omg verify is a development command for the oh-my-antigravity repository.\n' +
+        'Run it from the oh-my-antigravity project root (where package.json has name "oh-my-antigravity", "@r3dlex/oh-my-antigravity", or legacy "oh-my-antigravity").',
       );
       return { exitCode: 1 };
     }
   } catch {
     io.stderr(
       'omg verify requires a package.json in the current directory.\n' +
-      'This command is intended for the oh-my-gemini development repository.',
+      'This command is intended for the oh-my-antigravity development repository.',
     );
     return { exitCode: 1 };
   }
