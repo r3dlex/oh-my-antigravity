@@ -7,15 +7,15 @@
 # oh-my-gemini
 
 [![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
-[![GitHub stars](https://img.shields.io/github/stars/jjongguet/oh-my-gemini?style=flat&color=yellow)](https://github.com/jjongguet/oh-my-gemini/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=flat&logo=github)](https://github.com/sponsors/r3dlex)
 
 > **姉妹プロジェクト:** Claude Code や Codex を使いたいですか？ [oh-my-claudecode (OMC)](https://github.com/Yeachan-Heo/oh-my-claudecode) と [oh-my-codex (OMX)](https://github.com/Yeachan-Heo/oh-my-codex) もご覧ください。
 
-**Gemini CLI のためのマルチエージェントオーケストレーション。学習コストはゼロ。**
+**Antigravity CLI のためのマルチエージェントオーケストレーション。学習コストはゼロ。**
 
-_Gemini CLI を扱いにくく感じる必要はありません。OMG を実行するだけです。_
+_Antigravity CLI を扱いにくく感じる必要はありません。OMG を実行するだけです。_
 
 [クイックスタート](#クイックスタート) • [チームモード](#チームモード推奨) • [機能](#機能) • [CLI リファレンス](#cli-リファレンス) • [要件](#要件)
 
@@ -45,7 +45,7 @@ omg
 
 以上です。
 
-`omg` は OMG 拡張を読み込んだ状態で Gemini CLI を起動します。すでに tmux の中にいる場合はそのまま実行され、そうでない場合は OMG が新しい tmux セッションを開始します。
+`omg` は OMG 拡張を読み込んだ状態で Antigravity CLI を起動します。すでに tmux の中にいる場合はそのまま実行され、そうでない場合は OMG が新しい tmux セッションを開始します。
 
 ### 次に試すとよいコマンド
 
@@ -66,12 +66,12 @@ npm install -g oh-my-gemini
 omg setup --scope project
 ```
 
-`omg setup` はローカル設定ファイルを適用し、oh-my-gemini を Gemini CLI 拡張として自動登録します。
+`omg setup` はローカル設定ファイルを適用し、oh-my-gemini を Antigravity CLI 拡張として自動登録します。
 
 ### Gemini Extension 経由 (拡張のみ)
 
 ```bash
-gemini extensions install github:jjongguet/oh-my-gemini
+gemini extensions install github:r3dlex/oh-my-gemini
 ```
 
 この方法では拡張のみを直接インストールします。`omg team run`、`omg doctor`、`omg verify` などの完全な CLI 機能を使う場合は、npm パッケージもグローバルにインストールしてください。
@@ -104,7 +104,7 @@ omg team shutdown --team oh-my-gemini --force
 
 ## Why oh-my-gemini?
 
-- **Gemini ネイティブなワークフロー** - Gemini を二次的なプロバイダーとして後付けするのではなく、Gemini CLI を中心に設計
+- **Gemini ネイティブなワークフロー** - Gemini を二次的なプロバイダーとして後付けするのではなく、Antigravity CLI を中心に設計
 - **学習コストゼロの入口** - `omg` で対話セッションを起動。覚えるべき拡張の配線は不要
 - **チームファーストのオーケストレーション** - 永続ライフサイクル状態と再開可能な実行を備えた協調ワーカー実行
 - **検証ゲート付きのデリバリー** - `omg verify` が typecheck・smoke・integration・reliability の各スイートをまとめて実行
@@ -121,14 +121,14 @@ omg team shutdown --team oh-my-gemini --force
 | 機能 | 内容 | 主な用途 |
 | ------- | ---------- | ---------- |
 | **Team** | 永続状態、ヘルスチェック、resume/shutdown/cancel 制御、tmux をデフォルトランタイムとして備えたマルチワーカーオーケストレーション | 並列実装、レビュー、長時間実行の協調タスク |
-| **Interactive Launch** | `omg` / `omg launch` が、現在の tmux ペインまたは新しい tmux セッションで OMG 拡張付き Gemini CLI を起動 | 日常的な対話型 Gemini 開発 |
+| **Interactive Launch** | `omg` / `omg launch` が、現在の tmux ペインまたは新しい tmux セッションで OMG 拡張付き Antigravity CLI を起動 | 日常的な対話型 Gemini 開発 |
 | **Verify** | `omg verify` が `typecheck`、`smoke`、`integration`、`reliability` にまたがる検証ティアを実行 | リリース確認、信頼性ゲート、CI 向け検証 |
 | **HUD** | `omg hud` が永続化されたチーム状態からライブステータスオーバーレイを描画 | JSON 状態ファイルを直接追わずに実行状況を監視 |
 | **Skills** | `omg skill` が `deep-interview`、`review`、`verify`、`cancel`、`handoff` などの再利用可能なプロンプトを提供 | 定型ワークフロー、ガイド付き実行、運用引き継ぎ |
 
 ### さらに得られる開発者向け利点
 
-- **Doctor コマンド** - Node、Gemini CLI、tmux、拡張アセット、`.omg/state` の書き込み可否を確認
+- **Doctor コマンド** - Node、Antigravity CLI、tmux、拡張アセット、`.omg/state` の書き込み可否を確認
 - **決定論的な状態永続化** - 再開可能なオーケストレーションのために `.omg/state` 配下へ保存
 - パッケージルートから提供される **Gemini ネイティブ拡張パッケージング** と `/omg:*` コマンド名前空間
 - **任意の MCP / ツール連携面** - 必要に応じてより深い Gemini 連携を実現
@@ -155,7 +155,7 @@ omg team shutdown --team oh-my-gemini --force
 
 | コマンド | 内容 | 例 |
 | ------- | ------------ | ------- |
-| `omg` | OMG 拡張を読み込んだ Gemini CLI を対話的に起動 | `omg` |
+| `omg` | OMG 拡張を読み込んだ Antigravity CLI を対話的に起動 | `omg` |
 | `omg launch` | デフォルトの対話起動コマンドの明示版 | `omg launch --yolo` |
 | `omg team run` | 新しいオーケストレーション済みチーム実行を開始 | `omg team run --task "smoke" --workers 3` |
 | `omg team status` | 永続化された phase・worker・task のヘルスを確認 | `omg team status --team oh-my-gemini --json` |
@@ -176,7 +176,7 @@ omg team shutdown --team oh-my-gemini --force
 ### 必須
 
 - **Node.js 20+**
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)**
+- **[Antigravity CLI](https://github.com/google-gemini/agy)**
 - **[tmux](https://github.com/tmux/tmux)**
 
 クイックチェック:
@@ -221,13 +221,13 @@ MIT
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=jjongguet/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/#jjongguet/oh-my-gemini&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/chart?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/?repos=r3dlex%2Foh-my-gemini&type=date&legend=top-left)
 
 ## 💖 このプロジェクトを支援する
 
-oh-my-gemini が Gemini CLI ワークフローを改善したなら、プロジェクトのスポンサーをご検討ください。
+oh-my-gemini が Antigravity CLI ワークフローを改善したなら、プロジェクトのスポンサーをご検討ください。
 
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/jjongguet)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-%E2%9D%A4%EF%B8%8F-red?style=for-the-badge&logo=github)](https://github.com/sponsors/r3dlex)
 
 ### スポンサーする理由
 

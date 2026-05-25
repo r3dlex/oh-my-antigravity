@@ -283,9 +283,15 @@
       "type": "directory"
     },
     {
+      "path": "CHANGELOG.md",
+      "accessCount": 8,
+      "lastAccessed": 1776773051613,
+      "type": "file"
+    },
+    {
       "path": "README.md",
-      "accessCount": 5,
-      "lastAccessed": 1776638550058,
+      "accessCount": 8,
+      "lastAccessed": 1776773055807,
       "type": "file"
     },
     {
@@ -295,15 +301,21 @@
       "type": "directory"
     },
     {
-      "path": "gemini-extension.json",
-      "accessCount": 3,
-      "lastAccessed": 1776442408563,
+      "path": "tests/reliability/team-state-store-contract.test.ts",
+      "accessCount": 4,
+      "lastAccessed": 1776761082073,
       "type": "file"
     },
     {
-      "path": "CHANGELOG.md",
+      "path": "src/constants.ts",
+      "accessCount": 4,
+      "lastAccessed": 1776761094251,
+      "type": "file"
+    },
+    {
+      "path": "gemini-extension.json",
       "accessCount": 3,
-      "lastAccessed": 1776442415965,
+      "lastAccessed": 1776442408563,
       "type": "file"
     },
     {
@@ -316,6 +328,12 @@
       "path": "src/installer/index.ts",
       "accessCount": 3,
       "lastAccessed": 1776638420059,
+      "type": "file"
+    },
+    {
+      "path": "tests/integration/hook-context-e2e.test.ts",
+      "accessCount": 3,
+      "lastAccessed": 1776761026128,
       "type": "file"
     },
     {
@@ -335,6 +353,24 @@
       "accessCount": 2,
       "lastAccessed": 1776638350016,
       "type": "directory"
+    },
+    {
+      "path": "src/cli/commands/extension-path.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776760572135,
+      "type": "file"
+    },
+    {
+      "path": "tests/reliability/interop-format-converters.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776760999550,
+      "type": "file"
+    },
+    {
+      "path": "tests/reliability/branding-runtime-paths.test.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776761272053,
+      "type": "file"
     },
     {
       "path": "src/skills/resolver.ts",
@@ -406,6 +442,30 @@
       "path": "tests/integration/subagents-team-run.test.ts",
       "accessCount": 1,
       "lastAccessed": 1776638330958,
+      "type": "file"
+    },
+    {
+      "path": "src/state/team-state-store.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776760985865,
+      "type": "file"
+    },
+    {
+      "path": "src/state/token-tracking.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776760990057,
+      "type": "file"
+    },
+    {
+      "path": "src/hooks/context-writer.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776760994843,
+      "type": "file"
+    },
+    {
+      "path": "tests/reliability/legacy-bypass-branding.test.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776761318787,
       "type": "file"
     }
   ],
