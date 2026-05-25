@@ -12,11 +12,15 @@ Implements the `oh-my-gemini` extension package metadata and context used by Gem
 |------|-------------|
 | `gemini-extension.json` | Extension manifest (name, version, description, context file). |
 | `GEMINI.md` | Canonical extension context, flow, and guardrails. |
+| `hooks/hooks.json` | Packaged agy lifecycle hook bridge for `BeforeAgent`/`AfterTool` and related events. |
 
 ## Subdirectories
 
 | Directory | Purpose |
 |-----------|---------|
+| `commands/` | Prompt templates for setup/doctor/team/verify command entrypoints. See `commands/AGENTS.md`. |
+| `skills/` | Extension-specific skills for planning workflows. See `skills/AGENTS.md`. |
+| `hooks/` | Extension-packaged hook registration, kept aligned with the root hook bridge. |
 | `commands/` | Prompt templates for setup/doctor/team/verify command entrypoints. See `commands/AGENTS.md`. |
 | `skills/` | Extension-specific skills for planning workflows. See `skills/AGENTS.md`. |
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/google-gemini/antigravity-cli/main/packages/cli/schemas/gemini-extension.json",
   "name": "oh-my-gemini",
-  "version": "1.0.2",
-  "description": "Canonical OMG extension scaffold for Gemini CLI packaging, hook bridging, and migration.",
+  "version": "1.4.0",
+  "description": "Canonical agy/Antigravity OMG extension scaffold with packaged lifecycle hook bridging.",
   "author": "r3dlex",
   "license": "MIT",
   "homepage": "https://github.com/r3dlex/oh-my-gemini",
