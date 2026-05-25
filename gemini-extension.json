@@ -1,45 +1,45 @@
 {
-  "$schema": "https://raw.githubusercontent.com/google-gemini/antigravity-cli/main/packages/cli/schemas/gemini-extension.json",
-  "name": "oh-my-gemini",
-  "version": "1.4.0",
-  "description": "Agy/Antigravity-native multi-agent orchestration with OMG branding, hook bridging, and OMP compatibility aliases.",
-  "author": "r3dlex",
-  "license": "MIT",
-  "homepage": "https://github.com/r3dlex/oh-my-antigravity",
-  "sourceUrl": "https://github.com/r3dlex/oh-my-antigravity",
-  "contextFileName": "GEMINI.md",
-  "settings": [
-    {
-      "name": "OMG team state root",
-      "description": "Optional absolute path for persisted oh-my-antigravity team state when you want to share or relocate the default .omg/state directory.",
-      "envVar": "OMG_TEAM_STATE_ROOT",
-      "sensitive": false
-    },
-    {
-      "name": "OMG state root",
-      "description": "Optional base state root for oh-my-antigravity runtime data when you need a non-default workspace state location.",
-      "envVar": "OMG_STATE_ROOT",
-      "sensitive": false
+    "$schema": "https://raw.githubusercontent.com/google-gemini/antigravity-cli/main/packages/cli/schemas/gemini-extension.json",
+    "name": "oh-my-antigravity",
+    "version": "1.5.0",
+    "description": "Agy/Antigravity-native multi-agent orchestration with OMG branding, hook bridging, and OMP compatibility aliases.",
+    "author": "r3dlex",
+    "license": "MIT",
+    "homepage": "https://github.com/r3dlex/oh-my-antigravity",
+    "sourceUrl": "https://github.com/r3dlex/oh-my-antigravity",
+    "contextFileName": "GEMINI.md",
+    "settings": [
+        {
+            "name": "OMG team state root",
+            "description": "Optional absolute path for persisted oh-my-antigravity team state when you want to share or relocate the default .omg/state directory.",
+            "envVar": "OMG_TEAM_STATE_ROOT",
+            "sensitive": false
+        },
+        {
+            "name": "OMG state root",
+            "description": "Optional base state root for oh-my-antigravity runtime data when you need a non-default workspace state location.",
+            "envVar": "OMG_STATE_ROOT",
+            "sensitive": false
+        }
+    ],
+    "mcpServers": {
+        "omg_cli_tools": {
+            "command": "oh-my-antigravity",
+            "args": [
+                "tools",
+                "serve"
+            ],
+            "cwd": "${extensionPath}",
+            "description": "oh-my-antigravity CLI tools MCP server (file/git/http/process)"
+        },
+        "omp_cli_tools": {
+            "command": "oh-my-antigravity",
+            "args": [
+                "tools",
+                "serve"
+            ],
+            "cwd": "${extensionPath}",
+            "description": "oh-my-antigravity CLI tools MCP server compatibility alias (file/git/http/process)"
+        }
     }
-  ],
-  "mcpServers": {
-    "omg_cli_tools": {
-      "command": "oh-my-antigravity",
-      "args": [
-        "tools",
-        "serve"
-      ],
-      "cwd": "${extensionPath}",
-      "description": "oh-my-antigravity CLI tools MCP server (file/git/http/process)"
-    },
-    "omp_cli_tools": {
-      "command": "oh-my-antigravity",
-      "args": [
-        "tools",
-        "serve"
-      ],
-      "cwd": "${extensionPath}",
-      "description": "oh-my-antigravity CLI tools MCP server compatibility alias (file/git/http/process)"
-    }
-  }
 }

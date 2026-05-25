@@ -59,9 +59,9 @@ describe('smoke: native Gemini extension package layout', () => {
     expect(rootManifest.mcpServers?.omp_cli_tools?.args).toStrictEqual(['tools', 'serve']);
     expect(rootManifest.mcpServers?.omp_cli_tools?.cwd).toBe('${extensionPath}');
     expect(hooksConfig.hooks?.BeforeAgent?.[0]?.matcher).toBe('.*');
-    expect(hooksConfig.hooks?.BeforeAgent?.[0]?.hooks?.[0]?.command).toBe('oh-my-gemini hooks exec');
+    expect(hooksConfig.hooks?.BeforeAgent?.[0]?.hooks?.[0]?.command).toBe('oh-my-antigravity hooks exec');
     expect(hooksConfig.hooks?.AfterTool?.[0]?.matcher).toBe('.*');
-    expect(hooksConfig.hooks?.AfterTool?.[0]?.hooks?.[0]?.command).toBe('oh-my-gemini hooks exec');
+    expect(hooksConfig.hooks?.AfterTool?.[0]?.hooks?.[0]?.command).toBe('oh-my-antigravity hooks exec');
 
     for (const commandFile of commandFiles) {
       expect(existsSync(commandFile)).toBe(true);

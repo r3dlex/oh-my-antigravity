@@ -35,7 +35,6 @@
   "bin": {
     "omg": "dist/cli/index.js",
     "omg-cli": "dist/cli/index.js",
-    "oh-my-google-gemini": "dist/cli/index.js",
     "oh-my-antigravity": "dist/cli/index.js"
   },
   "scripts": {
@@ -87,5 +86,6 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1"
-  }
+  },
+  "keywords": []
 }
