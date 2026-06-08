@@ -1,6 +1,6 @@
 description = "Inspect, audit, and manage workspace lanes and worktree state."
 prompt = """
-Manage the oh-my-gemini workspace for the current project.
+Manage the oh-my-antigravity workspace for the current project.
 
 Subcommands (inferred from args):
 - **status** (default): Show workspace root, active lanes, git branch, dirty state

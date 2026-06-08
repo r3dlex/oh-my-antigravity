@@ -11,7 +11,7 @@ usage() {
   cat <<'USAGE'
 Usage: bash scripts/docker-ci-smoke.sh [options]
 
-Run a clean-room Docker validation for oh-my-gemini in an ephemeral container.
+Run a clean-room Docker validation for oh-my-antigravity in an ephemeral container.
 
 Options:
   --image <name>   Docker image to use (default: node:20-bookworm)

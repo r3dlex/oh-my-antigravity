@@ -5,7 +5,7 @@ primaryRole: operator
 description: Check rate-limit state and manage auto-resume behavior for blocked Gemini work. Use when Gemini execution is paused by quota or wait-state needs.
 ---
 
-# Wait Skill (oh-my-gemini)
+# Wait Skill (oh-my-antigravity)
 
 ## Quick Start
 

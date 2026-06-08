@@ -5,7 +5,7 @@ primaryRole: analyst
 description: Run a structured Socratic interview that turns ambiguity into an implementation-ready brief. Use when the request is broad, vague, or missing scope boundaries.
 ---
 
-# Deep Interview Skill (oh-my-gemini)
+# Deep Interview Skill (oh-my-antigravity)
 
 ## Quick Start
 

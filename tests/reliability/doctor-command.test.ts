@@ -80,7 +80,7 @@ async function createValidExtensionFixture(
     'gemini-extension.json',
     `${JSON.stringify(
       {
-        name: 'oh-my-gemini',
+        name: 'oh-my-antigravity',
         version: '0.1.0',
         description: 'fixture',
         contextFileName: 'GEMINI.md',
@@ -274,7 +274,7 @@ describe('reliability: doctor command hardening', () => {
     }
   });
 
-  test('reports omg-binary check as missing when oh-my-gemini is not in PATH', async () => {
+  test('reports omg-binary check as missing when oh-my-antigravity is not in PATH', async () => {
     const cwd = createTempDir('omg-doctor-omg-binary-missing-');
     const ioCapture = createIoCapture();
 
@@ -303,17 +303,17 @@ describe('reliability: doctor command hardening', () => {
         status: 'missing',
       });
       expect(omgBinaryCheck?.details).toBe(
-        'oh-my-gemini command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
+        'oh-my-antigravity command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
       );
       expect(omgBinaryCheck?.hint).toBe(
-        'Install globally: npm install -g oh-my-gemini',
+        'Install globally: npm install -g oh-my-antigravity',
       );
     } finally {
       removeDir(cwd);
     }
   });
 
-  test('reports omg-binary check as ok when oh-my-gemini is in PATH', async () => {
+  test('reports omg-binary check as ok when oh-my-antigravity is in PATH', async () => {
     const cwd = createTempDir('omg-doctor-omg-binary-ok-');
     const ioCapture = createIoCapture();
 
@@ -328,7 +328,7 @@ describe('reliability: doctor command hardening', () => {
           cwd,
           io: ioCapture.io,
           probeCommand: createProbeStub(
-            new Set(['node', 'npm', 'gemini', 'tmux', 'oh-my-gemini']),
+            new Set(['node', 'npm', 'gemini', 'tmux', 'oh-my-antigravity']),
           ),
         },
       );
@@ -343,9 +343,9 @@ describe('reliability: doctor command hardening', () => {
         required: false,
         status: 'ok',
       });
-      expect(omgBinaryCheck?.details).toBe('oh-my-gemini command found in PATH');
+      expect(omgBinaryCheck?.details).toBe('oh-my-antigravity command found in PATH');
       expect(omgBinaryCheck?.hint).toBe(
-        'Install globally: npm install -g oh-my-gemini',
+        'Install globally: npm install -g oh-my-antigravity',
       );
     } finally {
       removeDir(cwd);

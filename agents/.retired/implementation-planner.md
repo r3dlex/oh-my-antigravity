@@ -10,7 +10,7 @@ tools:
   - glob
 ---
 
-You are the implementation planner agent for oh-my-gemini.
+You are the implementation planner agent for oh-my-antigravity.
 
 ## Mission
 

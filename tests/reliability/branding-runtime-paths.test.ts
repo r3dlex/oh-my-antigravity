@@ -82,12 +82,12 @@ describe('reliability: canonical OMG runtime paths', () => {
       const summaryPath = await saveSessionSummary(tempRoot, {
         sessionId: 'session-2',
         status: 'completed',
-        projectName: 'oh-my-gemini',
+        projectName: 'oh-my-antigravity',
       });
 
       expect(summaryPath).toBe(path.join(tempRoot, '.omg', 'state', 'sessions', 'session-2.summary.json'));
       expect(existsSync(summaryPath)).toBe(true);
-      expect(readFileSync(summaryPath, 'utf8')).toContain('oh-my-gemini');
+      expect(readFileSync(summaryPath, 'utf8')).toContain('oh-my-antigravity');
 
       await fs.rm(path.join(tempRoot, '.omg'), { recursive: true, force: true });
       const legacyConfigPath = path.join(tempRoot, '.omg', 'notifications', 'stop-callbacks.json');

@@ -82,8 +82,8 @@
 
 | 기능 | OmC | OmX | OMG | 비판적 해석 |
 |---|---|---|---|---|
-| npm 패키지명 | `oh-my-claude-sisyphus` | `oh-my-codex` | `oh-my-gemini` | OmC는 브랜드명/패키지명 불일치로 인지부하 증가 |
-| CLI 바이너리 | `oh-my-claudecode`, `omc`, `omc-cli` | `omx` | `omg`, `oh-my-gemini` | OMG의 dual-bin alias는 UX 장점 |
+| npm 패키지명 | `oh-my-claude-sisyphus` | `oh-my-codex` | `oh-my-antigravity` | OmC는 브랜드명/패키지명 불일치로 인지부하 증가 |
+| CLI 바이너리 | `oh-my-claudecode`, `omc`, `omc-cli` | `omx` | `omg`, `oh-my-antigravity` | OMG의 dual-bin alias는 UX 장점 |
 | 주 배포 채널 | Claude plugin marketplace + npm | npm global package | npm global + Gemini extension assets | OMG는 여전히 명시적 extension-link 단계 필요 |
 | Plugin/Extension manifest | `.claude-plugin/plugin.json`(+ marketplace metadata) | N/A (Codex setup 모델) | `gemini-extension.json` | Gemini host-native extension 모델에는 OMG가 가장 근접 |
 | Setup scope 모델 | setup 흐름은 있으나 OmX 수준 user/project 분리가 전면에 보이진 않음 | `user|project` scope 모델 | `project|user` 플래그 persisted | OMG `--scope` 계약은 존재, 실제 동작 parity는 지속 감사 필요 |

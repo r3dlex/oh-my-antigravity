@@ -1,6 +1,6 @@
 # Runtime Backend Contract
 
-`oh-my-gemini` orchestration is runtime-backend driven.
+`oh-my-antigravity` orchestration is runtime-backend driven.
 
 ## Interface
 

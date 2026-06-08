@@ -5,7 +5,7 @@ primaryRole: diagnostician
 description: Inspect setup, extension assets, runtime prerequisites, and state health. Use when the user needs environment, install, or state diagnostics.
 ---
 
-# Doctor Skill (oh-my-gemini)
+# Doctor Skill (oh-my-antigravity)
 
 ## Quick Start
 

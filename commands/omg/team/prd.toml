@@ -1,6 +1,6 @@
 description = "Lock acceptance criteria and constraints before execution."
 prompt = """
-Define and lock a Product Requirements Document for oh-my-gemini team execution.
+Define and lock a Product Requirements Document for oh-my-antigravity team execution.
 
 {{args}}
 

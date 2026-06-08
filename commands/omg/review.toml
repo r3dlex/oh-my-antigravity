@@ -1,12 +1,12 @@
 description = "Perform a structured code review covering correctness, security, maintainability, and test coverage."
 prompt = """
-Run the oh-my-gemini review skill for structured code review.
+Run the oh-my-antigravity review skill for structured code review.
 
 If args are provided:
-  oh-my-gemini skill review {{args}}
+  oh-my-antigravity skill review {{args}}
   # alias: omg skill review {{args}}
 Else:
-  oh-my-gemini skill review
+  oh-my-antigravity skill review
   # alias: omg skill review
 
 Reviews correctness, security, maintainability, test coverage, and performance. Outputs findings with severity ratings.

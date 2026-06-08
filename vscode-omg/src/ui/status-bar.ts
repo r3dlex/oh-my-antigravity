@@ -29,10 +29,10 @@ export class OmgStatusBar {
     const running = agents.filter(a => a.status === 'running').length;
     if (running === 0) {
       this._item.text = '$(zap) OMG: idle';
-      this._item.tooltip = 'oh-my-gemini: no active agents';
+      this._item.tooltip = 'oh-my-antigravity: no active agents';
     } else {
       this._item.text = `$(sync~spin) OMG: ${running} agent${running === 1 ? '' : 's'} running`;
-      this._item.tooltip = `oh-my-gemini: ${running} agent${running === 1 ? '' : 's'} running`;
+      this._item.tooltip = `oh-my-antigravity: ${running} agent${running === 1 ? '' : 's'} running`;
     }
   }
 

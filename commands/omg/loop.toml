@@ -1,6 +1,6 @@
 description = "Run an exec→verify→fix cycle until the goal is met or max iterations reached."
 prompt = """
-Execute an iterative loop for oh-my-gemini task completion.
+Execute an iterative loop for oh-my-antigravity task completion.
 
 Usage:
 - `/omg:loop "make all tests pass"` — run until goal met

@@ -5,7 +5,7 @@ primaryRole: writer
 description: Configure notification delivery for Slack, Discord, or Telegram. Use when a user wants to set up or verify notifications.
 ---
 
-# Configure Notifications (oh-my-gemini)
+# Configure Notifications (oh-my-antigravity)
 
 ## Quick Start
 

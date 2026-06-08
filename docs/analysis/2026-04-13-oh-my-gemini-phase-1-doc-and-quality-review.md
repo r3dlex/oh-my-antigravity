@@ -1,38 +1,38 @@
-# oh-my-gemini Phase 1 documentation and quality review
+# oh-my-antigravity Phase 1 documentation and quality review
 
 Date: 2026-04-13  
-Scope: Phase 1 foundation review for the oh-my-gemini 1.0.0 implementation effort.
+Scope: Phase 1 foundation review for the oh-my-antigravity 1.0.0 implementation effort.
 
 ## Why this document exists
 
-The repository already contains most of the orchestration runtime needed for `oh-my-gemini`, but the latest audit still found stale `oh-my-gemini` copy in command prompts, contributor docs, and operator runbooks, plus deeper implementation/config drift in adjacent source surfaces. This review captures the current baseline, the highest-value Phase 1 gaps, and the safest migration order.
+The repository already contains most of the orchestration runtime needed for `oh-my-antigravity`, but the latest audit still found stale `oh-my-antigravity` copy in command prompts, contributor docs, and operator runbooks, plus deeper implementation/config drift in adjacent source surfaces. This review captures the current baseline, the highest-value Phase 1 gaps, and the safest migration order.
 
 ## Evidence snapshot
 
 Current repo evidence from this task's audit:
 
-- `package.json` now publishes `oh-my-gemini`, but still intentionally keeps `omg` / `oh-my-gemini` CLI aliases for compatibility.
+- `package.json` now publishes `oh-my-antigravity`, but still intentionally keeps `omg` / `oh-my-antigravity` CLI aliases for compatibility.
 - Root and nested `gemini-extension.json` manifests exist, but their settings/MCP surfaces still require implementation-side verification.
 - Runtime and installer surfaces still persist to `.omg/` in multiple locations (`src/installer/*`, `src/state/*`, `src/lib/worktree-paths.ts`, `src/notifications/index.ts`).
 - MCP URIs, server naming, and some team-runtime compatibility env aliases still use `omg://`, `OMG_*`, or `OMX_*` identifiers by design or for backward compatibility.
-- Contributor docs and Gemini command prompt TOMLs still had stale `oh-my-gemini` copy before this remediation pass.
-- Operator docs referenced “OMX Team” ambiguously even when they specifically meant the external `omx team` validation path for oh-my-gemini.
+- Contributor docs and Gemini command prompt TOMLs still had stale `oh-my-antigravity` copy before this remediation pass.
+- Operator docs referenced “OMX Team” ambiguously even when they specifically meant the external `omx team` validation path for oh-my-antigravity.
 
 ## Highest-value Phase 1 gaps
 
 | Area | Current state | Target state | Risk / note |
 | --- | --- | --- | --- |
-| Package identity | `package.json` uses `oh-my-gemini` and `omg` | `oh-my-gemini` with `omg`-first user-facing naming | Requires compatibility plan for existing consumers |
-| Extension layout | Root `gemini-extension.json` and root assets | Canonical `extensions/oh-my-gemini/` manifest/context/commands/agents scaffold | Additive-first move is safest |
+| Package identity | `package.json` uses `oh-my-antigravity` and `omg` | `oh-my-antigravity` with `omg`-first user-facing naming | Requires compatibility plan for existing consumers |
+| Extension layout | Root `gemini-extension.json` and root assets | Canonical `extensions/oh-my-antigravity/` manifest/context/commands/agents scaffold | Additive-first move is safest |
 | Runtime state | `.omg/` is the durable default | `.omg/` should become the canonical runtime root | Needs compatibility reads before write-path flips |
-| Command namespace | `/omg:*`, `omg`, `oh-my-gemini` dominate docs and prompts | `omg`, `oh-my-gemini`, and OMG-native extension docs | Avoid breaking existing scripted flows during rollout |
-| MCP identity | `omg://...` and `oh-my-gemini-mcp` | OMG-native resource identity | Rename only after consumers tolerate aliasing |
+| Command namespace | `/omg:*`, `omg`, `oh-my-antigravity` dominate docs and prompts | `omg`, `oh-my-antigravity`, and OMG-native extension docs | Avoid breaking existing scripted flows during rollout |
+| MCP identity | `omg://...` and `oh-my-antigravity-mcp` | OMG-native resource identity | Rename only after consumers tolerate aliasing |
 | Contributor docs | Main guides still describe the legacy brand | Docs should explain the migration and canonical target paths | Safe to update immediately |
 
 ## Safe migration order
 
 1. **Document the target clearly first**  
-   Tell contributors that the canonical destination is `extensions/oh-my-gemini/`, `.omg/`, and OMG branding, while legacy `omg` / `.omg` compatibility may remain temporarily.
+   Tell contributors that the canonical destination is `extensions/oh-my-antigravity/`, `.omg/`, and OMG branding, while legacy `omg` / `.omg` compatibility may remain temporarily.
 2. **Add canonical extension scaffolding before removing root compatibility**  
    Create the new extension subtree first, then decide whether root assets become wrappers, mirrors, or generated outputs.
 3. **Flip runtime writes only after compatibility reads exist**  
@@ -46,16 +46,16 @@ Current repo evidence from this task's audit:
 
 - `README.md` calls out the active OMG migration and points readers to this review.
 - `GEMINI.md` points at the real shared architecture doc path (`docs/architecture/omg-core.md`) and records the OMG transition target.
-- Command prompt TOMLs under `commands/omg/` now refer to `oh-my-gemini` instead of the stale `oh-my-gemini` product name while preserving `omg` compatibility examples.
+- Command prompt TOMLs under `commands/omg/` now refer to `oh-my-antigravity` instead of the stale `oh-my-antigravity` product name while preserving `omg` compatibility examples.
 - `docs/omg/*`, `docs/setup/install-scopes.md`, `docs/architecture/{omg-core,runtime-backend}.md`, and the live `omx team` operator docs now distinguish canonical OMG branding from intentional `omg`/`omx` compatibility/runtime surfaces more explicitly.
 
 ## Recommended next implementation checks
 
 Before calling Phase 1 done, verify all of the following:
 
-- `extensions/oh-my-gemini/` exists with manifest/context/commands/agents scaffolding.
+- `extensions/oh-my-antigravity/` exists with manifest/context/commands/agents scaffolding.
 - Session/bootstrap code can initialize `.omg/` state intentionally.
-- User-facing docs and metadata prefer `oh-my-gemini` / `omg`.
+- User-facing docs and metadata prefer `oh-my-antigravity` / `omg`.
 - Compatibility notes explain which `omg` / `.omg` surfaces remain temporary aliases.
 - Build, typecheck, and targeted tests pass after the migration slice.
 

@@ -1,17 +1,17 @@
-# oh-my-gemini 종합 기획문서 (PRD)
+# oh-my-antigravity 종합 기획문서 (PRD)
 
 <!-- markdownlint-disable MD013 -->
 
 - 문서 버전: v2.1 (final)
 - 작성/갱신일: 2026-03-01
-- 기준 저장소: `/Users/teamipsiwikidev/jjk/jjong/oh-my-gemini`
+- 기준 저장소: `/Users/teamipsiwikidev/jjk/jjong/oh-my-antigravity`
 - 문서 목적: 현재 구현 상태(As-Is)를 기준으로, 출시 가능한 품질로 수렴하기 위한 요구사항/로드맵/검증/피드백 체계를 확정한다.
 
 ---
 
 ## 0. Executive Summary
 
-`oh-my-gemini`는 Gemini CLI 환경에서 **확장(Extension)-우선**,
+`oh-my-antigravity`는 Gemini CLI 환경에서 **확장(Extension)-우선**,
 **tmux-기본**, **내구성 상태 저장(Durable State)**,
 **검증 게이트(verify)** 중심의 멀티에이전트 오케스트레이션을 제공한다.
 
@@ -72,7 +72,7 @@ Gemini CLI 단독 사용만으로는 다음이 반복적으로 어렵다.
 
 ### 2.2 기회
 
-`oh-my-gemini`가 위 문제를 표준화하면:
+`oh-my-antigravity`가 위 문제를 표준화하면:
 
 - 개인/팀 모두 동일한 방식으로 멀티에이전트 작업을 반복 가능
 - 장애 분석/복구 시간이 짧아짐

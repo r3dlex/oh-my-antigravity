@@ -183,8 +183,8 @@ mkdir -p "$GLOBAL_PREFIX" "$WRITE_WORKSPACE" "$DRY_RUN_WORKSPACE"
 npm_config_cache="$NPM_CACHE_DIR" npm install --no-audit --no-fund -g --prefix "$GLOBAL_PREFIX" "$TARBALL_PATH" >/dev/null
 
 BIN_OMG="$GLOBAL_PREFIX/bin/omg"
-BIN_MAIN="$GLOBAL_PREFIX/bin/oh-my-gemini"
-BIN_COMPAT="$GLOBAL_PREFIX/bin/oh-my-gemini"
+BIN_MAIN="$GLOBAL_PREFIX/bin/oh-my-antigravity"
+BIN_COMPAT="$GLOBAL_PREFIX/bin/oh-my-antigravity"
 
 if [[ ! -x "$BIN_OMG" ]]; then
   echo "[global-install-contract] missing global alias bin: $BIN_OMG" >&2
@@ -203,8 +203,8 @@ fi
 
 echo "[global-install-contract] validating global bin provenance"
 resolved_omg="$(PATH="$GLOBAL_PREFIX/bin:$PATH" command -v omg || true)"
-resolved_main="$(PATH="$GLOBAL_PREFIX/bin:$PATH" command -v oh-my-gemini || true)"
-resolved_compat="$(PATH="$GLOBAL_PREFIX/bin:$PATH" command -v oh-my-gemini || true)"
+resolved_main="$(PATH="$GLOBAL_PREFIX/bin:$PATH" command -v oh-my-antigravity || true)"
+resolved_compat="$(PATH="$GLOBAL_PREFIX/bin:$PATH" command -v oh-my-antigravity || true)"
 
 if [[ "$resolved_omg" != "$BIN_OMG" ]]; then
   echo "[global-install-contract] omg does not resolve to temp global prefix bin" >&2
@@ -214,14 +214,14 @@ if [[ "$resolved_omg" != "$BIN_OMG" ]]; then
 fi
 
 if [[ "$resolved_main" != "$BIN_MAIN" ]]; then
-  echo "[global-install-contract] oh-my-gemini does not resolve to temp global prefix bin" >&2
+  echo "[global-install-contract] oh-my-antigravity does not resolve to temp global prefix bin" >&2
   echo "  expected: $BIN_MAIN" >&2
   echo "  actual:   ${resolved_main:-<empty>}" >&2
   exit 1
 fi
 
 if [[ "$resolved_compat" != "$BIN_COMPAT" ]]; then
-  echo "[global-install-contract] oh-my-gemini compatibility bin does not resolve to temp global prefix bin" >&2
+  echo "[global-install-contract] oh-my-antigravity compatibility bin does not resolve to temp global prefix bin" >&2
   echo "  expected: $BIN_COMPAT" >&2
   echo "  actual:   ${resolved_compat:-<empty>}" >&2
   exit 1
@@ -262,7 +262,7 @@ if (!settings.tools || !validSandboxValues.includes(settings.tools.sandbox)) {
 }
 
 const geminiGuide = fs.readFileSync(path.join(workspace, ".gemini/GEMINI.md"), "utf8");
-if (!geminiGuide.includes("This section is managed by oh-my-gemini setup.")) {
+if (!geminiGuide.includes("This section is managed by oh-my-antigravity setup.")) {
   console.error("[global-install-contract] managed setup marker missing from .gemini/GEMINI.md");
   process.exit(1);
 }
@@ -270,15 +270,15 @@ if (!geminiGuide.includes("This section is managed by oh-my-gemini setup.")) {
 
 write_snapshot_before_second_run="$(snapshot_required_artifacts "$WRITE_WORKSPACE")"
 
-echo "[global-install-contract] running setup (write mode, second pass) via oh-my-gemini"
+echo "[global-install-contract] running setup (write mode, second pass) via oh-my-antigravity"
 setup_write_second_json="$("$BIN_MAIN" setup --scope project --json)"
-validate_setup_result "$setup_write_second_json" "$WRITE_WORKSPACE" "write/oh-my-gemini/second" "false" "unchanged"
+validate_setup_result "$setup_write_second_json" "$WRITE_WORKSPACE" "write/oh-my-antigravity/second" "false" "unchanged"
 assert_required_artifacts_unchanged "$write_snapshot_before_second_run" "$WRITE_WORKSPACE"
 
-echo "[global-install-contract] running setup (dry-run mode, first pass) via oh-my-gemini"
+echo "[global-install-contract] running setup (dry-run mode, first pass) via oh-my-antigravity"
 cd "$DRY_RUN_WORKSPACE"
 setup_dry_run_main_json="$("$BIN_MAIN" setup --scope project --dry-run --json)"
-validate_setup_result "$setup_dry_run_main_json" "$DRY_RUN_WORKSPACE" "dry-run/oh-my-gemini/first" "false" "skipped"
+validate_setup_result "$setup_dry_run_main_json" "$DRY_RUN_WORKSPACE" "dry-run/oh-my-antigravity/first" "false" "skipped"
 
 echo "[global-install-contract] running setup (dry-run mode, second pass) via omg"
 setup_dry_run_alias_json="$("$BIN_OMG" setup --scope project --dry-run --json)"

@@ -17,7 +17,7 @@ function printUninstallHelp(io: CliIo): void {
   io.stdout([
     'Usage: omg uninstall [--json]',
     '',
-    'Uninstalls the globally installed oh-my-gemini package using npm.',
+    'Uninstalls the globally installed oh-my-antigravity package using npm.',
     '',
     'Options:',
     '  --json   Print machine-readable output',
@@ -28,7 +28,7 @@ function printUninstallHelp(io: CliIo): void {
 async function defaultUninstallRunner(): Promise<{ exitCode: number; message: string; details?: Record<string, unknown> }> {
   const require = createRequire(import.meta.url);
   const pkg = require('../../../package.json') as { name?: string };
-  const packageName = pkg.name ?? 'oh-my-gemini';
+  const packageName = pkg.name ?? 'oh-my-antigravity';
 
   const result = await execFileAsync('npm', ['uninstall', '-g', packageName], {
     cwd: process.cwd(),

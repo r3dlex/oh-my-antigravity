@@ -100,7 +100,7 @@ export function buildGeminiExtensionMcpServerConfig(options: {
   categories?: readonly CliToolCategory[];
   serverName?: string;
 } = {}): Record<string, GeminiExtensionMcpServerConfig> {
-  const binCommand = options.binCommand ?? 'oh-my-gemini';
+  const binCommand = options.binCommand ?? 'oh-my-antigravity';
   const categories = normalizeCategoryInput(options.categories);
 
   const args = ['tools', 'serve'];
@@ -111,7 +111,7 @@ export function buildGeminiExtensionMcpServerConfig(options: {
   const sharedConfig: Omit<GeminiExtensionMcpServerConfig, 'cwd'> = {
     command: binCommand,
     args,
-    description: 'oh-my-gemini CLI tools MCP server (file/git/http/process)',
+    description: 'oh-my-antigravity CLI tools MCP server (file/git/http/process)',
   };
 
   if (options.serverName) {
@@ -129,7 +129,7 @@ export function buildGeminiExtensionMcpServerConfig(options: {
       command: binCommand,
       args,
       cwd: '${extensionPath}',
-      description: 'oh-my-gemini CLI tools MCP server compatibility alias (file/git/http/process)',
+      description: 'oh-my-antigravity CLI tools MCP server compatibility alias (file/git/http/process)',
     },
   };
 }

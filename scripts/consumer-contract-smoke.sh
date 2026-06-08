@@ -53,8 +53,8 @@ cd "$CONSUMER_DIR"
 npm_config_cache="$NPM_CACHE_DIR" npm init -y >/dev/null 2>&1
 npm_config_cache="$NPM_CACHE_DIR" npm install --no-audit --no-fund "$TARBALL_PATH" >/dev/null
 
-BIN_MAIN="./node_modules/.bin/oh-my-gemini"
-BIN_COMPAT="./node_modules/.bin/oh-my-gemini"
+BIN_MAIN="./node_modules/.bin/oh-my-antigravity"
+BIN_COMPAT="./node_modules/.bin/oh-my-antigravity"
 BIN_ALIAS="./node_modules/.bin/omg"
 
 if [[ ! -x "$BIN_MAIN" ]]; then

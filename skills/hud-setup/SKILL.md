@@ -2,10 +2,10 @@
 name: hud-setup
 aliases: ["/hud-setup", "hud", "configure hud", "statusline setup"]
 primaryRole: writer
-description: Guide the user through enabling and tuning the oh-my-gemini HUD surface. Use when the user wants to enable or adjust the HUD.
+description: Guide the user through enabling and tuning the oh-my-antigravity HUD surface. Use when the user wants to enable or adjust the HUD.
 ---
 
-# HUD Setup Skill (oh-my-gemini)
+# HUD Setup Skill (oh-my-antigravity)
 
 ## Quick Start
 

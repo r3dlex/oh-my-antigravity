@@ -1,12 +1,12 @@
-description = "Run oh-my-gemini MCP stdio server with tools/resources/prompts surfaces."
+description = "Run oh-my-antigravity MCP stdio server with tools/resources/prompts surfaces."
 prompt = """
-Run the oh-my-gemini MCP server.
+Run the oh-my-antigravity MCP server.
 
 If args are provided:
-  oh-my-gemini mcp serve {{args}}
+  oh-my-antigravity mcp serve {{args}}
   # alias: omg mcp serve {{args}}
 Else:
-  oh-my-gemini mcp serve --dry-run --json
+  oh-my-antigravity mcp serve --dry-run --json
 
 Report:
 1) resolved tool/resource/prompt surfaces,

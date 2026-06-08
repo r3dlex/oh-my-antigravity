@@ -51,10 +51,10 @@ describe('smoke: setup idempotency', () => {
         expect(settings.hooksConfig?.enabled).toBe(true);
         expect(settings.hooksConfig?.notifications).toBe(true);
         expect(settings.mcpServers?.omg_cli_tools).toBeDefined();
-        expect(settings.mcpServers?.omg_cli_tools?.command).toBe('oh-my-gemini');
+        expect(settings.mcpServers?.omg_cli_tools?.command).toBe('oh-my-antigravity');
         expect(settings.mcpServers?.omg_cli_tools?.args).toStrictEqual(['tools', 'serve']);
         expect(settings.mcpServers?.omp_cli_tools).toBeDefined();
-        expect(settings.mcpServers?.omp_cli_tools?.command).toBe('oh-my-gemini');
+        expect(settings.mcpServers?.omp_cli_tools?.command).toBe('oh-my-antigravity');
         expect(settings.mcpServers?.omp_cli_tools?.args).toStrictEqual(['tools', 'serve']);
         expect(existsSync(path.join(sandboxProject, '.omg', 'state'))).toBe(true);
 

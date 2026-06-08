@@ -716,7 +716,7 @@ async function checkExtensionIntegrity(
         required: true,
         status: 'ok',
         details: 'required extension command prompt files are present',
-        hint: 'Gemini install preview may emphasize skills over command prompts; use `oh-my-gemini doctor --json` or direct command execution to verify availability.',
+        hint: 'Gemini install preview may emphasize skills over command prompts; use `oh-my-antigravity doctor --json` or direct command execution to verify availability.',
       };
 
   const skillsCheck: DoctorCheckResult = missingSkills.length > 0
@@ -826,7 +826,7 @@ async function runDoctorChecks(
     probe('tmux', cwd),
     probe('docker', cwd),
     probe('podman', cwd),
-    probe('oh-my-gemini', cwd),
+    probe('oh-my-antigravity', cwd),
   ]);
 
   const [dockerReady, podmanReady] = await Promise.all([
@@ -894,9 +894,9 @@ async function runDoctorChecks(
       required: false,
       status: hasOmpBinary ? 'ok' : 'missing',
       details: hasOmpBinary
-        ? 'oh-my-gemini command found in PATH'
-        : 'oh-my-gemini command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
-      hint: 'Install globally: npm install -g oh-my-gemini',
+        ? 'oh-my-antigravity command found in PATH'
+        : 'oh-my-antigravity command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
+      hint: 'Install globally: npm install -g oh-my-antigravity',
     },
   ];
 

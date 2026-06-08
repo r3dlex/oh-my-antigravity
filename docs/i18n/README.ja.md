@@ -1,10 +1,10 @@
 [English](README.md) | [Korean](README.ko.md) | [Chinese](README.zh.md) | **Japanese**
 
 <p align="center">
-  <img src="docs/assets/omp_logo.png" alt="oh-my-gemini" width="240" />
+  <img src="docs/assets/omp_logo.png" alt="oh-my-antigravity" width="240" />
 </p>
 
-# oh-my-gemini
+# oh-my-antigravity
 
 [![npm version](https://img.shields.io/npm/v/oh-my-gemini?color=cb3837)](https://www.npmjs.com/package/oh-my-gemini)
 [![GitHub stars](https://img.shields.io/github/stars/r3dlex/oh-my-gemini?style=flat&color=yellow)](https://github.com/r3dlex/oh-my-gemini/stargazers)
@@ -26,7 +26,7 @@ _Antigravity CLI を扱いにくく感じる必要はありません。OMG を�
 **ステップ 1: インストール**
 
 ```bash
-npm install -g oh-my-gemini
+npm install -g oh-my-antigravity
 ```
 
 **ステップ 2: セットアップ**
@@ -35,7 +35,7 @@ npm install -g oh-my-gemini
 omg setup --scope project
 ```
 
-`omg setup` は、現在のインストールに対して oh-my-gemini 拡張も自動登録します。
+`omg setup` は、現在のインストールに対して oh-my-antigravity 拡張も自動登録します。
 
 **ステップ 3: Gemini を起動**
 
@@ -62,7 +62,7 @@ omg hud --watch
 ### npm 経由 (CLI + Extension)
 
 ```bash
-npm install -g oh-my-gemini
+npm install -g oh-my-antigravity
 omg setup --scope project
 ```
 
@@ -90,11 +90,11 @@ omg team run --task "review src/team and src/cli for reliability gaps" --workers
 omg team run --task "/subagents $planner /review /verify ship the release checklist" --workers 3
 
 # 既存実行の確認または再開
-omg team status --team oh-my-gemini --json
-omg team resume --team oh-my-gemini --max-fix-loop 1
+omg team status --team oh-my-antigravity --json
+omg team resume --team oh-my-antigravity --max-fix-loop 1
 
 # 完了したらきれいに停止
-omg team shutdown --team oh-my-gemini --force
+omg team shutdown --team oh-my-antigravity --force
 ```
 
 **デフォルトバックエンド:** `tmux`  
@@ -102,7 +102,7 @@ omg team shutdown --team oh-my-gemini --force
 
 ---
 
-## Why oh-my-gemini?
+## Why oh-my-antigravity?
 
 - **Gemini ネイティブなワークフロー** - Gemini を二次的なプロバイダーとして後付けするのではなく、Antigravity CLI を中心に設計
 - **学習コストゼロの入口** - `omg` で対話セッションを起動。覚えるべき拡張の配線は不要
@@ -158,10 +158,10 @@ omg team shutdown --team oh-my-gemini --force
 | `omg` | OMG 拡張を読み込んだ Antigravity CLI を対話的に起動 | `omg` |
 | `omg launch` | デフォルトの対話起動コマンドの明示版 | `omg launch --yolo` |
 | `omg team run` | 新しいオーケストレーション済みチーム実行を開始 | `omg team run --task "smoke" --workers 3` |
-| `omg team status` | 永続化された phase・worker・task のヘルスを確認 | `omg team status --team oh-my-gemini --json` |
-| `omg team resume` | 永続化されたメタデータから以前の実行を再開 | `omg team resume --team oh-my-gemini --max-fix-loop 1` |
-| `omg team shutdown` | 永続 runtime handle を正常終了 | `omg team shutdown --team oh-my-gemini --force` |
-| `omg team cancel` | アクティブタスクをキャンセル済みにし、以後の進行を停止 | `omg team cancel --team oh-my-gemini --force --json` |
+| `omg team status` | 永続化された phase・worker・task のヘルスを確認 | `omg team status --team oh-my-antigravity --json` |
+| `omg team resume` | 永続化されたメタデータから以前の実行を再開 | `omg team resume --team oh-my-antigravity --max-fix-loop 1` |
+| `omg team shutdown` | 永続 runtime handle を正常終了 | `omg team shutdown --team oh-my-antigravity --force` |
+| `omg team cancel` | アクティブタスクをキャンセル済みにし、以後の進行を停止 | `omg team cancel --team oh-my-antigravity --force --json` |
 | `omg doctor` | ローカル前提条件を診断し、安全な問題は自動修正 | `omg doctor --fix --json` |
 | `omg verify` | 検証スイートまたはティア別検証プランを実行 | `omg verify --tier thorough` |
 | `omg hud` | ライブチーム HUD を描画、または継続監視 | `omg hud --watch --interval-ms 1000` |

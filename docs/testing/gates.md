@@ -19,7 +19,7 @@ Pass criteria:
   - `scripts/global-install-contract-smoke.sh` (global-prefix alias provenance + setup contract checks),
 - both entrypoints are proven in global context:
   - `omg setup --scope project --json`
-  - `oh-my-gemini setup --scope project --dry-run --json` (compat: `omg setup --scope project --dry-run --json`).
+  - `oh-my-antigravity setup --scope project --dry-run --json` (compat: `omg setup --scope project --dry-run --json`).
 
 Fail criteria:
 
@@ -182,7 +182,7 @@ npm run verify
 
 ```bash
 npm run gate:publish
-npm run team:e2e -- "oh-my-gemini release gate live evidence"
+npm run team:e2e -- "oh-my-antigravity release gate live evidence"
 ```
 
 ### Optional feature-wise command
@@ -199,7 +199,7 @@ Reference: [`docs/testing/feature-readiness.md`](feature-readiness.md)
 
 - Documentation/command/code surfaces stay aligned (no README/gate/CLI contract drift),
 - `gate:publish` passes (`gate:global-install-contract` + `gate:3`),
-- live `omx team` evidence for oh-my-gemini (`start -> status polling -> shutdown`) is captured.
+- live `omx team` evidence for oh-my-antigravity (`start -> status polling -> shutdown`) is captured.
 - when `verify:features` is used, capability-group checks generate a report under
   `.omx/reports/feature-readiness-*.md`.
 
@@ -215,7 +215,7 @@ Reference: [`docs/testing/feature-readiness.md`](feature-readiness.md)
 ### Command
 
 ```bash
-npm run team:e2e -- "oh-my-gemini live team smoke"
+npm run team:e2e -- "oh-my-antigravity live team smoke"
 ```
 
 ### Pass criteria

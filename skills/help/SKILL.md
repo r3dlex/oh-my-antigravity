@@ -2,10 +2,10 @@
 name: help
 aliases: ["/help", "usage", "how do I use this", "what can omg do"]
 primaryRole: writer
-description: Explain the most relevant oh-my-gemini commands, skills, and workflow choices. Use when the user asks how to use the project.
+description: Explain the most relevant oh-my-antigravity commands, skills, and workflow choices. Use when the user asks how to use the project.
 ---
 
-# Help Skill (oh-my-gemini)
+# Help Skill (oh-my-antigravity)
 
 ## Quick Start
 

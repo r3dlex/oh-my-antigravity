@@ -1,6 +1,6 @@
 description = "Activate quality-gated strict orchestration mode."
 prompt = """
-Activate oh-my-gemini ralph mode — strict quality-gated execution.
+Activate oh-my-antigravity ralph mode — strict quality-gated execution.
 
 {{args}}
 

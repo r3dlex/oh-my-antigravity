@@ -5,7 +5,7 @@ primaryRole: coordinator
 description: Summarize progress, active state, blockers, and the best next actions. Use when the user asks for current progress or next steps.
 ---
 
-# Status Skill (oh-my-gemini)
+# Status Skill (oh-my-antigravity)
 
 ## Quick Start
 

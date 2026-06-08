@@ -1,6 +1,6 @@
 description = "Manage the MEMORY index and session knowledge."
 prompt = """
-Manage oh-my-gemini memory system.
+Manage oh-my-antigravity memory system.
 
 Subcommands (inferred from args):
 - **show** (default): Display current MEMORY.md index

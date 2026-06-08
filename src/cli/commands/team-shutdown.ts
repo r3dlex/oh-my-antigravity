@@ -44,7 +44,7 @@ function printTeamShutdownHelp(io: CliIo): void {
     'Usage: omg team shutdown [--team <name>] [--force] [--json]',
     '',
     'Options:',
-    '  --team <name>   Team state namespace (default: oh-my-gemini)',
+    '  --team <name>   Team state namespace (default: oh-my-antigravity)',
     '  --force         Ignore runtime teardown errors where possible',
     '  --json          Print machine-readable output',
     '  --help          Show command help',

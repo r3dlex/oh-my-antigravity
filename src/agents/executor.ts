@@ -4,7 +4,7 @@
  * Executes tasks directly without delegation capabilities.
  * Same discipline as OMG, but works alone.
  *
- * Ported from oh-my-gemini's executor agent.
+ * Ported from oh-my-antigravity's executor agent.
  * Prompt loaded from: agents/executor.md
  */
 

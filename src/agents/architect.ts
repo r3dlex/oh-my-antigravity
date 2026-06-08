@@ -4,7 +4,7 @@
  * READ-ONLY consultation agent for strategic architecture decisions
  * and complex debugging.
  *
- * Ported from oh-my-gemini's architect agent.
+ * Ported from oh-my-antigravity's architect agent.
  */
 
 import type { AgentConfig, AgentPromptMetadata } from './types.js';

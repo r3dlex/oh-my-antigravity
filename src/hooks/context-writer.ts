@@ -34,7 +34,7 @@ function buildContextContent(input: {
   designSection?: string;
 }): string {
   const baseSections = [
-    '# oh-my-gemini Team Context',
+    '# oh-my-antigravity Team Context',
     '',
     `## Team: ${input.teamName}`,
     `## Task: ${truncateText(input.task, MAX_TASK_PREVIEW_CHARS)}`,
@@ -105,7 +105,7 @@ function buildContextContent(input: {
 
   const emergencyTask = truncateText(input.task, 512);
   return [
-    '# oh-my-gemini Team Context',
+    '# oh-my-antigravity Team Context',
     '',
     `## Team: ${input.teamName}`,
     `## Task: ${emergencyTask}`,

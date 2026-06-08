@@ -16,8 +16,8 @@ const packageRoot = path.resolve(
 );
 
 describe('smoke: native Gemini extension package layout', () => {
-  test('publishes installable extension assets at the canonical oh-my-gemini extension root', () => {
-    const extensionRoot = path.join(packageRoot, 'extensions', 'oh-my-gemini');
+  test('publishes installable extension assets at the canonical oh-my-antigravity extension root', () => {
+    const extensionRoot = path.join(packageRoot, 'extensions', 'oh-my-antigravity');
     const manifestPath = path.join(extensionRoot, 'gemini-extension.json');
     const rootManifestPath = path.join(packageRoot, 'gemini-extension.json');
     const contextFilePath = path.join(extensionRoot, 'GEMINI.md');
@@ -49,19 +49,19 @@ describe('smoke: native Gemini extension package layout', () => {
     };
 
     expect(manifest.contextFileName).toBe('GEMINI.md');
-    expect(manifest.mcpServers?.omg_cli_tools?.command).toBe('oh-my-gemini');
+    expect(manifest.mcpServers?.omg_cli_tools?.command).toBe('oh-my-antigravity');
     expect(manifest.mcpServers?.omg_cli_tools?.args).toStrictEqual(['tools', 'serve']);
-    expect(manifest.mcpServers?.omp_cli_tools?.command).toBe('oh-my-gemini');
+    expect(manifest.mcpServers?.omp_cli_tools?.command).toBe('oh-my-antigravity');
     expect(manifest.mcpServers?.omp_cli_tools?.args).toStrictEqual(['tools', 'serve']);
-    expect(rootManifest.mcpServers?.omg_cli_tools?.command).toBe('oh-my-gemini');
+    expect(rootManifest.mcpServers?.omg_cli_tools?.command).toBe('oh-my-antigravity');
     expect(rootManifest.mcpServers?.omg_cli_tools?.args).toStrictEqual(['tools', 'serve']);
-    expect(rootManifest.mcpServers?.omp_cli_tools?.command).toBe('oh-my-gemini');
+    expect(rootManifest.mcpServers?.omp_cli_tools?.command).toBe('oh-my-antigravity');
     expect(rootManifest.mcpServers?.omp_cli_tools?.args).toStrictEqual(['tools', 'serve']);
     expect(rootManifest.mcpServers?.omp_cli_tools?.cwd).toBe('${extensionPath}');
     expect(hooksConfig.hooks?.BeforeAgent?.[0]?.matcher).toBe('.*');
-    expect(hooksConfig.hooks?.BeforeAgent?.[0]?.hooks?.[0]?.command).toBe('oh-my-gemini hooks exec');
+    expect(hooksConfig.hooks?.BeforeAgent?.[0]?.hooks?.[0]?.command).toBe('oh-my-antigravity hooks exec');
     expect(hooksConfig.hooks?.AfterTool?.[0]?.matcher).toBe('.*');
-    expect(hooksConfig.hooks?.AfterTool?.[0]?.hooks?.[0]?.command).toBe('oh-my-gemini hooks exec');
+    expect(hooksConfig.hooks?.AfterTool?.[0]?.hooks?.[0]?.command).toBe('oh-my-antigravity hooks exec');
 
     for (const commandFile of commandFiles) {
       expect(existsSync(commandFile)).toBe(true);

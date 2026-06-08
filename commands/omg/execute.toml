@@ -1,12 +1,12 @@
 description = "Execute a concrete implementation task with progress updates and validation evidence."
 prompt = """
-Run the oh-my-gemini execute skill for immediate task implementation.
+Run the oh-my-antigravity execute skill for immediate task implementation.
 
 If args are provided:
-  oh-my-gemini skill execute {{args}}
+  oh-my-antigravity skill execute {{args}}
   # alias: omg skill execute {{args}}
 Else:
-  oh-my-gemini skill execute
+  oh-my-antigravity skill execute
   # alias: omg skill execute
 
 Makes reasonable assumptions, prefers minimal coherent changes, and reports objective, changed files, commands run, and result.

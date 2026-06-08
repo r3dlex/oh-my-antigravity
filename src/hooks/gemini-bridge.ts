@@ -128,7 +128,7 @@ function buildGeminiHookOutput(
       stopReason:
         result.message ??
         warnings ??
-        'oh-my-gemini hook bridge requested an immediate stop.',
+        'oh-my-antigravity hook bridge requested an immediate stop.',
       systemMessage,
     };
   }
@@ -139,7 +139,7 @@ function buildGeminiHookOutput(
       reason:
         warnings ??
         result.message ??
-        'oh-my-gemini permission policy requires manual review for this tool request.',
+        'oh-my-antigravity permission policy requires manual review for this tool request.',
       systemMessage,
     };
   }

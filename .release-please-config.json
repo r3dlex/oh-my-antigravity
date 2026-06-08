@@ -2,7 +2,7 @@
   "release-type": "node",
   "packages": {
     ".": {
-      "package-name": "@r3dlex/oh-my-gemini",
+      "package-name": "@r3dlex/oh-my-antigravity",
       "release-type": "node",
       "changelog-path": "CHANGELOG.md",
       "include-v-in-tag": true

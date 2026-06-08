@@ -142,7 +142,7 @@ function resolveDeniedReason(result: HookResult): string | undefined {
   if (result.data && typeof result.data === 'object' && result.data !== null) {
     const approved = (result.data as Record<string, unknown>).approved;
     if (approved === false) {
-      return collectOutputMessages(result).join('\n') || 'Blocked by oh-my-gemini hook policy.';
+      return collectOutputMessages(result).join('\n') || 'Blocked by oh-my-antigravity hook policy.';
     }
   }
 
@@ -174,7 +174,7 @@ export function convertHookResultToGeminiOutput(event: HookEventName, result: Ho
 
   if (result.continue === false) {
     output.continue = false;
-    output.stopReason = systemMessage ?? deniedReason ?? 'oh-my-gemini hook bridge stopped the session.';
+    output.stopReason = systemMessage ?? deniedReason ?? 'oh-my-antigravity hook bridge stopped the session.';
   }
 
   if (Object.keys(hookSpecificOutput).length > 0) {
@@ -193,7 +193,7 @@ export async function executeGeminiHookBridge(params: {
   if (!context) {
     return {
       suppressOutput: true,
-      systemMessage: `oh-my-gemini hook bridge ignored unsupported event ${params.payload.hook_event_name ?? 'unknown'}.`,
+      systemMessage: `oh-my-antigravity hook bridge ignored unsupported event ${params.payload.hook_event_name ?? 'unknown'}.`,
     };
   }
 

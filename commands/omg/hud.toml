@@ -1,17 +1,17 @@
-description = "Render the oh-my-gemini HUD status overlay with progress indicators."
+description = "Render the oh-my-antigravity HUD status overlay with progress indicators."
 prompt = """
 Render omg HUD status overlay.
 
 If args are provided:
-  oh-my-gemini hud {{args}}
+  oh-my-antigravity hud {{args}}
   # alias: omg hud {{args}}
 Else:
-  oh-my-gemini hud --preset focused
+  oh-my-antigravity hud --preset focused
 
 Examples:
-  oh-my-gemini hud --team oh-my-gemini --preset minimal
-  oh-my-gemini hud --watch --interval-ms 1000
-  oh-my-gemini hud --team oh-my-gemini --json
+  oh-my-antigravity hud --team oh-my-antigravity --preset minimal
+  oh-my-antigravity hud --watch --interval-ms 1000
+  oh-my-antigravity hud --team oh-my-antigravity --json
 
 Report:
 1) preset/team used,

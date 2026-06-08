@@ -1,6 +1,6 @@
 description = "Save or restore a compact execution checkpoint."
 prompt = """
-Manage oh-my-gemini checkpoints for session continuity.
+Manage oh-my-antigravity checkpoints for session continuity.
 
 Subcommands (inferred from args):
 - **save** (default): Snapshot current state → `.omg/state/checkpoints/`

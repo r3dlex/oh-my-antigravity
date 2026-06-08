@@ -17,7 +17,7 @@ import type {
 } from './types.js';
 
 const DEFAULT_CLIENT_INFO: Implementation = {
-  name: 'oh-my-gemini-mcp-client',
+  name: 'oh-my-antigravity-mcp-client',
   version: '0.5.0',
 };
 

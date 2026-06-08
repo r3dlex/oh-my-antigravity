@@ -12,7 +12,7 @@ import {
 } from './arg-utils.js';
 
 export const OMG_EXTENSION_PATH_ENV = 'OMG_EXTENSION_PATH';
-export const CANONICAL_EXTENSION_ROOT_RELATIVE_PATH = path.join('extensions', 'oh-my-gemini');
+export const CANONICAL_EXTENSION_ROOT_RELATIVE_PATH = path.join('extensions', 'oh-my-antigravity');
 export const LEGACY_EXTENSION_ROOT_RELATIVE_PATH = '.';
 export const EXTENSION_MANIFEST_FILE_NAME = 'gemini-extension.json';
 
@@ -161,11 +161,11 @@ export async function resolveExtensionPath(
 
   throw new Error(
     [
-      'Unable to resolve oh-my-gemini extension path.',
+      'Unable to resolve oh-my-antigravity extension path.',
       'Checked manifest candidates:',
       checkedCandidates,
       '',
-      `Set ${OMG_EXTENSION_PATH_ENV}=<path>, ${OMG_EXTENSION_PATH_ENV}=<path>, or pass --extension-path <path>. Canonical package layout prefers extensions/oh-my-gemini/.`,
+      `Set ${OMG_EXTENSION_PATH_ENV}=<path>, ${OMG_EXTENSION_PATH_ENV}=<path>, or pass --extension-path <path>. Canonical package layout prefers extensions/oh-my-antigravity/.`,
     ].join('\n'),
   );
 }

@@ -253,12 +253,12 @@ async function ensureManagedGeminiNote(
   },
 ): Promise<JsonWriteResult> {
   const managedLines = [
-    'This section is managed by oh-my-gemini setup.',
+    'This section is managed by oh-my-antigravity setup.',
     '',
     `- Active setup scope: ${scope}`,
     '- Scope precedence: CLI flag > persisted (.omg/setup-scope.json) > default (project)',
-    '- Run `oh-my-gemini doctor` (alias: `omg doctor`) after setup to validate dependencies.',
-    '- Run `oh-my-gemini verify` (alias: `omg verify`) to execute typecheck/smoke/integration/reliability checks.',
+    '- Run `oh-my-antigravity doctor` (alias: `omg doctor`) after setup to validate dependencies.',
+    '- Run `oh-my-antigravity verify` (alias: `omg verify`) to execute typecheck/smoke/integration/reliability checks.',
   ];
 
   const result = await mergeMarkedBlockInFile(filePath, managedLines, {

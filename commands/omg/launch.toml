@@ -1,6 +1,6 @@
 description = "Initialize lifecycle state and optionally resume from checkpoint."
 prompt = """
-Initialize or resume oh-my-gemini execution lifecycle.
+Initialize or resume oh-my-antigravity execution lifecycle.
 
 {{args}}
 

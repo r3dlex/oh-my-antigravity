@@ -1,6 +1,6 @@
 # Install Scopes and Precedence
 
-`oh-my-gemini setup` supports scope-aware installation behavior. The default scope is **project**.
+`oh-my-antigravity setup` supports scope-aware installation behavior. The default scope is **project**.
 
 ## Scope precedence
 

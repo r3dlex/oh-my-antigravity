@@ -142,3 +142,8 @@ If omg saves you time, consider [sponsoring the project](https://github.com/spon
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/chart?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/?repos=r3dlex%2Foh-my-gemini&type=date&legend=top-left)
+
+<!-- v3-ai-sdlc-init:start -->
+## AI SDLC v3
+This repo follows the v3 AI-SDLC layout. See `.ai/matrix.json`, `.memory/human-override/`, and `docs/architecture/adr/`. Modules at `r3dlex/skills/ai-sdlc-init/modules/`.
+<!-- v3-ai-sdlc-init:end -->

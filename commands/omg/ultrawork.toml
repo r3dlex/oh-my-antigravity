@@ -1,6 +1,6 @@
 description = "Execute independent tasks at maximum parallelism."
 prompt = """
-Activate oh-my-gemini ultrawork mode — maximum throughput batch execution.
+Activate oh-my-antigravity ultrawork mode — maximum throughput batch execution.
 
 {{args}}
 

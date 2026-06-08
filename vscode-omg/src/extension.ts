@@ -36,11 +36,11 @@ export function activate(context: vscode.ExtensionContext): void {
         description: `${a.status}${a.teamName ? ` · ${a.teamName}` : ''}`,
         detail: a.summary,
       }));
-      await vscode.window.showQuickPick(items, { title: 'oh-my-gemini Agents', placeHolder: 'Current agent list' });
+      await vscode.window.showQuickPick(items, { title: 'oh-my-antigravity Agents', placeHolder: 'Current agent list' });
     }),
 
     vscode.commands.registerCommand('omg.clearState', () => {
-      vscode.window.showInformationMessage('OMG: Clear state is not supported. Use the oh-my-gemini CLI to manage state.');
+      vscode.window.showInformationMessage('OMG: Clear state is not supported. Use the oh-my-antigravity CLI to manage state.');
     }),
   );
 

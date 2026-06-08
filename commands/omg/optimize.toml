@@ -1,6 +1,6 @@
 description = "Optimize prompt and context for signal-to-noise ratio."
 prompt = """
-Run oh-my-gemini context optimization on the current session or a target file.
+Run oh-my-antigravity context optimization on the current session or a target file.
 
 {{args}}
 

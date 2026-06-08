@@ -34,7 +34,7 @@ function writeManifest(root: string): string {
   const manifestPath = path.join(root, 'gemini-extension.json');
   writeFileSync(
     manifestPath,
-    JSON.stringify({ name: 'oh-my-gemini', version: '1.0.0', contextFileName: 'GEMINI.md' }),
+    JSON.stringify({ name: 'oh-my-antigravity', version: '1.0.0', contextFileName: 'GEMINI.md' }),
   );
   return manifestPath;
 }
@@ -114,7 +114,7 @@ describe('reliability: extension path command', () => {
     const ioCapture = createIoCapture();
 
     const result = await executeExtensionPathCommand(
-      ['--extension-path', 'extensions/oh-my-gemini'],
+      ['--extension-path', 'extensions/oh-my-antigravity'],
       {
         cwd: process.cwd(),
         io: ioCapture.io,
@@ -122,7 +122,7 @@ describe('reliability: extension path command', () => {
     );
 
     expect(result.exitCode).toBe(0);
-    expect(ioCapture.stdout[0]).toBe(path.join('extensions', 'oh-my-gemini'));
+    expect(ioCapture.stdout[0]).toBe(path.join('extensions', 'oh-my-antigravity'));
   });
 
   test('json output reports resolved source and manifest path', async () => {

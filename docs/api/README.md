@@ -1,6 +1,6 @@
-# oh-my-gemini API Reference
+# oh-my-antigravity API Reference
 
-This document provides a reference for the public API modules, CLI commands, configuration, and internal systems of oh-my-gemini.
+This document provides a reference for the public API modules, CLI commands, configuration, and internal systems of oh-my-antigravity.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This document provides a reference for the public API modules, CLI commands, con
 
 ## Overview
 
-oh-my-gemini is an orchestration layer for Gemini CLI workflows. It provides:
+oh-my-antigravity is an orchestration layer for Gemini CLI workflows. It provides:
 
 - **CLI tooling** (`omg`) for project setup, diagnostics, team orchestration, and verification
 - **Team orchestration** with lifecycle management (plan, exec, verify, fix loop)
@@ -38,7 +38,7 @@ oh-my-gemini is an orchestration layer for Gemini CLI workflows. It provides:
 
 ## CLI Command Reference
 
-The CLI is invoked as `omg <command> [options]` (or `oh-my-gemini <command>`).
+The CLI is invoked as `omg <command> [options]` (or `oh-my-antigravity <command>`).
 
 ### Global Options
 
@@ -259,7 +259,7 @@ interface OmpGeminiProviderConfig {
 
 #### Example: Custom Retry and Timeout
 
-In `~/.config/oh-my-gemini/config.jsonc` or `.gemini/omg.jsonc`:
+In `~/.config/oh-my-antigravity/config.jsonc` or `.gemini/omg.jsonc`:
 
 ```jsonc
 {
@@ -358,7 +358,7 @@ The `GeminiApiClient` retries transient failures automatically. Retryable condit
 are HTTP 429 (rate limit) and 5xx (server error) responses.
 
 ```typescript
-import { createGeminiApiClient } from 'oh-my-gemini/providers/api-client';
+import { createGeminiApiClient } from 'oh-my-antigravity/providers/api-client';
 
 const client = createGeminiApiClient({
   retry: {
@@ -396,7 +396,7 @@ State writes are protected by advisory file locks. Two API surfaces are availabl
 #### Filesystem Store (async, recommended for state operations)
 
 ```typescript
-import { withFileLock, writeJsonFile } from 'oh-my-gemini/state/filesystem';
+import { withFileLock, writeJsonFile } from 'oh-my-antigravity/state/filesystem';
 
 // High-level: writeJsonFile acquires a lock automatically
 await writeJsonFile('/path/to/state.json', { phase: 'exec' });
@@ -413,7 +413,7 @@ await withFileLock('/path/to/data.json', async () => {
 import {
   withFileLockSync,
   withFileLock,
-} from 'oh-my-gemini/lib/file-lock';
+} from 'oh-my-antigravity/lib/file-lock';
 
 // Synchronous (for notepad and sync state operations)
 const result = withFileLockSync('/path/to/file.lock', () => {
@@ -437,7 +437,7 @@ Lock mechanics:
 Minimal `omg.config.ts` with all runtime-relevant settings:
 
 ```typescript
-import type { OmpConfig } from 'oh-my-gemini/config/types';
+import type { OmpConfig } from 'oh-my-antigravity/config/types';
 
 const config: OmpConfig = {
   agents: {
@@ -511,12 +511,12 @@ omg verify
 
 ## Notification System
 
-oh-my-gemini supports webhook-based notifications to three platforms. All webhook URLs must use HTTPS.
+oh-my-antigravity supports webhook-based notifications to three platforms. All webhook URLs must use HTTPS.
 
 ### Slack
 
 ```typescript
-import { sendSlackWebhook } from 'oh-my-gemini/notifications/webhook';
+import { sendSlackWebhook } from 'oh-my-antigravity/notifications/webhook';
 
 await sendSlackWebhook({
   webhookUrl: 'https://hooks.slack.com/services/...',
@@ -534,7 +534,7 @@ URL validation enforces `hooks.slack.com` hostname.
 ### Discord
 
 ```typescript
-import { sendDiscordWebhook } from 'oh-my-gemini/notifications/discord';
+import { sendDiscordWebhook } from 'oh-my-antigravity/notifications/discord';
 
 await sendDiscordWebhook({
   webhookUrl: 'https://discord.com/api/webhooks/...',
@@ -552,7 +552,7 @@ Messages are automatically truncated to Discord's 2000-character limit.
 ### Telegram
 
 ```typescript
-import { sendTelegramBotMessage } from 'oh-my-gemini/notifications/telegram';
+import { sendTelegramBotMessage } from 'oh-my-antigravity/notifications/telegram';
 
 await sendTelegramBotMessage({
   botToken: '123456:ABC-DEF...',
@@ -571,7 +571,7 @@ Chat ID must be a numeric string (negative for groups).
 ### Generic JSON Webhook
 
 ```typescript
-import { sendJsonWebhook } from 'oh-my-gemini/notifications/webhook';
+import { sendJsonWebhook } from 'oh-my-antigravity/notifications/webhook';
 
 await sendJsonWebhook({
   url: 'https://example.com/webhook',
@@ -600,7 +600,7 @@ interface WebhookDeliveryResult {
 The core orchestration engine at `src/team/team-orchestrator.ts` manages the full team lifecycle.
 
 ```typescript
-import { TeamOrchestrator } from 'oh-my-gemini/team/team-orchestrator';
+import { TeamOrchestrator } from 'oh-my-antigravity/team/team-orchestrator';
 
 const orchestrator = new TeamOrchestrator({
   stateStore?: TeamStateStore,               // Custom state store
@@ -655,7 +655,7 @@ Shuts down a running team by its handle.
 Located at `src/team/control-plane/index.ts`, this provides task and mailbox lifecycle management for coordinating workers.
 
 ```typescript
-import { TeamControlPlane } from 'oh-my-gemini/team/control-plane';
+import { TeamControlPlane } from 'oh-my-antigravity/team/control-plane';
 
 const controlPlane = new TeamControlPlane({
   rootDir: '/path/to/.omg',   // optional
@@ -718,7 +718,7 @@ await controlPlane.markMailboxMessageNotified({ messageId: msg.messageId });
 Located at `src/team/monitor.ts`, evaluates snapshot health for reliability hardening.
 
 ```typescript
-import { evaluateTeamHealth } from 'oh-my-gemini/team/monitor';
+import { evaluateTeamHealth } from 'oh-my-antigravity/team/monitor';
 
 const report = evaluateTeamHealth(snapshot, {
   now: new Date(),

@@ -41,9 +41,9 @@ describe('integration: tools command', () => {
       throw new Error('Expected omg_cli_tools and omp_cli_tools server registrations.');
     }
 
-    expect(canonicalToolsServer.command).toBe('oh-my-gemini');
+    expect(canonicalToolsServer.command).toBe('oh-my-antigravity');
     expect(canonicalToolsServer.args).toStrictEqual(['tools', 'serve']);
-    expect(compatToolsServer.command).toBe('oh-my-gemini');
+    expect(compatToolsServer.command).toBe('oh-my-antigravity');
     expect(compatToolsServer.args).toStrictEqual(['tools', 'serve']);
   });
 });

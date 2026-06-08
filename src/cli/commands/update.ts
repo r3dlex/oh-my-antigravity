@@ -42,7 +42,7 @@ function printUpdateHelp(io: CliIo): void {
   io.stdout([
     'Usage: omg update [--json]',
     '',
-    'Updates the globally installed oh-my-gemini package using npm.',
+    'Updates the globally installed oh-my-antigravity package using npm.',
     '',
     'Options:',
     '  --json   Print machine-readable output',
@@ -53,7 +53,7 @@ function printUpdateHelp(io: CliIo): void {
 export function resolveUpdatePackageName(
   packageMetadata: PackageMetadata = createRequire(import.meta.url)('../../../package.json') as PackageMetadata,
 ): string {
-  return packageMetadata.name ?? 'oh-my-gemini';
+  return packageMetadata.name ?? 'oh-my-antigravity';
 }
 
 export async function runNpmGlobalUpdate(options: GlobalUpdateOptions = {}): Promise<UpdateRunnerOutput> {

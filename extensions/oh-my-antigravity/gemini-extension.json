@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/google-gemini/antigravity-cli/main/packages/cli/schemas/gemini-extension.json",
-  "name": "oh-my-gemini",
+  "name": "oh-my-antigravity",
   "version": "1.4.0",
   "description": "Canonical agy/Antigravity OMG extension scaffold with packaged lifecycle hook bridging.",
   "author": "r3dlex",
@@ -24,22 +24,22 @@
   ],
   "mcpServers": {
     "omg_cli_tools": {
-      "command": "oh-my-gemini",
+      "command": "oh-my-antigravity",
       "args": [
         "tools",
         "serve"
       ],
       "cwd": "${extensionPath}",
-      "description": "oh-my-gemini CLI tools MCP server (file/git/http/process)"
+      "description": "oh-my-antigravity CLI tools MCP server (file/git/http/process)"
     },
     "omp_cli_tools": {
-      "command": "oh-my-gemini",
+      "command": "oh-my-antigravity",
       "args": [
         "tools",
         "serve"
       ],
       "cwd": "${extensionPath}",
-      "description": "oh-my-gemini CLI tools MCP server compatibility alias (file/git/http/process)"
+      "description": "oh-my-antigravity CLI tools MCP server compatibility alias (file/git/http/process)"
     }
   }
 }

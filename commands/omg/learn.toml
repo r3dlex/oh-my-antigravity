@@ -1,12 +1,12 @@
 description = "Extract a reusable lesson, checklist, or future skill idea from the current work."
 prompt = """
-Run the oh-my-gemini learn skill to capture reusable patterns.
+Run the oh-my-antigravity learn skill to capture reusable patterns.
 
 If args are provided:
-  oh-my-gemini skill learn {{args}}
+  oh-my-antigravity skill learn {{args}}
   # alias: omg skill learn {{args}}
 Else:
-  oh-my-gemini skill learn
+  oh-my-antigravity skill learn
   # alias: omg skill learn
 
 Captures the repeated problem, durable lesson, trigger conditions, and shortest reusable checklist.

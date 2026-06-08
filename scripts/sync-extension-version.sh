@@ -7,7 +7,7 @@ ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PKG_VERSION=$(node -p "require('$ROOT_DIR/package.json').version")
 EXT_FILES=(
   "$ROOT_DIR/gemini-extension.json"
-  "$ROOT_DIR/extensions/oh-my-gemini/gemini-extension.json"
+  "$ROOT_DIR/extensions/oh-my-antigravity/gemini-extension.json"
 )
 
 for EXT_FILE in "${EXT_FILES[@]}"; do

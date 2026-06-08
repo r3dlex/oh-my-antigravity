@@ -1,4 +1,4 @@
-# oh-my-gemini Team Context
+# oh-my-antigravity Team Context
 
 ## Team: test-team
 ## Task: Test task for baseline

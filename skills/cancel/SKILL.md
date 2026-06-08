@@ -5,7 +5,7 @@ primaryRole: coordinator
 description: Stop active workflow state safely and preserve resumable context. Use when the user wants to stop, abort, or checkpoint ongoing work.
 ---
 
-# Cancel Skill (oh-my-gemini)
+# Cancel Skill (oh-my-antigravity)
 
 ## Quick Start
 
