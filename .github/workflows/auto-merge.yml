@@ -10,11 +10,31 @@ permissions:
   pull-requests: write
 
 jobs:
-  auto-merge:
-    name: Enable auto-merge for dev PRs
-    runs-on: ubuntu-latest
+  _auto-merge-self-hosted:
+    name: "Enable auto-merge for dev PRs (self-hosted)"
+    runs-on: [self-hosted, ubuntu-latest]
+    continue-on-error: true
+    outputs:
+      passed: ${{ steps.mark.outputs.passed }}
     steps:
       - name: Enable auto-merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ github.event.pull_request.number }}" --auto --squash --repo "${{ github.repository }}"
+      - id: mark
+        if: success()
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  auto-merge:
+    name: Enable auto-merge for dev PRs
+    needs: _auto-merge-self-hosted
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Route
+        run: echo "self-hosted passed=${{ needs._auto-merge-self-hosted.outputs.passed }}"
+      - name: Enable auto-merge
+        if: needs._auto-merge-self-hosted.outputs.passed != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr merge "${{ github.event.pull_request.number }}" --auto --squash --repo "${{ github.repository }}"
