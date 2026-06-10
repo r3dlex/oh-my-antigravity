@@ -35,6 +35,11 @@ This is a checklist artifact per the AI SDLC ci-policy module. It documents the 
 
 `PR Validation` in ci.yml enforces that PRs to `main` must come from the `dev` branch. Feature branches should target `dev`; only `dev` PRs target `main`. This is a soft policy currently documented here; it is not enforced at the GitHub ruleset level yet.
 
+## Recorded deviations
+
+- 2026-06-10: PR #12 (`chore/ai-sdlc-gapfill`) was admin-merged to `main` with the `PR Validation` check red. That check fails by design for any head branch other than `dev`; the owner approved bypassing it for this gap-fill because `dev` was 61 commits behind `main` and routing the gap-fill through `dev` would have forced an unrelated dev/main reconciliation first. Enforcement is checklist-only, so no GitHub ruleset was bypassed. Precedent: release-please PRs to `main` have previously merged with this check red.
+- Follow-up required: reconcile `dev` with `main`. `dev` carries a richer `.ai/` scaffold from PR #10 that overlaps the `.ai/` files added by PR #12; expect merge conflicts in `.ai/` when `dev` is next synced, and resolve in favor of the richer PR #10 content where the two disagree.
+
 ## Explicitly NOT required
 
 - `Release Please` (release.yml): release flow job; gates releases, not merges.
