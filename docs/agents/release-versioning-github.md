@@ -18,7 +18,11 @@ Per the AI SDLC release-versioning module. Strategy is **semver** via release-pl
 
 The scoped package `@r3dlex/oh-my-antigravity` does not exist on npmjs.com. OIDC/trusted-publishing (used by the `Publish pre-release` and `Publish stable release` jobs in `release.yml`) cannot first-publish a package that has never been registered on the registry. As a result, the `Publish pre-release` job has been failing on main since at least 2026-05-25.
 
-- [ ] A maintainer must run `npm publish --access public` once from a local machine with a valid npm token. After that single run, subsequent CI publishes via OIDC will succeed.
+### Action items (maintainer, one-time)
+
+These are blockers to clear, not policy to enforce; they are kept separate from the guardrail checklists below.
+
+- [ ] Run `npm publish --access public` once from a local machine with a valid npm token. After that single run, subsequent CI publishes via OIDC will succeed.
 
 ## Release configuration files
 
