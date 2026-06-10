@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "strategy": "semver",
+  "tag": "",
+  "base_version": "1.5.0",
+  "base_sha": "5a1a31f35a49b58dee437c78d47d05bf14c504fd",
+  "timestamp_utc": "2026-06-10T00:00:00Z",
+  "trace_id": "",
+  "provider": "github-actions",
+  "guardrails": {
+    "green_ci": "skipped",
+    "conventional_commits": "skipped",
+    "secrets_permissions_preflight": "skipped",
+    "no_dirty_generated_state": "skipped",
+    "protected_tag_policy": "skipped"
+  },
+  "guardrail_reasons": {
+    "green_ci": "manifest initialized; existing release-please flow predates guardrail gating",
+    "conventional_commits": "manifest initialized; existing release-please flow predates guardrail gating",
+    "secrets_permissions_preflight": "manifest initialized; existing release-please flow predates guardrail gating",
+    "no_dirty_generated_state": "manifest initialized; existing release-please flow predates guardrail gating",
+    "protected_tag_policy": "tag-protection ruleset is checklist-only; see docs/agents/release-versioning-github.md"
+  },
+  "tag_creation": "blocked",
+  "tag_creation_reason": "no guardrail-gated release run has occurred yet; existing release-please flow remains authoritative until guardrails are wired in"
+}
