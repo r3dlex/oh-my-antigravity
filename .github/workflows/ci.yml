@@ -12,93 +12,277 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint-and-typecheck:
-    name: Lint & Type Check
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+  # ── self-hosted legs ────────────────────────────────────────────────────────
+
+  _lint-self-hosted:
+    name: "Lint & Type Check (self-hosted)"
+    runs-on: [self-hosted, ubuntu-latest]
+    continue-on-error: true
+    outputs:
+      passed: ${{ steps.mark.outputs.passed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - name: Install dependencies
         run: npm ci || npm install
-
       - name: Type check
         run: npm run typecheck
-
       - name: Legacy bypass policy gate
+        run: npm run gate:legacy-bypass
+      - id: mark
+        if: success()
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  _global-install-self-hosted:
+    name: "Global Install Contract (self-hosted)"
+    runs-on: [self-hosted, ubuntu-latest]
+    continue-on-error: true
+    needs: _lint-self-hosted
+    outputs:
+      passed: ${{ steps.mark.outputs.passed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci || npm install
+      - name: Global install contract gate
+        run: npm run gate:global-install-contract
+      - id: mark
+        if: success()
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  _test-self-hosted:
+    name: "Test (self-hosted)"
+    runs-on: [self-hosted, ubuntu-latest]
+    continue-on-error: true
+    needs: _lint-self-hosted
+    outputs:
+      passed: ${{ steps.mark.outputs.passed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install tmux
+        run: sudo apt-get update && sudo apt-get install -y tmux
+      - name: Install dependencies
+        run: npm ci || npm install
+      - name: Build
+        run: npm run build
+      - name: Smoke tests
+        run: npm run test:smoke
+      - name: Integration tests
+        run: npm run test:integration
+      - name: Reliability tests
+        run: npm run test:reliability
+      - name: Verification framework contracts
+        run: npm run test:verification
+      - name: Coverage gate (80%+)
+        run: npm run test:coverage
+      - name: Verify command baseline
+        run: npm run verify -- --tier thorough --json
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 14
+      - id: mark
+        if: success()
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  _security-self-hosted:
+    name: "Security Audit (self-hosted)"
+    runs-on: [self-hosted, ubuntu-latest]
+    continue-on-error: true
+    needs: _lint-self-hosted
+    outputs:
+      passed: ${{ steps.mark.outputs.passed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci || npm install
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+      - name: Check for outdated dependencies
+        run: npm outdated
+        continue-on-error: true
+      - id: mark
+        if: success()
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  # ── gate jobs ───────────────────────────────────────────────────────────────
+
+  _lint-gate:
+    name: "Lint & Type Check gate"
+    needs: _lint-self-hosted
+    if: always()
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.check.outputs.passed }}
+    steps:
+      - id: check
+        if: needs._lint-self-hosted.result == 'success'
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  _global-install-gate:
+    name: "Global Install Contract gate"
+    needs: _global-install-self-hosted
+    if: always()
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.check.outputs.passed }}
+    steps:
+      - id: check
+        if: needs._global-install-self-hosted.result == 'success'
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  _test-gate:
+    name: "Test gate"
+    needs: _test-self-hosted
+    if: always()
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.check.outputs.passed }}
+    steps:
+      - id: check
+        if: needs._test-self-hosted.result == 'success'
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  _security-gate:
+    name: "Security Audit gate"
+    needs: _security-self-hosted
+    if: always()
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.check.outputs.passed }}
+    steps:
+      - id: check
+        if: needs._security-self-hosted.result == 'success'
+        run: echo "passed=true" >> "$GITHUB_OUTPUT"
+
+  # ── canonical jobs (GH-hosted fallback) ────────────────────────────────────
+
+  lint-and-typecheck:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [_lint-self-hosted, _lint-gate]
+    if: always()
+    steps:
+      - name: Route
+        run: echo "self-hosted passed=${{ needs._lint-gate.outputs.passed }}"
+      - name: Checkout
+        if: needs._lint-gate.outputs.passed != 'true'
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        if: needs._lint-gate.outputs.passed != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        if: needs._lint-gate.outputs.passed != 'true'
+        run: npm ci || npm install
+      - name: Type check
+        if: needs._lint-gate.outputs.passed != 'true'
+        run: npm run typecheck
+      - name: Legacy bypass policy gate
+        if: needs._lint-gate.outputs.passed != 'true'
         run: npm run gate:legacy-bypass
 
   global_install_contract:
     name: Global Install Contract
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    needs: lint-and-typecheck
+    needs: [_global-install-self-hosted, _global-install-gate, lint-and-typecheck]
+    if: always()
     steps:
+      - name: Route
+        run: echo "self-hosted passed=${{ needs._global-install-gate.outputs.passed }}"
       - name: Checkout
+        if: needs._global-install-gate.outputs.passed != 'true'
         uses: actions/checkout@v4
-
       - name: Setup Node.js
+        if: needs._global-install-gate.outputs.passed != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - name: Install dependencies
+        if: needs._global-install-gate.outputs.passed != 'true'
         run: npm ci || npm install
-
       - name: Global install contract gate
+        if: needs._global-install-gate.outputs.passed != 'true'
         run: npm run gate:global-install-contract
 
   test:
     name: Test (Node 20)
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    needs: lint-and-typecheck
+    needs: [_test-self-hosted, _test-gate, lint-and-typecheck]
+    if: always()
     steps:
+      - name: Route
+        run: echo "self-hosted passed=${{ needs._test-gate.outputs.passed }}"
       - name: Checkout
+        if: needs._test-gate.outputs.passed != 'true'
         uses: actions/checkout@v4
-
       - name: Setup Node.js
+        if: needs._test-gate.outputs.passed != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - name: Install tmux
+        if: needs._test-gate.outputs.passed != 'true'
         run: sudo apt-get update && sudo apt-get install -y tmux
-
       - name: Install dependencies
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm ci || npm install
-
       - name: Build
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run build
-
       - name: Smoke tests
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run test:smoke
-
       - name: Integration tests
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run test:integration
-
       - name: Reliability tests
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run test:reliability
-
       - name: Verification framework contracts
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run test:verification
-
       - name: Coverage gate (80%+)
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run test:coverage
-
       - name: Verify command baseline
+        if: needs._test-gate.outputs.passed != 'true'
         run: npm run verify -- --tier thorough --json
-
       - name: Upload coverage report
+        if: needs._test-gate.outputs.passed != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
@@ -109,27 +293,33 @@ jobs:
     name: Security Audit
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    needs: lint-and-typecheck
+    needs: [_security-self-hosted, _security-gate, lint-and-typecheck]
+    if: always()
     steps:
+      - name: Route
+        run: echo "self-hosted passed=${{ needs._security-gate.outputs.passed }}"
       - name: Checkout
+        if: needs._security-gate.outputs.passed != 'true'
         uses: actions/checkout@v4
-
       - name: Setup Node.js
+        if: needs._security-gate.outputs.passed != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - name: Install dependencies
+        if: needs._security-gate.outputs.passed != 'true'
         run: npm ci || npm install
-
       - name: Audit dependencies
+        if: needs._security-gate.outputs.passed != 'true'
         run: npm audit --audit-level=moderate
         continue-on-error: true
-
       - name: Check for outdated dependencies
+        if: needs._security-gate.outputs.passed != 'true'
         run: npm outdated
         continue-on-error: true
+
+  # ── PR validation (unchanged, no self-hosted benefit) ──────────────────────
 
   pr-validation:
     name: PR Validation
@@ -142,12 +332,10 @@ jobs:
           echo "::error::Only the 'dev' branch can create PRs targeting 'main'."
           echo "Feature branches must target 'dev'."
           exit 1
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Check PR title
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
@@ -160,7 +348,6 @@ jobs:
             exit 1
           fi
           echo "PR title format is correct"
-
       - name: Check PR description
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
@@ -170,4 +357,3 @@ jobs:
           else
             echo "PR description present"
           fi
-
