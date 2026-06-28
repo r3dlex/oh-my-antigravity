@@ -24,7 +24,7 @@ pointer would degrade the published extension.
   content-bearing sections (per `modules/documentation-blueprint.md`).
 - `GEMINI.md` is a **documented exception**: it remains the content-bearing
   Gemini/Antigravity extension `contextFileName` product surface. It links to the
-  shared context (`docs/architecture/omg-core.md` / `AGENTS.md`) but retains the
+  shared context (`AGENTS.md`) but retains the
   extension-specific context required by the published extension. Moving its
   content into a thin pointer would require also re-pointing
   `gemini-extension.json` and is out of scope for this additive upgrade.
