@@ -2,7 +2,7 @@ name: auto-merge
 
 on:
   pull_request:
-    branches: [dev]
+    branches: [main]
     types: [opened, synchronize, reopened]
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   auto-merge:
-    name: Enable auto-merge for dev PRs
+    name: Enable auto-merge for main PRs
     runs-on: ubuntu-latest
     steps:
       - name: Enable auto-merge
