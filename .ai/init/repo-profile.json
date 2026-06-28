@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-28T00:00:00Z",
+  "repo_id": "omag-root",
+  "repo_name": "oh-my-antigravity",
+  "remote": "git@github.com:r3dlex/oh-my-antigravity.git",
+  "description": "Extension-first orchestration layer for Gemini CLI / Antigravity CLI workflows. Provides a TypeScript CLI (omg) with setup/doctor/team-run/verify commands, runtime backends (tmux default + experimental subagents), reliability-focused state persistence, and verification harnesses.",
+  "language": "TypeScript",
+  "runtime": "node",
+  "node_version_minimum": "20",
+  "package_manager": "npm",
+  "workspace_layout": "single-package",
+  "workspace_packages": [],
+  "topology": {
+    "topology_type": "standalone",
+    "current_depth": 0,
+    "max_allowed_depth": 0,
+    "sync_strategy": "physical-copy"
+  },
+  "ci": {
+    "provider": "GitHub Actions",
+    "workflow_files": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/ci-prek.yml",
+      ".github/workflows/release.yml",
+      ".github/workflows/auto-merge.yml"
+    ],
+    "pre_commit": "prek",
+    "pre_commit_config": "prek.toml"
+  },
+  "scripts": {
+    "test": "npm test",
+    "build": "npm run build",
+    "typecheck": "npm run typecheck",
+    "lint": "npm run lint"
+  },
+  "test_framework": "vitest",
+  "build_tool": "tsc",
+  "package": {
+    "name": "@r3dlex/oh-my-antigravity",
+    "version": "1.5.0",
+    "bin": ["omg", "omg-cli", "oh-my-antigravity"],
+    "release_automation": "release-please"
+  },
+  "tracker": {
+    "host": "github",
+    "repo": "r3dlex/oh-my-antigravity",
+    "issues_url": "https://github.com/r3dlex/oh-my-antigravity/issues"
+  },
+  "branch_policy": {
+    "protected_branch": "main",
+    "delivery": "PR-only",
+    "auto_merge": "squash (when CI + approval green)"
+  },
+  "conventions": {
+    "adr_dir": "docs/architecture/adr/",
+    "legacy_adr_dir": "docs/adr/",
+    "spec_dir": "docs/specifications/",
+    "source": "src/",
+    "dist_generated": true,
+    "extension_context_file": "GEMINI.md",
+    "entry_scripts": ["dist/cli/index.js"]
+  },
+  "archgate_rules": ".rules.ts",
+  "release_config": ".release-please-config.json",
+  "existing_governance": {
+    "ai_matrix": ".ai/matrix.json",
+    "ai_drift": [".ai/drift/last-drift.json", ".ai/drift/last-generation.json", ".ai/drift/README.md"],
+    "adrs": ["docs/adr/ADR-0001-record-architecture-decisions.md"]
+  }
+}

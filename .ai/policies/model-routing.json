@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "description": "Provider-neutral model-routing policy (ADR-0003). Task classes map to portable tiers; host_aliases bind tiers to host model names per provider. Host model names below are illustrative examples — replace them with the model IDs your provider/CLI actually exposes at deployment time.",
+  "tiers": ["frontier", "mid", "cheap"],
+  "task_classes": {
+    "requirements": "frontier",
+    "architecture": "frontier",
+    "initial-implementation": "frontier",
+    "hard-verification": "frontier",
+    "standard-implementation": "mid",
+    "planning": "mid",
+    "test-generation": "cheap",
+    "first-pass-code-review": "cheap",
+    "ci-monitoring": "cheap",
+    "lookups": "cheap"
+  },
+  "host_aliases": {
+    "claude": {
+      "frontier": "opus",
+      "mid": "sonnet",
+      "cheap": "haiku"
+    },
+    "gemini": {
+      "frontier": "gemini-3.1-pro",
+      "mid": "gemini-2.5-flash",
+      "cheap": "gemini-2.5-flash-lite"
+    },
+    "antigravity": {
+      "frontier": "gemini-3.1-pro",
+      "mid": "gemini-2.5-flash",
+      "cheap": "gemini-2.5-flash-lite"
+    }
+  }
+}

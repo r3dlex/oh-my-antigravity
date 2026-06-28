@@ -125,6 +125,16 @@ omg launches real Gemini CLI worker panes under tmux, records durable lifecycle 
 - [Setup Guide](docs/setup/quickstart.md)
 - [Contributing](CONTRIBUTING.md)
 
+### AI SDLC v3 governance
+
+This repo follows the init-ai-repo v3 governance layout. `AGENTS.md` is the
+single source of truth for the agent operating contract.
+
+- [Agent operating contract (AGENTS.md)](AGENTS.md)
+- [Workflow doc](.ai/workflows/repo-workflow.md)
+- [Workflow manifest](.ai/workflows/repo-workflow.json)
+- [Architecture Decision Records](docs/architecture/adr/)
+
 ---
 
 ## License
