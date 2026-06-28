@@ -144,3 +144,32 @@ Before starting work on an issue:
 3. Do not make a fourth attempt without human acknowledgement.
 
 <!-- ai-sdlc-init:end -->
+
+<!-- v3-ai-sdlc-init:start -->
+## AI SDLC v3
+
+This repo follows the v3 AI-SDLC layout (`topology_type: standalone`, depth 0). It is the single source of truth for the cross-tool agent operating contract; `CLAUDE.md` is a thin pointer to this file (ADR-0004). `GEMINI.md` remains the content-bearing Gemini/Antigravity extension `contextFileName` product surface (documented exception, ADR-0004).
+
+### Workflow
+
+- Workflow doc: [`.ai/workflows/repo-workflow.md`](.ai/workflows/repo-workflow.md)
+- Workflow manifest: [`.ai/workflows/repo-workflow.json`](.ai/workflows/repo-workflow.json)
+- Handoff index: [`.ai/handoff/init-ai-repo-handoff.md`](.ai/handoff/init-ai-repo-handoff.md)
+
+Continue through the mandatory phases and record status in `.ai/phases/<phase>/status.json`. See `.ai/matrix.json`, `docs/architecture/adr/`, and the legacy `docs/adr/`. Modules at `r3dlex/skills/init-ai-repo/modules/`.
+
+### Harness Map
+
+The six context types this harness assembles, and where each lives (ADR-0005):
+
+| Context type | Canonical source | Static or dynamic |
+| --- | --- | --- |
+| `Instructions` | `AGENTS.md`, `GEMINI.md`, `extensions/oh-my-antigravity/` | Static |
+| `Knowledge` | `docs/architecture/`, `docs/setup/`, `docs/testing/` | Static |
+| `Memory` | `.omg/state/`, project memory entries | Dynamic |
+| `Examples` | `.ai/evals/<set>/`, `docs/examples/` | Static |
+| `Tools` | `.ai/mcp/registry.json` (`omg_cli_tools` server), `src/` CLI surface | Dynamic |
+| `Guardrails` | `.rules.ts`, `prek.toml`, `.ai/policies/` | Static |
+
+**Static-vs-dynamic boundary.** Static context is fixed at the start of a task and is reviewed and versioned in-repo; dynamic context is assembled per-run (memory written by local agents, tool/MCP results resolved at call time). This boundary is a reviewed, versioned decision (ADR-0005); moving a context type across it requires an ADR update.
+<!-- v3-ai-sdlc-init:end -->
