@@ -37,7 +37,7 @@
     {"path": "docs/architecture/adr/0004-agents-md-single-source.md", "action": "copy", "note": "ADR for AGENTS.md single source; CLAUDE.md thin pointer; GEMINI.md exception."},
     {"path": "docs/architecture/adr/0005-mcp-a2a-and-observability-harness.md", "action": "copy", "note": "ADR for MCP/A2A and observability harness."},
     {"path": "AGENTS.md", "action": "supersede", "note": "Refreshed as single source of truth: added v3 Harness Map and workflow links; prior content preserved above the v3 block."},
-    {"path": "CLAUDE.md", "action": "supersede", "note": "Refreshed v3 block as a thin pointer to AGENTS.md (ADR-0004)."},
+    {"path": "CLAUDE.md", "action": "local-only", "note": "Collapsed to 3-line thin pointer to AGENTS.md (ADR-0004). File is listed in .gitignore and is not committed; it exists as a local contributor config file only."},
     {"path": "GEMINI.md", "action": "preserve", "note": "Content-bearing Gemini extension contextFileName (documented exception, ADR-0004); left unchanged."}
   ],
   "preserved": [

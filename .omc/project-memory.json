@@ -32,8 +32,8 @@
     "runtime": "Node.js 20.10.0"
   },
   "build": {
-    "buildCommand": "npm run build",
-    "testCommand": "npm test",
+    "buildCommand": "rtk npm run build 2>&1; echo \"BUILD_EXIT:$?\"",
+    "testCommand": "npm test 2>&1 | grep -E \"Test Files|Tests |Duration|failed|passed|FAIL\" | tail -5; echo \"TEST_DONE:$?\"",
     "lintCommand": "npm run lint",
     "devCommand": null,
     "scripts": {
@@ -337,6 +337,12 @@
       "type": "file"
     },
     {
+      "path": ".ai/drift/migration-manifest.json",
+      "accessCount": 3,
+      "lastAccessed": 1782670604261,
+      "type": "file"
+    },
+    {
       "path": "src/cli/commands",
       "accessCount": 2,
       "lastAccessed": 1776587805976,
@@ -370,6 +376,12 @@
       "path": "tests/reliability/branding-runtime-paths.test.ts",
       "accessCount": 2,
       "lastAccessed": 1776761272053,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 2,
+      "lastAccessed": 1782666976125,
       "type": "file"
     },
     {
