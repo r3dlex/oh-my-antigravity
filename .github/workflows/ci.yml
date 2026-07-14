@@ -16,6 +16,7 @@ jobs:
 
   _lint-self-hosted:
     name: "Lint & Type Check (self-hosted)"
+    if: vars.SELF_HOSTED_CI_ENABLED == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     outputs:
@@ -40,6 +41,7 @@ jobs:
 
   _global-install-self-hosted:
     name: "Global Install Contract (self-hosted)"
+    if: vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.result == 'success'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -63,6 +65,7 @@ jobs:
 
   _test-self-hosted:
     name: "Test (self-hosted)"
+    if: vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.result == 'success'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -106,6 +109,7 @@ jobs:
 
   _security-self-hosted:
     name: "Security Audit (self-hosted)"
+    if: vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.result == 'success'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -215,7 +219,8 @@ jobs:
     name: Global Install Contract
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    needs: [_global-install-self-hosted, _global-install-gate, lint-and-typecheck]
+    needs:
+      [_global-install-self-hosted, _global-install-gate, lint-and-typecheck]
     if: always()
     steps:
       - name: Route
