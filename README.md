@@ -1,154 +1,156 @@
 English | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](README.fr.md) | [Italiano](README.it.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Português](README.pt.md) | [Русский](README.ru.md) | [Türkçe](README.tr.md) | [Tiếng Việt](README.vi.md) | [中文](README.zh.md)
 
-# oh-my-Gemini (omg)
+# oh-my-antigravity (`omg`)
 
-> **Sister projects:** [oh-my-claudecode (OMC)](https://github.com/Yeachan-Heo/oh-my-claudecode) | [oh-my-codex (OMX)](https://github.com/Yeachan-Heo/oh-my-codex) | [oh-my-githubcopilot (OMP)](https://github.com/r3dlex/oh-my-githubcopilot) | [oh-my-gemini (OMG)](https://github.com/r3dlex/oh-my-gemini) | [oh-my-auggie (OMA)](https://github.com/r3dlex/oh-my-auggie)
+Extension-first multi-agent orchestration for Antigravity CLI, with tmux-backed team execution, persistent local state, and verification-oriented workflows.
 
-**Multi-agent orchestration for Gemini CLI. Zero learning curve.**
+- Repository: [`r3dlex/oh-my-antigravity`](https://github.com/r3dlex/oh-my-antigravity)
+- npm package name: `@r3dlex/oh-my-antigravity`
+- CLI commands: `omg`, `omg-cli`, and `oh-my-antigravity`
 
-_Don't learn Gemini CLI. Just use omg._
+> **Package status:** the scoped package has not completed its first npmjs.com publish. Until that one-time maintainer action is complete, use the source installation below rather than a registry install.
 
-[Get Started](#quick-start) • [CLI Reference](#cli-reference) • [Workflows](#workflows) • [Discord](https://discord.gg/PUwSMR9XNk)
+## Prerequisites
 
----
+- Node.js `>=20.10.0` and npm
+- [Antigravity CLI](https://www.npmjs.com/package/@antigravity/cli), which provides the `gemini` command
+- `tmux` for the default team backend
+- Git for the current source installation
+- Docker or Podman only when using container sandbox mode
 
-## Why omg?
+Check the required tools:
 
-Every software team juggles implementation, architecture, security review, testing, and DevOps — all simultaneously. omg orchestrates specialized agents so every dimension gets expert attention, in parallel, without you herding cats.
-
-Gemini CLI gives you long-context Google Gemini reasoning at the terminal, but production work still needs role separation, persistent state, and verification discipline. omg layers those workflows onto Gemini CLI so planning, execution, review, and QA can run as repeatable agent modes instead of one-off prompts.
-
----
+```bash
+node --version
+npm --version
+gemini --version
+tmux -V
+git --version
+```
 
 ## Quick Start
 
+This is the recommended path until the first npm publish is complete:
+
 ```bash
-npm install -g @r3dlex/oh-my-gemini
+git clone https://github.com/r3dlex/oh-my-antigravity.git
+cd oh-my-antigravity
+npm ci
+npm run build
+npm install -g .
+
+# Run these from the project where you want to use omg.
+cd /path/to/your-project
+omg setup --scope project --dry-run
 omg setup --scope project
+omg doctor
+```
+
+`--dry-run` previews managed project-file changes; it does not link the extension or clean legacy user-skill conflicts. An applied setup reports `Setup scope: project`, per-action statuses, and a successful extension link (or a manual link command). A healthy installation ends the doctor report with:
+
+```text
+Overall: healthy
+```
+
+Launch an interactive Antigravity CLI session with the extension loaded:
+
+```bash
 omg
 ```
 
-After setup, restart your CLI for the `/` commands to appear.
+Or verify team planning without starting workers:
 
 ```bash
-omg doctor              # check prerequisites
-omg team run --task "..." --workers 2   # parallel work
-omg hud --watch         # live status
+omg team run --task "inspect this repository" --dry-run --json
 ```
 
----
+## What setup manages
 
-## Features
+Project scope is the supported default. `--scope user` currently falls back to project scope.
 
-| Feature | Description |
-|---------|-------------|
-| **Specialized Agents** | 33+ agents (analyst, architect, executor, debugger, critic, verifier, test-engineer, writer, and more) |
-| **Parallel Team Mode** | tmux-based multi-worker orchestration with shared task state |
-| **Workflow Skills** | 26+ built-in skills — plan, deep-interview, ralph, autopilot, ultrawork, code-review, and more |
-| **Persistent Hooks** | Automatic tool tracking, project memory, session management |
-| **Real-time HUD** | Live status overlay showing agents, costs, and progress |
-| **CI/CD Ready** | Verification gates, test integration, release workflows |
-| **Multilingual** | README translations for global teams |
+`omg setup` creates or updates:
 
----
+| Path | Ownership |
+| --- | --- |
+| `.omg/setup-scope.json` | Persisted setup scope |
+| `.omg/state/`, `.omg/logs/`, `.omg/plans/` | Generated runtime state and logs |
+| `.gemini/settings.json` | Required OMG-managed values are merged or refreshed; unrelated settings are preserved |
+| `.gemini/GEMINI.md` | Only the `oh-my-antigravity (managed)` marker block is replaced |
+| `.gemini/sandbox.Dockerfile` | Created only when absent |
 
-## CLI Reference
+Generated `.omg/` state and local `.gemini/` configuration are gitignored in this repository. Do not hand-edit generated runtime state. Preserve these managed markers in `.gemini/GEMINI.md`:
 
-| Command | Description |
-|---------|-------------|
-| `omg` | Launch interactive session |
-| `omg setup` | Configure Gemini CLI integration |
-| `omg doctor` | Check prerequisites and fix issues |
-| `omg team run` | Start parallel team execution |
-| `omg team status` | Check team progress |
-| `omg hud --watch` | Show live status overlay |
-| `omg trace` | Show execution trace |
+```text
+# >>> oh-my-antigravity (managed) >>>
+# <<< oh-my-antigravity (managed) <<<
+```
 
-See the [full documentation](https://github.com/r3dlex/oh-my-gemini/tree/main/docs) for all commands.
+Safety notes:
 
----
+- Run `omg setup --scope project --dry-run` before applying managed project-file changes in an existing project. Extension linking and legacy user-skill cleanup occur only during the applied setup and are not included in the preview.
+- Repeated setup runs are idempotent for managed project files. The managed `.gemini/GEMINI.md` update preserves content outside its marker block.
+- Setup removes same-named legacy skill directories from `~/.agents/skills/` when they conflict with skills bundled by this extension. Back up intentional local customizations before setup.
+- `omg doctor --fix` only repairs supported managed state, such as an invalid setup-scope file or missing `.omg/state` directory.
 
-## Workflows
-
-omg ships execution-mode and planning-mode workflows as built-in skills.
-
-### Execution Modes
-
-| Skill | Purpose |
-|-------|---------|
-| `$autopilot` | Idea → working code end-to-end |
-| `$team` | N coordinated agents on a shared task |
-| `$ralph` | Persistent completion loop until verified |
-| `$ultrawork` | Maximum parallel throughput execution |
-| `$ultraqa` | QA cycling until goals are met |
-
-### Planning Modes
-
-| Skill | Purpose |
-|-------|---------|
-| `$plan` | Strategic planning with optional interviews |
-| `$deep-interview` | Socratic clarification before execution |
-| `$ralplan` | Consensus planning with Architect + Critic review |
-
-### Utility Modes
-
-| Skill | Purpose |
-|-------|---------|
-| `$code-review` | Comprehensive code review |
-| `$security-review` | Security audit |
-| `$doctor` | Diagnose and fix installation issues |
-| `$trace` | Agent flow trace and summary |
-| `$note` | Save session notes |
-| `$wiki` | Persistent project wiki |
-
----
-
-## Team Mode
-
-tmux-first multi-worker orchestration with persistent state and lifecycle controls.
+## Health checks
 
 ```bash
-omg team run --task "review src/ for reliability gaps" --workers 4
-omg team status --team omg --json
-omg team resume --team omg
-omg team shutdown --team omg --force
+omg doctor
+omg doctor --json
+omg extension path
 ```
 
-omg launches real Gemini CLI worker panes under tmux, records durable lifecycle state under `.omg/`, and keeps each worker tied to claim-safe task files. Use it when you want Gemini-backed implementation, review, and verification lanes to make progress in parallel while still being resumable and auditable from the terminal.
+`doctor` checks Node.js, npm, the `gemini` command, tmux, setup scope, extension assets, and state-directory writeability. Docker or Podman and a globally available `oh-my-antigravity` binary are reported as optional checks.
 
----
+Contributors can run the repository verification harness from the oh-my-antigravity source checkout only:
+
+```bash
+npm run verify
+```
+
+## Updating and uninstalling
+
+For the current source installation:
+
+```bash
+cd /path/to/oh-my-antigravity
+git pull --ff-only
+npm ci
+npm run build
+npm install -g .
+omg setup --scope project
+omg doctor
+```
+
+After the scoped package is first-published, `omg update` will update the global npm package. `omg uninstall` removes the global npm package, but intentionally leaves project-local `.omg/` and `.gemini/` files for manual review or removal.
+
+## Troubleshooting
+
+| Symptom | Check or recovery |
+| --- | --- |
+| `omg: command not found` | Re-run `npm install -g .` from the built checkout and ensure npm's global bin directory is on `PATH`. |
+| `gemini command not found` | Install Antigravity CLI with `npm install -g @antigravity/cli`, then rerun `omg doctor`. |
+| tmux is missing | Install tmux, then rerun `omg doctor`; tmux is required by the default team backend. |
+| Extension auto-link fails or stalls | Run `omg extension path`, then `gemini extensions link <reported-path>` and inspect `gemini extensions list`. |
+| Setup scope or state directory is invalid | Inspect with `omg doctor --json`, then run `omg doctor --fix` and rerun `omg doctor`. |
+| Sandbox check is unavailable | Install Docker or Podman, or run Antigravity CLI without container sandbox mode. |
+
+If the diagnostic output does not identify the problem, [open an issue](https://github.com/r3dlex/oh-my-antigravity/issues) with `omg doctor --json` output after removing sensitive paths or values.
 
 ## Documentation
 
-- [Full Documentation](https://github.com/r3dlex/oh-my-gemini/tree/main/docs)
-- [Command Reference](docs/omg/commands.md)
-- [Setup Guide](docs/setup/quickstart.md)
-- [Contributing](CONTRIBUTING.md)
+- [CLI command reference](docs/omg/commands.md)
+- [Setup scopes and idempotency](docs/setup/install-scopes.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Runtime backends](docs/architecture/runtime-backend.md)
+- [Verification gates](docs/testing/gates.md)
+- [Examples](docs/examples/)
+- [Changelog](CHANGELOG.md)
 
-### AI SDLC v3 governance
+## Contributing and community
 
-This repo follows the init-ai-repo v3 governance layout. `AGENTS.md` is the
-single source of truth for the agent operating contract.
-
-- [Agent operating contract (AGENTS.md)](AGENTS.md)
-- [Workflow doc](.ai/workflows/repo-workflow.md)
-- [Workflow manifest](.ai/workflows/repo-workflow.json)
-- [Architecture Decision Records](docs/architecture/adr/)
-
----
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the development setup, branch conventions, and validation sequence. Use [GitHub Issues](https://github.com/r3dlex/oh-my-antigravity/issues) for bugs, onboarding problems, and focused proposals.
 
 ## License
 
-omg is open source under the [MIT License](LICENSE).
-
----
-
-## Sponsors
-
-If omg saves you time, consider [sponsoring the project](https://github.com/sponsors/r3dlex) ❤️
-
----
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/chart?repos=r3dlex/oh-my-gemini&type=date&legend=top-left)](https://www.star-history.com/?repos=r3dlex%2Foh-my-gemini&type=date&legend=top-left)
+[MIT](LICENSE)

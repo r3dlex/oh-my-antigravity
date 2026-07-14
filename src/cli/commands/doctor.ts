@@ -896,7 +896,7 @@ async function runDoctorChecks(
       details: hasOmpBinary
         ? 'oh-my-antigravity command found in PATH'
         : 'oh-my-antigravity command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
-      hint: 'Install globally: npm install -g oh-my-antigravity',
+      hint: 'Install globally from a built checkout: npm install -g /path/to/oh-my-antigravity',
     },
   ];
 
