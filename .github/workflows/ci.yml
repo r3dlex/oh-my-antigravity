@@ -41,7 +41,7 @@ jobs:
 
   _global-install-self-hosted:
     name: "Global Install Contract (self-hosted)"
-    if: vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.result == 'success'
+    if: always() && vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.outputs.passed == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -65,7 +65,7 @@ jobs:
 
   _test-self-hosted:
     name: "Test (self-hosted)"
-    if: vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.result == 'success'
+    if: always() && vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.outputs.passed == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -109,7 +109,7 @@ jobs:
 
   _security-self-hosted:
     name: "Security Audit (self-hosted)"
-    if: vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.result == 'success'
+    if: always() && vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.outputs.passed == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -146,7 +146,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._lint-self-hosted.result == 'success'
+        if: needs._lint-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   _global-install-gate:
@@ -158,7 +158,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._global-install-self-hosted.result == 'success'
+        if: needs._global-install-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   _test-gate:
@@ -170,7 +170,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._test-self-hosted.result == 'success'
+        if: needs._test-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   _security-gate:
@@ -182,7 +182,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._security-self-hosted.result == 'success'
+        if: needs._security-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   # ── canonical jobs (GH-hosted fallback) ────────────────────────────────────

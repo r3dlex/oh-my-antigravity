@@ -34,7 +34,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._prek-self-hosted.result == 'success'
+        if: needs._prek-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   prek-check:
