@@ -9,6 +9,8 @@ NPM_CACHE_DIR="$TMP_DIR/npm-cache"
 GLOBAL_PREFIX="$TMP_DIR/global-prefix"
 WRITE_WORKSPACE="$TMP_DIR/workspace-write"
 DRY_RUN_WORKSPACE="$TMP_DIR/workspace-dry-run"
+STUB_BIN="$TMP_DIR/stub-bin"
+GEMINI_STUB_LOG="$TMP_DIR/gemini-stub.log"
 TARBALL_PATH=""
 
 cleanup() {
@@ -30,6 +32,23 @@ need_cmd() {
 need_cmd npm
 need_cmd node
 need_cmd bash
+
+mkdir -p "$STUB_BIN"
+cat >"$STUB_BIN/gemini" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+printf '%s\n' "$*" >>"$GEMINI_STUB_LOG"
+case "${1:-} ${2:-}" in
+  "extensions link" | "extensions enable" | "extensions list") exit 0 ;;
+  *)
+    echo "[gemini-stub] unexpected invocation: $*" >&2
+    exit 2
+    ;;
+esac
+EOF
+chmod +x "$STUB_BIN/gemini"
+export GEMINI_STUB_LOG
+export PATH="$STUB_BIN:$PATH"
 
 REQUIRED_SETUP_ARTIFACTS=(
   ".omg/setup-scope.json"
@@ -235,6 +254,13 @@ echo "[global-install-contract] running setup (write mode, first pass) via omg"
 cd "$WRITE_WORKSPACE"
 setup_write_first_json="$("$BIN_OMG" setup --scope project --json)"
 validate_setup_result "$setup_write_first_json" "$WRITE_WORKSPACE" "write/omg/first" "true" "created"
+
+if ! grep -Fq "extensions link " "$GEMINI_STUB_LOG" ||
+  ! grep -Fxq "extensions enable oh-my-antigravity" "$GEMINI_STUB_LOG"; then
+  echo "[global-install-contract] setup did not link and enable the packaged extension" >&2
+  cat "$GEMINI_STUB_LOG" >&2
+  exit 1
+fi
 
 for relative_path in "${REQUIRED_SETUP_ARTIFACTS[@]}"; do
   if [[ ! -f "$WRITE_WORKSPACE/$relative_path" ]]; then

@@ -864,7 +864,7 @@ async function runDoctorChecks(
       required: true,
       status: hasGemini ? 'ok' : 'missing',
       details: hasGemini ? 'gemini command found' : 'gemini command not found in PATH',
-      hint: 'Install: npm i -g @antigravity/cli',
+      hint: 'Install: npm i -g @google/gemini-cli',
     },
     {
       code: hasTmux ? 'DOC_TMUX_OK' : DOCTOR_CODE.TMUX,
@@ -896,7 +896,7 @@ async function runDoctorChecks(
       details: hasOmpBinary
         ? 'oh-my-antigravity command found in PATH'
         : 'oh-my-antigravity command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
-      hint: 'Install globally: npm install -g oh-my-antigravity',
+      hint: 'Install globally from a built checkout: npm install -g /path/to/oh-my-antigravity',
     },
   ];
 

@@ -13,18 +13,26 @@ The resolved setup scope is determined in this strict order:
 ## Supported scopes
 
 - `project`: writes configuration within the current repository (recommended default)
-- `user`: persisted as user intent for future expansion; MVP still writes managed files in the current repository.
+- `user`: persisted values remain valid and use repository-local managed files;
+  an explicit `--scope user` is accepted for compatibility but the CLI warns and
+  normalizes it to `project`.
 
-> Note: in MVP, both scopes use repository-local managed files while preserving the
-> precedence contract (`CLI flag > persisted > default`).
+> Note: both resolved scopes currently use repository-local managed files. The
+> persisted-scope precedence contract still applies to supported values.
 
 ## Idempotency requirement
 
-Running setup repeatedly with the same resolved scope must be safe:
+Running setup repeatedly with the same resolved scope must keep managed project
+files stable:
 
 - no duplicate marker blocks
-- no destructive overwrite of user-managed sections
+- no overwrite outside the managed `.gemini/GEMINI.md` marker block
 - no unexpected drift in managed files
+
+`--dry-run` previews those managed project-file changes. Applied setup also links
+the extension and removes same-named legacy skill directories from
+`~/.agents/skills/` when they conflict with bundled extension skills; those
+side effects are not part of the dry-run preview.
 
 ## Setup action status reporting
 
@@ -40,8 +48,8 @@ The plain-text output includes:
 - `Changes applied: yes|no`
 - `Action statuses: created=<n>, updated=<n>, unchanged=<n>, skipped=<n>`
 - one line per managed action (scope persistence, `.gemini/settings.json`, managed
-  `.gemini/GEMINI.md` block, `.gemini/sandbox.Dockerfile`, and
-  `.gemini/agents/catalog.json`)
+  `.gemini/GEMINI.md` block, `.gemini/sandbox.Dockerfile`, and the deprecated
+  `.gemini/agents/catalog.json` action, which setup reports as skipped)
 
 Use the smoke script to validate:
 

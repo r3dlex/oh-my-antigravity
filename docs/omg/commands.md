@@ -1,8 +1,8 @@
 # `omg` Command Quick Reference
 
-> `oh-my-gemini` and `omg` are equivalent CLI entry points.
-> Post-global-install contract: after `npm install -g oh-my-gemini-sisyphus`, run setup with
-> `omg setup --scope project` (equivalent: `oh-my-gemini setup --scope project`).
+> `omg`, `omg-cli`, and `oh-my-antigravity` are equivalent CLI entry points for
+> the `@r3dlex/oh-my-antigravity` package. Until its first npmjs.com publish is
+> complete, install from a built source checkout as described in the root README.
 
 ## `omg setup`
 
@@ -12,8 +12,9 @@ omg setup [--scope <project|user>] [--dry-run] [--json]
 
 - Persists setup scope precedence:
   `--scope` > `.omg/setup-scope.json` > default `project`
-- Provisions managed setup artifacts (including `.gemini/agents/catalog.json`)
-- Primary post-install command after global npm installation
+- Provisions managed setup artifacts; the deprecated `.gemini/agents/catalog.json`
+  action is reported as skipped
+- Primary post-install command after source or global npm installation
 
 ## `omg doctor`
 
@@ -31,11 +32,11 @@ omg extension path [--json] [--extension-path <path>]
 ```
 
 - Resolves extension root precedence:
-  `--extension-path` / `OMG_EXTENSION_PATH` > `./extensions/oh-my-gemini` > installed package assets
+  `--extension-path` / `OMG_EXTENSION_PATH` > `./extensions/oh-my-antigravity` > installed package assets
 - Useful for user install flow:
 
 ```bash
-EXT_PATH="$(oh-my-gemini extension path)"
+EXT_PATH="$(oh-my-antigravity extension path)"
 gemini extensions link "$EXT_PATH"
 ```
 
@@ -118,3 +119,6 @@ Default suites:
 - `smoke`
 - `integration`
 - `reliability`
+
+This is a contributor command and must run from the oh-my-antigravity source
+checkout. Use `omg doctor` for installation health checks in consumer projects.

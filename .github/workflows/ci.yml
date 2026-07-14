@@ -2,9 +2,9 @@ name: ci
 
 on:
   push:
-    branches: [dev, main]
+    branches: [main]
   pull_request:
-    branches: [dev, main]
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -16,6 +16,7 @@ jobs:
 
   _lint-self-hosted:
     name: "Lint & Type Check (self-hosted)"
+    if: vars.SELF_HOSTED_CI_ENABLED == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     outputs:
@@ -40,6 +41,7 @@ jobs:
 
   _global-install-self-hosted:
     name: "Global Install Contract (self-hosted)"
+    if: always() && vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.outputs.passed == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -63,6 +65,7 @@ jobs:
 
   _test-self-hosted:
     name: "Test (self-hosted)"
+    if: always() && vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.outputs.passed == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -106,6 +109,7 @@ jobs:
 
   _security-self-hosted:
     name: "Security Audit (self-hosted)"
+    if: always() && vars.SELF_HOSTED_CI_ENABLED == 'true' && needs._lint-self-hosted.outputs.passed == 'true'
     runs-on: [self-hosted, ubuntu-latest]
     continue-on-error: true
     needs: _lint-self-hosted
@@ -142,7 +146,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._lint-self-hosted.result == 'success'
+        if: needs._lint-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   _global-install-gate:
@@ -154,7 +158,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._global-install-self-hosted.result == 'success'
+        if: needs._global-install-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   _test-gate:
@@ -166,7 +170,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._test-self-hosted.result == 'success'
+        if: needs._test-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   _security-gate:
@@ -178,7 +182,7 @@ jobs:
       passed: ${{ steps.check.outputs.passed }}
     steps:
       - id: check
-        if: needs._security-self-hosted.result == 'success'
+        if: needs._security-self-hosted.outputs.passed == 'true'
         run: echo "passed=true" >> "$GITHUB_OUTPUT"
 
   # ── canonical jobs (GH-hosted fallback) ────────────────────────────────────
@@ -215,7 +219,8 @@ jobs:
     name: Global Install Contract
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    needs: [_global-install-self-hosted, _global-install-gate, lint-and-typecheck]
+    needs:
+      [_global-install-self-hosted, _global-install-gate, lint-and-typecheck]
     if: always()
     steps:
       - name: Route
@@ -326,12 +331,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
-      - name: Block PRs targeting main from non-dev branches
-        if: github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref != 'dev'
-        run: |
-          echo "::error::Only the 'dev' branch can create PRs targeting 'main'."
-          echo "Feature branches must target 'dev'."
-          exit 1
       - name: Checkout
         uses: actions/checkout@v4
         with:
