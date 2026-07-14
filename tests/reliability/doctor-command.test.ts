@@ -306,7 +306,7 @@ describe('reliability: doctor command hardening', () => {
         'oh-my-antigravity command not found in PATH (MCP tools will be unavailable inside Gemini extension)',
       );
       expect(omgBinaryCheck?.hint).toBe(
-        'Install globally: npm install -g oh-my-antigravity',
+        'Install globally from a built checkout: npm install -g /path/to/oh-my-antigravity',
       );
     } finally {
       removeDir(cwd);
@@ -345,7 +345,7 @@ describe('reliability: doctor command hardening', () => {
       });
       expect(omgBinaryCheck?.details).toBe('oh-my-antigravity command found in PATH');
       expect(omgBinaryCheck?.hint).toBe(
-        'Install globally: npm install -g oh-my-antigravity',
+        'Install globally from a built checkout: npm install -g /path/to/oh-my-antigravity',
       );
     } finally {
       removeDir(cwd);

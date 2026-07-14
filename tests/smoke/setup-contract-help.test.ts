@@ -34,7 +34,8 @@ describe('smoke: install-to-setup help contract', () => {
     });
 
     expect(result.status, [result.stderr, result.stdout].join('\n')).toBe(0);
-    expect(result.stdout).toContain('After npm install -g oh-my-antigravity, run setup to apply local files');
+    expect(result.stdout).toContain('After installing @r3dlex/oh-my-antigravity from source or npm, run setup to apply local files');
+    expect(result.stdout).toContain('omg-cli setup --scope project');
     expect(result.stdout).toContain('oh-my-antigravity setup --scope project');
   });
 
@@ -44,8 +45,8 @@ describe('smoke: install-to-setup help contract', () => {
     });
 
     expect(result.status, [result.stderr, result.stdout].join('\n')).toBe(0);
-    expect(result.stdout).toContain('After npm install -g oh-my-antigravity, run setup to apply local files');
-    expect(result.stdout).toContain('omg setup ... / omg setup ... / oh-my-antigravity setup ...');
+    expect(result.stdout).toContain('After installing @r3dlex/oh-my-antigravity from source or npm, run setup to apply local files');
+    expect(result.stdout).toContain('omg setup ... / omg-cli setup ... / oh-my-antigravity setup ...');
   });
 
   test('rejects unknown options with exit code 2', async () => {

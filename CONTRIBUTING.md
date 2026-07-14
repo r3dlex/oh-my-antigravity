@@ -4,7 +4,7 @@ Thanks for contributing to `oh-my-antigravity`. This repository ships the `omg` 
 
 This guide is intentionally practical: it focuses on the commands and file locations you will actually use while preparing a change.
 
-> **OMG branding (2026-04-13):** the repo uses canonical `oh-my-antigravity` / `omg` surfaces, including `extensions/oh-my-antigravity/` and `.omg/`. The legacy `oh-my-antigravity` / `omg` bin names have been removed. Review [`docs/analysis/2026-04-13-oh-my-antigravity-phase-1-doc-and-quality-review.md`](docs/analysis/2026-04-13-oh-my-antigravity-phase-1-doc-and-quality-review.md) before changing branding, extension layout, or runtime-state paths.
+> **OMG branding (2026-04-13):** the repo uses canonical `oh-my-antigravity` / `omg` surfaces, including `extensions/oh-my-antigravity/` and `.omg/`. Legacy product names are not public installation or runtime surfaces.
 
 ## Prerequisites
 
@@ -36,9 +36,9 @@ gh --version
 ### 1) Clone and install dependencies
 
 ```bash
-git clone https://github.com/r3dlex/oh-my-gemini.git
-cd oh-my-gemini
-npm install
+git clone https://github.com/r3dlex/oh-my-antigravity.git
+cd oh-my-antigravity
+npm ci
 ```
 
 You can also use the bootstrap helper if you want the repository baseline created for you:
