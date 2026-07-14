@@ -7,6 +7,8 @@ cd "$ROOT_DIR"
 TMP_DIR="$(mktemp -d)"
 NPM_CACHE_DIR="$TMP_DIR/npm-cache"
 CONSUMER_DIR="$TMP_DIR/consumer"
+STUB_BIN="$TMP_DIR/stub-bin"
+GEMINI_STUB_LOG="$TMP_DIR/gemini-stub.log"
 TARBALL_PATH=""
 
 cleanup() {
@@ -28,6 +30,23 @@ need_cmd() {
 need_cmd npm
 need_cmd node
 need_cmd bash
+
+mkdir -p "$STUB_BIN"
+cat >"$STUB_BIN/gemini" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+printf '%s\n' "$*" >>"$GEMINI_STUB_LOG"
+case "${1:-} ${2:-}" in
+  "extensions link" | "extensions enable" | "extensions list") exit 0 ;;
+  *)
+    echo "[gemini-stub] unexpected invocation: $*" >&2
+    exit 2
+    ;;
+esac
+EOF
+chmod +x "$STUB_BIN/gemini"
+export GEMINI_STUB_LOG
+export PATH="$STUB_BIN:$PATH"
 
 echo "[consumer-contract] root: $ROOT_DIR"
 
@@ -80,6 +99,13 @@ npx --no-install omg --help >/dev/null
 
 echo "[consumer-contract] running setup and extension path checks"
 "$BIN_ALIAS" setup --scope project >/dev/null
+
+if ! grep -Fq "extensions link " "$GEMINI_STUB_LOG" ||
+  ! grep -Fxq "extensions enable oh-my-antigravity" "$GEMINI_STUB_LOG"; then
+  echo "[consumer-contract] setup did not link and enable the packaged extension" >&2
+  cat "$GEMINI_STUB_LOG" >&2
+  exit 1
+fi
 
 extension_path_json="$("$BIN_ALIAS" extension path --json)"
 extension_path="$(node -e "const payload = JSON.parse(process.argv[1]); process.stdout.write(payload.path ?? '');" "$extension_path_json")"
