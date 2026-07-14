@@ -1,166 +1,140 @@
-import { existsSync, writeFileSync } from "node:fs";
-import path from "node:path";
+import { existsSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
 
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from 'vitest';
 
 import {
   cliEntrypointExists,
   createTempDir,
   readTrackedFiles,
   removeDir,
-  runOmp,
-} from "../utils/runtime.js";
+  runOmp
+} from '../utils/runtime.js';
 
 const trackedSetupFiles = [
-  ".omg/setup-scope.json",
-  ".gemini/settings.json",
-  ".gemini/GEMINI.md",
-  ".gemini/sandbox.Dockerfile",
+  '.omg/setup-scope.json',
+  '.gemini/settings.json',
+  '.gemini/GEMINI.md',
+  '.gemini/sandbox.Dockerfile',
 ] as const;
 
-describe("smoke: setup idempotency", () => {
+describe('smoke: setup idempotency', () => {
   test.runIf(cliEntrypointExists())(
-    "setup --scope project is idempotent for managed project files",
+    'setup --scope project is idempotent for managed project files',
     async () => {
-      const sandboxProject = createTempDir("omg-setup-idempotency-");
+      const sandboxProject = createTempDir('omg-setup-idempotency-');
       const isolatedEnv = {
         ...process.env,
-        PATH: path.dirname(process.execPath),
+        PATH: path.dirname(process.execPath)
       };
 
       try {
-        const firstRun = runOmp(["setup", "--scope", "project"], {
+        const firstRun = runOmp(['setup', '--scope', 'project'], {
           cwd: sandboxProject,
-          env: isolatedEnv,
+          env: isolatedEnv
         });
 
-        expect(
-          firstRun.status,
-          [firstRun.stderr, firstRun.stdout].join("\n"),
-        ).toBe(0);
-        expect(firstRun.stdout).toContain("Changes applied: yes");
+        expect(firstRun.status, [firstRun.stderr, firstRun.stdout].join('\n')).toBe(0);
+        expect(firstRun.stdout).toContain('Changes applied: yes');
         expect(firstRun.stdout).toContain(
-          "Action statuses: created=4, updated=0, unchanged=0, skipped=1",
+          'Action statuses: created=4, updated=0, unchanged=0, skipped=1'
         );
-        expect(firstRun.stdout).toContain("[created] persist-scope");
-        expect(firstRun.stdout).toContain("[created] gemini-managed-note");
-        expect(firstRun.stdout).toContain("[skipped] subagents-catalog");
+        expect(firstRun.stdout).toContain('[created] persist-scope');
+        expect(firstRun.stdout).toContain('[created] gemini-managed-note');
+        expect(firstRun.stdout).toContain('[skipped] subagents-catalog');
 
         const snapshotAfterFirstRun = await readTrackedFiles(
           sandboxProject,
-          trackedSetupFiles,
+          trackedSetupFiles
         );
 
         expect(Object.keys(snapshotAfterFirstRun).length).toBeGreaterThan(0);
-        const settings = JSON.parse(
-          snapshotAfterFirstRun[".gemini/settings.json"] ?? "{}",
-        ) as {
+        const settings = JSON.parse(snapshotAfterFirstRun['.gemini/settings.json'] ?? '{}') as {
           hooksConfig?: { enabled?: boolean; notifications?: boolean };
           mcpServers?: Record<string, { command?: string; args?: string[] }>;
         };
         expect(settings.hooksConfig?.enabled).toBe(true);
         expect(settings.hooksConfig?.notifications).toBe(true);
         expect(settings.mcpServers?.omg_cli_tools).toBeDefined();
-        expect(settings.mcpServers?.omg_cli_tools?.command).toBe(
-          "oh-my-antigravity",
-        );
-        expect(settings.mcpServers?.omg_cli_tools?.args).toStrictEqual([
-          "tools",
-          "serve",
-        ]);
+        expect(settings.mcpServers?.omg_cli_tools?.command).toBe('oh-my-antigravity');
+        expect(settings.mcpServers?.omg_cli_tools?.args).toStrictEqual(['tools', 'serve']);
         expect(settings.mcpServers?.omp_cli_tools).toBeDefined();
-        expect(settings.mcpServers?.omp_cli_tools?.command).toBe(
-          "oh-my-antigravity",
-        );
-        expect(settings.mcpServers?.omp_cli_tools?.args).toStrictEqual([
-          "tools",
-          "serve",
-        ]);
-        expect(existsSync(path.join(sandboxProject, ".omg", "state"))).toBe(
-          true,
-        );
+        expect(settings.mcpServers?.omp_cli_tools?.command).toBe('oh-my-antigravity');
+        expect(settings.mcpServers?.omp_cli_tools?.args).toStrictEqual(['tools', 'serve']);
+        expect(existsSync(path.join(sandboxProject, '.omg', 'state'))).toBe(true);
 
-        const secondRun = runOmp(["setup", "--scope", "project"], {
+        const secondRun = runOmp(['setup', '--scope', 'project'], {
           cwd: sandboxProject,
-          env: isolatedEnv,
+          env: isolatedEnv
         });
 
-        expect(
-          secondRun.status,
-          [secondRun.stderr, secondRun.stdout].join("\n"),
-        ).toBe(0);
-        expect(secondRun.stdout).toContain("Changes applied: no");
+        expect(secondRun.status, [secondRun.stderr, secondRun.stdout].join('\n')).toBe(0);
+        expect(secondRun.stdout).toContain('Changes applied: no');
         expect(secondRun.stdout).toContain(
-          "Action statuses: created=0, updated=0, unchanged=4, skipped=1",
+          'Action statuses: created=0, updated=0, unchanged=4, skipped=1'
         );
-        expect(secondRun.stdout).toContain("[unchanged] persist-scope");
-        expect(secondRun.stdout).toContain("[unchanged] gemini-settings");
-        expect(secondRun.stdout).toContain("[skipped] subagents-catalog");
+        expect(secondRun.stdout).toContain('[unchanged] persist-scope');
+        expect(secondRun.stdout).toContain('[unchanged] gemini-settings');
+        expect(secondRun.stdout).toContain('[skipped] subagents-catalog');
 
         const snapshotAfterSecondRun = await readTrackedFiles(
           sandboxProject,
-          trackedSetupFiles,
+          trackedSetupFiles
         );
 
         expect(snapshotAfterSecondRun).toStrictEqual(snapshotAfterFirstRun);
 
-        const dryRun = runOmp(["setup", "--scope", "user", "--dry-run"], {
+        const dryRun = runOmp(['setup', '--scope', 'user', '--dry-run'], {
           cwd: sandboxProject,
-          env: isolatedEnv,
+          env: isolatedEnv
         });
 
-        expect(dryRun.status, [dryRun.stderr, dryRun.stdout].join("\n")).toBe(
-          0,
-        );
-        expect(dryRun.stdout).toContain("Changes applied: no");
+        expect(dryRun.status, [dryRun.stderr, dryRun.stdout].join('\n')).toBe(0);
+        expect(dryRun.stdout).toContain('Changes applied: no');
         expect(dryRun.stdout).toContain(
-          "Action statuses: created=0, updated=0, unchanged=4, skipped=1",
+          'Action statuses: created=0, updated=0, unchanged=4, skipped=1'
         );
-        expect(dryRun.stderr).toContain("not yet implemented");
-        expect(dryRun.stderr).toContain("Falling back to project scope");
+        expect(dryRun.stderr).toContain('not yet implemented');
+        expect(dryRun.stderr).toContain('Falling back to project scope');
 
         const snapshotAfterDryRun = await readTrackedFiles(
           sandboxProject,
-          trackedSetupFiles,
+          trackedSetupFiles
         );
 
         expect(snapshotAfterDryRun).toStrictEqual(snapshotAfterSecondRun);
       } finally {
         removeDir(sandboxProject);
       }
-    },
+    }
   );
 
   test.skipIf(cliEntrypointExists())(
-    "setup idempotency is validated once the CLI entrypoint exists",
+    'setup idempotency is validated once the CLI entrypoint exists',
     () => {
       // This message is intentionally explicit for scaffold-phase bring-up.
       expect(true).toBe(true);
-    },
+    }
   );
 
   test.runIf(cliEntrypointExists())(
-    "setup fails with actionable error when .gemini is a file",
+    'setup fails with actionable error when .gemini is a file',
     () => {
-      const sandboxProject = createTempDir("omg-setup-conflict-");
+      const sandboxProject = createTempDir('omg-setup-conflict-');
 
       try {
-        writeFileSync(
-          path.join(sandboxProject, ".gemini"),
-          "not-a-directory",
-          "utf8",
-        );
+        writeFileSync(path.join(sandboxProject, '.gemini'), 'not-a-directory', 'utf8');
 
-        const result = runOmp(["setup", "--scope", "project"], {
-          cwd: sandboxProject,
+        const result = runOmp(['setup', '--scope', 'project'], {
+          cwd: sandboxProject
         });
 
         expect(result.status, result.stderr).toBe(1);
-        expect(result.stderr).toContain("Setup path conflict");
-        expect(result.stderr).toContain(".gemini");
+        expect(result.stderr).toContain('Setup path conflict');
+        expect(result.stderr).toContain('.gemini');
       } finally {
         removeDir(sandboxProject);
       }
-    },
+    }
   );
 });
