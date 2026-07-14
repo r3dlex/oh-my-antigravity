@@ -5,7 +5,7 @@ primaryRole: verifier
 description: Verify that acceptance criteria are met and work is complete.
 ---
 
-# Verify Skill (oh-my-gemini)
+# Verify Skill (oh-my-antigravity)
 
 Use this skill when the user wants to verify that a task or feature is complete.
 

@@ -864,7 +864,7 @@ async function runDoctorChecks(
       required: true,
       status: hasGemini ? 'ok' : 'missing',
       details: hasGemini ? 'gemini command found' : 'gemini command not found in PATH',
-      hint: 'Install: npm i -g @antigravity/cli',
+      hint: 'Install: npm i -g @google/gemini-cli',
     },
     {
       code: hasTmux ? 'DOC_TMUX_OK' : DOCTOR_CODE.TMUX,

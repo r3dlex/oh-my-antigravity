@@ -4,7 +4,7 @@ This quickstart follows the extension-first, tmux-default roadmap for **oh-my-an
 
 ## Quickstart paths
 
-- **End user path**: install from npm and run `oh-my-antigravity` directly.
+- **End user path**: install from source until the scoped npm package completes its first publish.
 - **Contributor path**: clone repo, run npm scripts, and validate changes locally.
 
 ## npm migration note
@@ -24,7 +24,7 @@ Install required tools:
 
 - Node.js 20+
 - `npm`
-- agy CLI (`@antigravity/cli`)
+- Google Gemini CLI (`@google/gemini-cli`)
 - `tmux`
 - Docker or Podman (or compatible container runtime)
 
@@ -40,11 +40,17 @@ docker --version
 podman --version
 ```
 
-## 2) End user install (npm, no local build)
+## 2) End user install (source, until first npm publish)
 
 ```bash
-npm install -g oh-my-antigravity
+git clone https://github.com/r3dlex/oh-my-antigravity.git
+cd oh-my-antigravity
+npm ci
+npm run build
+npm install -g .
 ```
+
+The future registry package is `@r3dlex/oh-my-antigravity`; it has not completed its first npmjs.com publish yet.
 
 Post-global-install contract (required):
 
@@ -57,9 +63,9 @@ oh-my-antigravity setup --scope project
 Then continue with extension linking + diagnostics:
 
 ```bash
+# setup auto-links the extension; use these only to inspect or recover manually
 EXT_PATH="$(oh-my-antigravity extension path)"
-# setup auto-registers the extension; manual install is only needed as a fallback
-gemini extensions install "$EXT_PATH"
+gemini extensions link "$EXT_PATH"
 oh-my-antigravity doctor
 oh-my-antigravity verify
 ```
@@ -110,8 +116,8 @@ npm run doctor
 `doctor --fix` safely remediates managed issues (for example missing/invalid
 `.omg/setup-scope.json` or missing `.omg/state` directory) and then re-runs diagnostics.
 
-Doctor checks include: `node`, `npm`, `agy`, `tmux`, container runtime
-health, the optional `oh-my-gemini` PATH check for MCP availability, setup
+Doctor checks include: `node`, `npm`, `gemini`, `tmux`, container runtime
+health, the optional `oh-my-antigravity` PATH check for MCP availability, setup
 scope validity, extension manifest/command/skill integrity, and `.omg/state`
 writeability.
 

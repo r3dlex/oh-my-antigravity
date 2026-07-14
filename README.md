@@ -2,7 +2,7 @@ English | [Deutsch](README.de.md) | [Español](README.es.md) | [Français](READM
 
 # oh-my-antigravity (`omg`)
 
-Extension-first multi-agent orchestration for Antigravity CLI, with tmux-backed team execution, persistent local state, and verification-oriented workflows.
+Extension-first multi-agent orchestration for Gemini CLI, with tmux-backed team execution, persistent local state, and verification-oriented workflows.
 
 - Repository: [`r3dlex/oh-my-antigravity`](https://github.com/r3dlex/oh-my-antigravity)
 - npm package name: `@r3dlex/oh-my-antigravity`
@@ -13,7 +13,7 @@ Extension-first multi-agent orchestration for Antigravity CLI, with tmux-backed 
 ## Prerequisites
 
 - Node.js `>=20.10.0` and npm
-- [Antigravity CLI](https://www.npmjs.com/package/@antigravity/cli), which provides the `gemini` command
+- [Google Gemini CLI](https://www.npmjs.com/package/@google/gemini-cli), which provides the `gemini` command
 - `tmux` for the default team backend
 - Git for the current source installation
 - Docker or Podman only when using container sandbox mode
@@ -52,7 +52,7 @@ omg doctor
 Overall: healthy
 ```
 
-Launch an interactive Antigravity CLI session with the extension loaded:
+Launch an interactive Gemini CLI session with the extension loaded:
 
 ```bash
 omg
@@ -129,11 +129,11 @@ After the scoped package is first-published, `omg update` will update the global
 | Symptom | Check or recovery |
 | --- | --- |
 | `omg: command not found` | Re-run `npm install -g .` from the built checkout and ensure npm's global bin directory is on `PATH`. |
-| `gemini command not found` | Install Antigravity CLI with `npm install -g @antigravity/cli`, then rerun `omg doctor`. |
+| `gemini command not found` | Install Google Gemini CLI with `npm install -g @google/gemini-cli`, then rerun `omg doctor`. |
 | tmux is missing | Install tmux, then rerun `omg doctor`; tmux is required by the default team backend. |
 | Extension auto-link fails or stalls | Run `omg extension path`, then `gemini extensions link <reported-path>` and inspect `gemini extensions list`. |
 | Setup scope or state directory is invalid | Inspect with `omg doctor --json`, then run `omg doctor --fix` and rerun `omg doctor`. |
-| Sandbox check is unavailable | Install Docker or Podman, or run Antigravity CLI without container sandbox mode. |
+| Sandbox check is unavailable | Install Docker or Podman, or run Gemini CLI without container sandbox mode. |
 
 If the diagnostic output does not identify the problem, [open an issue](https://github.com/r3dlex/oh-my-antigravity/issues) with `omg doctor --json` output after removing sensitive paths or values.
 
