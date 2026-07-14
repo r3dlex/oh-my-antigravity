@@ -1,72 +1,23 @@
 # oh-my-antigravity Extension Context
 
-This extension is the canonical public entry point for the `oh-my-gemini` workflow and is agy/Antigravity-oriented for new sessions.
+This is the canonical Gemini CLI extension surface for **oh-my-antigravity (OMG)**.
 
-> **Shared context**: See `docs/architecture/omg-core.md` for the full agent catalog, workflow stages, quality gates, and state conventions.
+## Available commands
+- `/setup` and `/doctor` — install and diagnose the project integration
+- `/team:*` — run, verify, or inspect orchestrated work
 
-> **Transition status (2026-04-13):** the canonical target for this repo is `oh-my-antigravity` / `omg`, with extension assets under `extensions/oh-my-antigravity/` and runtime state under `.omg/`. Legacy `oh-my-antigravity` / `omg` / `.omg` references remain in some implementation and compatibility paths during the migration.
+## Extension assets
+- `commands/` provides the packaged command prompts
+- `agents/` and `skills/` reuse the shared repo catalogs
 
-## Context Layers (priority order)
-1. **System/Runtime** — Antigravity CLI constraints (immutable)
-2. **Project Standards** — This file (`GEMINI.md`) + `docs/architecture/omg-core.md`
-3. **Session Memory** — `.omg/state/` (preferred) or `.omg/state/` (compatibility), memory entries
-4. **Active Task** — Current plan, taskboard, PRD
-5. **Execution Traces** — Recent iteration results
+Prefer the `omg` and `oh-my-antigravity` command surfaces for new workflows.
 
-## Product intent
-- Keep orchestration incremental (MVP-first).
-- Default runtime backend is **tmux**.
-- Subagents are **experimental opt-in** only.
-- Setup defaults to **project scope**.
+## Agy / Antigravity lifecycle hooks
 
-## Preferred command flow
+This package includes an agy-native hook bridge at `hooks/hooks.json`. The bridge delegates lifecycle events to `oh-my-antigravity hooks exec` so the CLI owns policy and state behavior while the extension remains a thin public UX surface.
 
-Start interactive work through agy (`agy`, `agy --continue`, or `agy --sandbox`) when you need the native Antigravity/Gemini agent surface, then invoke OMG commands through the extension or CLI as needed.
+- `BeforeAgent` runs before each agent turn and may return `hookSpecificOutput.additionalContext` for prompt routing, project memory, and learned-pattern reminders.
+- `AfterTool` runs after tool execution and may return follow-up recovery or verification guidance.
+- Keep `gemini-extension.json`, `GEMINI.md`, and `hooks/hooks.json` synchronized between the repo root and this packaged extension surface.
 
-1. `oh-my-gemini setup --scope project` (aliases: `omg setup --scope project`, `omg setup --scope project`)
-2. ensure `.gemini/agents/catalog.json` exists (repo contributor fallback: `npm run setup:subagents`)
-3. `oh-my-antigravity doctor`
-4. `oh-my-antigravity team run --task "..."`
-5. `oh-my-antigravity verify`
-6. Optional MCP server surface: `oh-my-antigravity mcp serve --dry-run --json`
-7. Optional live team bridge: `omx team 3:executor "..."`
-
-## Lifecycle hook bridge
-
-The installable extension ships `hooks/hooks.json` alongside `GEMINI.md` and `gemini-extension.json`. Treat `BeforeAgent` and `AfterTool` as first-class lifecycle hooks:
-
-- `BeforeAgent` routes prompt-start context through `oh-my-gemini hooks exec` so project memory, prompt routing, and learned-pattern guidance can be surfaced before each turn.
-- `AfterTool` routes tool results through the same bridge so recovery/tracking guidance can be attached after tool execution.
-- Hook output may appear as `hookSpecificOutput.additionalContext`; use it as advisory context, not as a replacement for explicit user instructions.
-
-Keep the root hook config and `extensions/oh-my-gemini/hooks/hooks.json` aligned when changing lifecycle behavior.
-
-## Discoverability notes
-- Gemini's extension install preview may expose skills more visibly than command prompts.
-- Preview is not the full feature list: extension command TOML assets can still be installed even when they are not explicitly enumerated during install.
-- If preview output looks sparse, verify availability with direct CLI commands instead of relying on the preview screen alone.
-
-Primary command families:
-- `setup`
-- `doctor`
-- `team run` / `team assemble` / `team plan` / `team prd` / `team exec`
-- `team subagents`
-- `team verify`
-- `tools`
-- `hud`
-- `intent` / `mode` / `approval` / `reasoning`
-- `workspace` / `taskboard` / `checkpoint`
-- `ralph` / `ultrawork` / `loop`
-- `consensus` / `optimize` / `memory` / `rules`
-- `launch` / `stop`
-
-## Guardrails
-- Do not skip sandbox checks when a task requires shell execution.
-- Prefer actionable failure output (what failed + how to fix it).
-- Keep state transitions observable under `.omg/state/` while preserving `.omg/state/` compatibility when required.
-
-## Handoff expectations
-When executing team tasks, include:
-- command(s) run,
-- final exit status,
-- key state/log paths for follow-up.
+Hooks are advisory and fail-open; they should not be used to override explicit user or system instructions.

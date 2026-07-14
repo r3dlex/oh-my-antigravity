@@ -1,21 +1,20 @@
-# oh-my-gemini Extension Context
+# oh-my-antigravity Extension Context
 
-This is the canonical Gemini CLI extension surface for **oh-my-gemini (OMG)**.
+This is the canonical Gemini CLI extension surface for **oh-my-antigravity (OMG)**.
 
-## Available namespaces
-- `/omg:*` — preferred OMG command namespace
-- `/omg:*` — legacy compatibility namespace
+## Available commands
+- `/setup` and `/doctor` — install and diagnose the project integration
+- `/team:*` — run, verify, or inspect orchestrated work
 
 ## Extension assets
-- `commands/omg` re-exports the current OMG command set
-- `commands/omg` keeps legacy command aliases available
+- `commands/` provides the packaged command prompts
 - `agents/` and `skills/` reuse the shared repo catalogs
 
-Prefer OMG-branded surfaces for new workflows while legacy OMG paths remain available during migration.
+Prefer the `omg` and `oh-my-antigravity` command surfaces for new workflows.
 
 ## Agy / Antigravity lifecycle hooks
 
-This package includes an agy-native hook bridge at `hooks/hooks.json`. The bridge delegates lifecycle events to `oh-my-gemini hooks exec` so the CLI owns policy and state behavior while the extension remains a thin public UX surface.
+This package includes an agy-native hook bridge at `hooks/hooks.json`. The bridge delegates lifecycle events to `oh-my-antigravity hooks exec` so the CLI owns policy and state behavior while the extension remains a thin public UX surface.
 
 - `BeforeAgent` runs before each agent turn and may return `hookSpecificOutput.additionalContext` for prompt routing, project memory, and learned-pattern reminders.
 - `AfterTool` runs after tool execution and may return follow-up recovery or verification guidance.

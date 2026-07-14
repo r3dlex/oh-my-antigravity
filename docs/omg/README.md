@@ -1,6 +1,6 @@
 # OMG Reference Docs
 
-This folder groups the detailed `oh-my-gemini` / `omg` reference docs by topic.
+This folder groups the detailed `oh-my-antigravity` / `omg` reference docs by topic.
 
 ## Contents
 

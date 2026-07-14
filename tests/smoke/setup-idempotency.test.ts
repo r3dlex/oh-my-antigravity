@@ -23,10 +23,15 @@ describe('smoke: setup idempotency', () => {
     'setup --scope project is idempotent for managed project files',
     async () => {
       const sandboxProject = createTempDir('omg-setup-idempotency-');
+      const isolatedEnv = {
+        ...process.env,
+        PATH: path.dirname(process.execPath)
+      };
 
       try {
         const firstRun = runOmp(['setup', '--scope', 'project'], {
-          cwd: sandboxProject
+          cwd: sandboxProject,
+          env: isolatedEnv
         });
 
         expect(firstRun.status, [firstRun.stderr, firstRun.stdout].join('\n')).toBe(0);
@@ -59,7 +64,8 @@ describe('smoke: setup idempotency', () => {
         expect(existsSync(path.join(sandboxProject, '.omg', 'state'))).toBe(true);
 
         const secondRun = runOmp(['setup', '--scope', 'project'], {
-          cwd: sandboxProject
+          cwd: sandboxProject,
+          env: isolatedEnv
         });
 
         expect(secondRun.status, [secondRun.stderr, secondRun.stdout].join('\n')).toBe(0);
@@ -79,7 +85,8 @@ describe('smoke: setup idempotency', () => {
         expect(snapshotAfterSecondRun).toStrictEqual(snapshotAfterFirstRun);
 
         const dryRun = runOmp(['setup', '--scope', 'user', '--dry-run'], {
-          cwd: sandboxProject
+          cwd: sandboxProject,
+          env: isolatedEnv
         });
 
         expect(dryRun.status, [dryRun.stderr, dryRun.stdout].join('\n')).toBe(0);

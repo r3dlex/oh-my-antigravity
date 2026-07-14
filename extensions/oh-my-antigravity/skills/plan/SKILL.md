@@ -2,10 +2,10 @@
 name: plan
 aliases: ["/plan", "plan this", "make a plan", "execution plan"]
 primaryRole: planner
-description: Produce a phased execution plan aligned to the oh-my-gemini roadmap gates.
+description: Produce a phased execution plan aligned to the oh-my-antigravity roadmap gates.
 ---
 
-# Plan Skill (oh-my-gemini)
+# Plan Skill (oh-my-antigravity)
 
 Use this skill when a user asks for planning, decomposition, or implementation sequencing.
 

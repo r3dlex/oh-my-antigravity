@@ -5,7 +5,7 @@ primaryRole: coordinator
 description: Produce a structured handoff document summarizing completed work and next steps.
 ---
 
-# Handoff Skill (oh-my-gemini)
+# Handoff Skill (oh-my-antigravity)
 
 Use this skill when transitioning work between sessions, agents, or team members.
 
