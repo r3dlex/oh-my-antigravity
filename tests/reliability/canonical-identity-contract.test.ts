@@ -28,9 +28,12 @@ describe('reliability: canonical package and extension identity', () => {
   test('uses the canonical CLI package and project identity in current onboarding docs', async () => {
     const contractFiles = [
       'README.md',
+      'GEMINI.md',
+      'REPOSITORY_STRUCTURE.md',
       'docs/setup/quickstart.md',
       'docs/omg/README.md',
       'docs/omg/project-map.md',
+      'extensions/AGENTS.md',
       'src/cli/commands/doctor.ts',
       'src/installer/index.ts',
     ];
@@ -42,8 +45,8 @@ describe('reliability: canonical package and extension identity', () => {
 
     expect(contract).toContain('@google/gemini-cli');
     expect(contract).not.toContain('@antigravity/cli');
-    expect(contract).not.toContain('oh-my-gemini');
-    expect(contract).not.toContain('r3dlex/oh-my-gemini');
+    expect(contract.toLowerCase()).not.toContain('oh-my-gemini');
+    expect(contract.toLowerCase()).not.toContain('r3dlex/oh-my-gemini');
   });
 
   test('keeps root, lockfile, and packaged extension identities synchronized', async () => {
@@ -62,14 +65,27 @@ describe('reliability: canonical package and extension identity', () => {
     expect(packagedManifest).toStrictEqual(rootManifest);
     expect(packagedManifest.version).toBe(packageJson.version);
 
+    const rootContext = await readFile(join(repositoryRoot, 'GEMINI.md'), 'utf8');
+    const packagedContext = await readFile(
+      join(repositoryRoot, 'extensions/oh-my-antigravity/GEMINI.md'),
+      'utf8',
+    );
+    const rootHooks = await readFile(join(repositoryRoot, 'hooks/hooks.json'), 'utf8');
+    const packagedHooks = await readFile(
+      join(repositoryRoot, 'extensions/oh-my-antigravity/hooks/hooks.json'),
+      'utf8',
+    );
+    expect(packagedContext).toBe(rootContext);
+    expect(packagedHooks).toBe(rootHooks);
+
     const extensionRoot = join(repositoryRoot, 'extensions', 'oh-my-antigravity');
     const extensionFiles = await listFiles(extensionRoot);
     const extensionContent = (
       await Promise.all(extensionFiles.map((path) => readFile(path, 'utf8')))
     ).join('\n');
 
-    expect(extensionContent).not.toContain('oh-my-gemini');
-    expect(extensionContent).not.toContain('r3dlex/oh-my-gemini');
+    expect(extensionContent.toLowerCase()).not.toContain('oh-my-gemini');
+    expect(extensionContent.toLowerCase()).not.toContain('r3dlex/oh-my-gemini');
     expect(extensionContent).not.toContain('oh-my-antigravity-sisyphus');
   });
 });

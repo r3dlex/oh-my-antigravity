@@ -73,4 +73,24 @@ describe("self-hosted CI fallback", () => {
       );
     }
   });
+
+  it.each(workflowFiles)(
+    "%s keeps hosted jobs as a fail-closed fallback",
+    (workflowFile) => {
+      const workflow = readFileSync(resolve(workflowFile), "utf8");
+      const hostedFallbackJobs = [
+        ...workflow.matchAll(
+          /^  ([^_][^:\n]*):\n([\s\S]*?)(?=^  [A-Za-z0-9_-]+:\n|(?![\s\S]))/gm,
+        ),
+      ].filter(([, , body]) => body?.includes("-gate.outputs.passed") === true);
+
+      expect(hostedFallbackJobs.length).toBeGreaterThan(0);
+      for (const [, name, body] of hostedFallbackJobs) {
+        expect(body, name).toMatch(/^    if: always\(\)$/m);
+        expect(body, name).toMatch(
+          /if: needs\._[^.\s]+-gate\.outputs\.passed != 'true'/,
+        );
+      }
+    },
+  );
 });
