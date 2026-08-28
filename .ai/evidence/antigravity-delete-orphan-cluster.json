@@ -1,0 +1,11 @@
+{
+  "goal_id": "antigravity-delete-orphan-cluster",
+  "green": {
+    "command": "npm test",
+    "exit_code": 0
+  },
+  "red": {
+    "command": "npm test",
+    "exit_code": 1
+  }
+}

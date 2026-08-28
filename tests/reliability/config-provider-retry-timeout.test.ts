@@ -1,46 +1,10 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import { loadConfig, loadEnvConfig } from '../../src/config/index.js';
-import {
-  GeminiApiClient,
-  type GeminiApiFetch,
-  type GeminiGenerateContentRequest,
-  createGeminiApiClientFromConfig,
-} from '../../src/providers/api-client.js';
 import { createTempDir, removeDir } from '../utils/runtime.js';
-
-const SUCCESS_BODY = JSON.stringify({
-  candidates: [{ content: { parts: [{ text: 'hi' }] } }],
-});
-
-function okResponse(): Response {
-  return new Response(SUCCESS_BODY, { status: 200, statusText: 'OK' });
-}
-
-function createMockProvider() {
-  return {
-    name: 'google-ai' as const,
-    displayName: 'Google AI',
-    aliases: [] as string[],
-    defaultApiVersion: 'v1beta',
-    detectFromEnv: () => true,
-    checkAuth: () => true,
-    resolveConfig: () => ({
-      provider: 'google-ai' as const,
-      apiVersion: 'v1beta',
-      baseUrl: 'https://generativelanguage.googleapis.com',
-      apiKey: 'test-key',
-    }),
-    buildGenerateContentUrl: (model: string) =>
-      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
-    buildRequestHeaders: () => ({
-      'x-goog-api-key': 'test-key',
-    }),
-  };
-}
 
 describe('config: retry/timeout fields in OmpGeminiProviderConfig', () => {
   test('default config does not include retry or requestTimeoutMs', () => {
@@ -257,121 +221,5 @@ describe('config: env overrides take precedence over file config', () => {
     } finally {
       removeDir(tempRoot);
     }
-  });
-});
-
-describe('config: createGeminiApiClientFromConfig wiring', () => {
-  test('creates client with retry and timeout from config', () => {
-    const client = createGeminiApiClientFromConfig(
-      {
-        enabled: true,
-        apiKeyEnvVar: 'GEMINI_API_KEY',
-        defaultModel: 'gemini-3-flash',
-        requestTimeoutMs: 60000,
-        retry: {
-          maxRetries: 5,
-          initialDelayMs: 2000,
-          maxDelayMs: 60000,
-        },
-      },
-      { provider: createMockProvider() },
-    );
-
-    expect(client.resolveRequestTimeoutMs('gemini-3-flash')).toBe(60000);
-    expect(client.providerName).toBe('google-ai');
-  });
-
-  test('config timeout overrides model-aware defaults', () => {
-    const client = createGeminiApiClientFromConfig(
-      {
-        enabled: true,
-        apiKeyEnvVar: 'GEMINI_API_KEY',
-        defaultModel: 'gemini-3-flash',
-        requestTimeoutMs: 15000,
-      },
-      { provider: createMockProvider() },
-    );
-
-    // Even for a thinking model, explicit config wins
-    expect(client.resolveRequestTimeoutMs('gemini-2.5-pro-thinking')).toBe(15000);
-  });
-
-  test('config without timeout falls back to model-aware defaults', () => {
-    const client = createGeminiApiClientFromConfig(
-      {
-        enabled: true,
-        apiKeyEnvVar: 'GEMINI_API_KEY',
-        defaultModel: 'gemini-3-flash',
-      },
-      { provider: createMockProvider() },
-    );
-
-    expect(client.resolveRequestTimeoutMs('gemini-3-flash')).toBe(30000);
-    expect(client.resolveRequestTimeoutMs('gemini-2.5-pro-thinking')).toBe(120000);
-  });
-
-  test('config retry wires to client behavior', async () => {
-    const fetchMock = vi
-      .fn<GeminiApiFetch>()
-      .mockResolvedValueOnce(
-        new Response(JSON.stringify({ error: { message: 'fail' } }), {
-          status: 503,
-          statusText: 'Service Unavailable',
-        }),
-      )
-      .mockResolvedValueOnce(okResponse());
-
-    const client = createGeminiApiClientFromConfig(
-      {
-        enabled: true,
-        apiKeyEnvVar: 'GEMINI_API_KEY',
-        defaultModel: 'gemini-3-flash',
-        retry: {
-          maxRetries: 2,
-          initialDelayMs: 1,
-          maxDelayMs: 10,
-        },
-      },
-      { provider: createMockProvider(), fetchImpl: fetchMock },
-    );
-
-    const input: GeminiGenerateContentRequest = {
-      model: 'gemini-3-flash',
-      contents: [{ parts: [{ text: 'hello' }] }],
-    };
-
-    const result = await client.generateContent(input);
-
-    expect(fetchMock).toHaveBeenCalledTimes(2);
-    expect(result.candidates).toBeDefined();
-  });
-
-  test('config maxRetries=0 disables retry via factory', async () => {
-    const fetchMock = vi
-      .fn<GeminiApiFetch>()
-      .mockResolvedValueOnce(
-        new Response(JSON.stringify({ error: { message: 'fail' } }), {
-          status: 500,
-          statusText: 'Internal Server Error',
-        }),
-      );
-
-    const client = createGeminiApiClientFromConfig(
-      {
-        enabled: true,
-        apiKeyEnvVar: 'GEMINI_API_KEY',
-        defaultModel: 'gemini-3-flash',
-        retry: { maxRetries: 0 },
-      },
-      { provider: createMockProvider(), fetchImpl: fetchMock },
-    );
-
-    const input: GeminiGenerateContentRequest = {
-      model: 'gemini-3-flash',
-      contents: [{ parts: [{ text: 'hello' }] }],
-    };
-
-    await expect(client.generateContent(input)).rejects.toThrow();
-    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 });

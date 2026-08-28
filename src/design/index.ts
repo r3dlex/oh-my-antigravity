@@ -2,7 +2,8 @@
  * Public API for the DESIGN.md design system module.
  *
  * This module is self-contained — it imports nothing from outside src/design/
- * except wrapUntrustedFileContent from src/agents/prompt-helpers.ts (in security.ts).
+ * (wrapUntrustedFileContent was relocated into security.ts when the orphaned
+ * src/agents module was deleted).
  */
 
 // Types
