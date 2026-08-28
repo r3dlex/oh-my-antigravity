@@ -1,10 +1,8 @@
 /**
- * E2E integration tests for Gemini API lifecycle.
+ * E2E integration tests for the worker/team lifecycle.
  *
- * These tests exercise real Gemini API calls and the full worker lifecycle
- * including skill loading, hook firing, session recording, and artifact creation.
- *
- * Gated behind GEMINI_API_KEY — skipped when the env var is not set.
+ * These tests exercise the full worker lifecycle including skill loading,
+ * hook firing, session recording, and artifact creation.
  */
 import { existsSync } from 'node:fs';
 import { promises as fs } from 'node:fs';
@@ -12,10 +10,6 @@ import path from 'node:path';
 
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
-import {
-  GeminiApiClient,
-  type GeminiGenerateContentResponse,
-} from '../../src/providers/api-client.js';
 import { TeamStateStore } from '../../src/state/team-state-store.js';
 import { buildHeartbeatSignal, buildDoneSignal } from '../../src/team/worker-signals.js';
 import { writeWorkerContext } from '../../src/hooks/context-writer.js';
@@ -24,15 +18,10 @@ import { dispatchSkill, listSkills } from '../../src/skills/dispatcher.js';
 import { TaskControlPlane } from '../../src/team/control-plane/index.js';
 import { createTempDir, removeDir } from '../utils/runtime.js';
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY ?? '';
-const hasApiKey = GEMINI_API_KEY.length > 0;
-
-const describeE2E = hasApiKey ? describe : describe.skip;
-
 // ---------------------------------------------------------------------------
 // 1. Worker lifecycle: launch -> task assign -> execute -> complete
 // ---------------------------------------------------------------------------
-describeE2E('e2e: worker lifecycle (launch -> task assign -> execute -> complete)', () => {
+describe('e2e: worker lifecycle (launch -> task assign -> execute -> complete)', () => {
   let tempRoot: string;
   let stateStore: TeamStateStore;
   const teamName = 'e2e-lifecycle';
@@ -47,7 +36,7 @@ describeE2E('e2e: worker lifecycle (launch -> task assign -> execute -> complete
     removeDir(tempRoot);
   });
 
-  test('full worker lifecycle with real Gemini API call', async () => {
+  test('full worker lifecycle with task claim and completion', async () => {
     // Phase 1: Launch — write worker context (hook fires)
     await writeWorkerContext({
       cwd: tempRoot,
@@ -79,16 +68,7 @@ describeE2E('e2e: worker lifecycle (launch -> task assign -> execute -> complete
     });
     expect(claim.claimToken).toBeTruthy();
 
-    // Transition task to in_progress
-    await controlPlane.transitionTaskStatus({
-      teamName,
-      taskId: '1',
-      worker: 'worker-1',
-      claimToken: claim.claimToken,
-      from: 'pending',
-      to: 'in_progress',
-    });
-
+    // Claim transitions the task to in_progress
     const inProgressTask = await stateStore.readTask(teamName, '1');
     expect(inProgressTask?.status).toBe('in_progress');
 
@@ -107,30 +87,7 @@ describeE2E('e2e: worker lifecycle (launch -> task assign -> execute -> complete
     expect(readHeartbeat?.alive).toBe(true);
     expect(readHeartbeat?.currentTaskId).toBe('1');
 
-    // Phase 3: Execute — make a real Gemini API call
-    const client = new GeminiApiClient({
-      env: { GEMINI_API_KEY },
-    });
-
-    const response: GeminiGenerateContentResponse = await client.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: 'Reply with exactly: LIFECYCLE_OK' }],
-        },
-      ],
-      generationConfig: {
-        maxOutputTokens: 32,
-        temperature: 0,
-      },
-    });
-
-    expect(response.candidates).toBeDefined();
-    expect(Array.isArray(response.candidates)).toBe(true);
-    expect(response.candidates!.length).toBeGreaterThanOrEqual(1);
-
-    // Phase 4: Complete — transition task, write done signal
+    // Phase 3: Complete — transition task, write done signal
     await controlPlane.transitionTaskStatus({
       teamName,
       taskId: '1',
@@ -187,37 +144,10 @@ describeE2E('e2e: worker lifecycle (launch -> task assign -> execute -> complete
     expect(claim1.claimToken).toBeTruthy();
     expect(claim2.claimToken).toBeTruthy();
 
-    // Both workers make API calls concurrently
-    const client = new GeminiApiClient({ env: { GEMINI_API_KEY } });
-
-    const [response1, response2] = await Promise.all([
-      client.generateContent({
-        model: 'gemini-2.0-flash',
-        contents: [{ role: 'user', parts: [{ text: 'Reply with: WORKER_1_OK' }] }],
-        generationConfig: { maxOutputTokens: 16, temperature: 0 },
-      }),
-      client.generateContent({
-        model: 'gemini-2.0-flash',
-        contents: [{ role: 'user', parts: [{ text: 'Reply with: WORKER_2_OK' }] }],
-        generationConfig: { maxOutputTokens: 16, temperature: 0 },
-      }),
-    ]);
-
-    expect(response1.candidates?.length).toBeGreaterThanOrEqual(1);
-    expect(response2.candidates?.length).toBeGreaterThanOrEqual(1);
-
-    // Complete both tasks
-    await controlPlane.transitionTaskStatus({
-      teamName, taskId: '1', worker: 'worker-1',
-      claimToken: claim1.claimToken, from: 'pending', to: 'in_progress',
-    });
+    // Complete both tasks (claim already moves them to in_progress)
     await controlPlane.transitionTaskStatus({
       teamName, taskId: '1', worker: 'worker-1',
       claimToken: claim1.claimToken, from: 'in_progress', to: 'completed',
-    });
-    await controlPlane.transitionTaskStatus({
-      teamName, taskId: '2', worker: 'worker-2',
-      claimToken: claim2.claimToken, from: 'pending', to: 'in_progress',
     });
     await controlPlane.transitionTaskStatus({
       teamName, taskId: '2', worker: 'worker-2',
@@ -245,7 +175,7 @@ describeE2E('e2e: worker lifecycle (launch -> task assign -> execute -> complete
 // ---------------------------------------------------------------------------
 // 2. Skill loading and hook firing
 // ---------------------------------------------------------------------------
-describeE2E('e2e: skill loading and hook firing with Gemini API', () => {
+describe('e2e: skill loading and hook firing', () => {
   let tempRoot: string;
 
   beforeEach(() => {
@@ -289,30 +219,6 @@ describeE2E('e2e: skill loading and hook firing with Gemini API', () => {
     expect(content).toContain('Worker Done Signal Protocol');
   });
 
-  test('Gemini API can process a skill-generated prompt', async () => {
-    const planSkill = await dispatchSkill('plan', ['create a minimal test plan']);
-    expect(planSkill).not.toBeNull();
-
-    const client = new GeminiApiClient({ env: { GEMINI_API_KEY } });
-
-    // Use the skill prompt as system instruction context for the API call
-    const response = await client.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: `Given this skill context, reply with exactly: SKILL_LOADED` }],
-        },
-      ],
-      systemInstruction: `You are a worker with skill: ${planSkill!.skill.name}`,
-      generationConfig: { maxOutputTokens: 32, temperature: 0 },
-    });
-
-    expect(response.candidates).toBeDefined();
-    expect(response.candidates!.length).toBeGreaterThanOrEqual(1);
-    expect(response.usageMetadata).toBeDefined();
-  }, 30_000);
-
   test('context writer creates .gemini directory structure as hook side-effect', async () => {
     const geminiDir = path.join(tempRoot, '.gemini');
     expect(existsSync(geminiDir)).toBe(false);
@@ -335,7 +241,7 @@ describeE2E('e2e: skill loading and hook firing with Gemini API', () => {
 // ---------------------------------------------------------------------------
 // 3. Session recording and artifact creation
 // ---------------------------------------------------------------------------
-describeE2E('e2e: session recording and artifact creation', () => {
+describe('e2e: session recording and artifact creation', () => {
   let tempRoot: string;
   let stateStore: TeamStateStore;
   const teamName = 'e2e-session';
@@ -399,20 +305,7 @@ describeE2E('e2e: session recording and artifact creation', () => {
       currentTaskId: '1',
     }));
 
-    // Make a real API call to simulate work
-    const client = new GeminiApiClient({ env: { GEMINI_API_KEY } });
-    const response = await client.generateContent({
-      model: 'gemini-2.0-flash',
-      contents: [{ role: 'user', parts: [{ text: 'Reply with: SESSION_OK' }] }],
-      generationConfig: { maxOutputTokens: 16, temperature: 0 },
-    });
-    expect(response.candidates?.length).toBeGreaterThanOrEqual(1);
-
-    // Transition task: pending -> in_progress -> completed
-    await controlPlane.transitionTaskStatus({
-      teamName, taskId: '1', worker: 'worker-1',
-      claimToken: claim.claimToken, from: 'pending', to: 'in_progress',
-    });
+    // Transition task: in_progress -> completed (claim already moves it to in_progress)
     await controlPlane.transitionTaskStatus({
       teamName, taskId: '1', worker: 'worker-1',
       claimToken: claim.claimToken, from: 'in_progress', to: 'completed',
@@ -487,7 +380,7 @@ describeE2E('e2e: session recording and artifact creation', () => {
 
     // Audit events
     const auditEvents = await stateStore.readTaskAuditEvents(teamName);
-    expect(auditEvents.length).toBeGreaterThanOrEqual(3); // claim + 2 transitions
+    expect(auditEvents.length).toBeGreaterThanOrEqual(2); // claim + transition to completed
 
     // Verify filesystem artifacts exist on disk
     const teamDir = stateStore.getTeamDir(teamName);
@@ -532,14 +425,5 @@ describeE2E('e2e: session recording and artifact creation', () => {
     // Read all statuses
     const allStatuses = await stateStore.readAllWorkerStatuses(teamName);
     expect(allStatuses['worker-1']?.state).toBe('in_progress');
-  });
-});
-
-// ---------------------------------------------------------------------------
-// Guard: skip message when GEMINI_API_KEY is not set
-// ---------------------------------------------------------------------------
-describe.skipIf(hasApiKey)('e2e: skip guard', () => {
-  test('set GEMINI_API_KEY to run Gemini E2E integration tests', () => {
-    expect(true).toBe(true);
   });
 });

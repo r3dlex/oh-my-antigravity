@@ -9,9 +9,15 @@
  * - Hard truncate at 50000 chars max
  */
 
-import { wrapUntrustedFileContent } from '../agents/prompt-helpers.js';
-
 const MAX_CONTENT_LENGTH = 50_000;
+
+/**
+ * Wrap file content with untrusted delimiters to prevent prompt injection.
+ * Each file's content is clearly marked as data to analyze, not instructions.
+ */
+function wrapUntrustedFileContent(filepath: string, content: string): string {
+  return `\n--- UNTRUSTED FILE CONTENT (${filepath}) ---\n${content}\n--- END UNTRUSTED FILE CONTENT ---\n`;
+}
 
 /**
  * Sanitize raw design file content to prevent prompt injection.
@@ -24,7 +30,7 @@ const MAX_CONTENT_LENGTH = 50_000;
  */
 export function sanitizeDesignContent(content: string): string {
   // 1. Escape prompt-delimiter tags FIRST (before HTML strip removes them)
-  // Matches the 7 tag patterns: 2 system tags + 5 from sanitizePromptContent in prompt-helpers.ts
+  // Matches the 7 tag patterns: 2 system tags + 5 prompt-delimiter tags
   let sanitized = content.replace(/<(\/?)system-instructions([^>]*)>/gi, '[$1system-instructions$2]');
   sanitized = sanitized.replace(/<(\/?)system-reminder([^>]*)>/gi, '[$1system-reminder$2]');
   sanitized = sanitized.replace(/<(\/?)(TASK_SUBJECT)[^>]*>/gi, '[$1$2]');
