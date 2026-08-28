@@ -1,0 +1,50 @@
+{
+  "id": "antigravity-delete-orphan-cluster",
+  "implementation_ready": true,
+  "issue_ref": "src/providers/",
+  "context": "A ~5,500-6,000 LOC cluster of src modules has zero production importers: src/providers/ (6 files ~1,270 LOC), src/plugins/ (4 files ~450), src/agents/ (20 files ~2,000 plus 33 root agents/*.md prompts), src/lib/shared-memory.ts (371), src/state/shared-memory.ts (1,001), src/shared/ (2 files, comment says 'Shared types for Oh-My-Product'), src/features/index.ts (facade with 1 test consumer), src/openclaw/ (4 files, only smoke-script consumer). Reliability test files (providers-api-client, providers-model-config, providers-management, api-client-timeout, api-client-retry, shared-memory-state-manager, design-agents) exercise this dead code and manufacture an aliveness signal - CI stays green on modules nothing ships. wrapUntrustedFileContent is the only live export of src/agents and must survive via relocation to src/design/security.ts (its only consumer).",
+  "root_causes": [
+    "modules were ported from OMC into src/ but never wired into the product surface; nothing imports them",
+    "six+ reliability test files exercise the dead code, manufacturing an aliveness signal that conceals the orphaning",
+    "no guard asserts the src import graph has no orphaned islands"
+  ],
+  "evidence": [
+    "import graph shows 0 importers for src/providers, src/plugins, src/lib/shared-memory, src/shared, src/features (1 test consumer), src/openclaw (smoke script only)",
+    "src/agents/* reachable exports are only wrapUntrustedFileContent (via src/design/security.ts) and getAgentDefinitions (1 test consumer)",
+    "reliability tests for providers-*, api-client-timeout, api-client-retry, shared-memory-state-manager, design-agents all import dead modules"
+  ],
+  "solutions": [
+    "verify orphan status per directory with a full import graph before deleting (zero src/tests/scripts importers outside the cluster and its own tests)",
+    "delete the orphaned modules and their orphaned test files; the 33 root agents/*.md prompts only after verifying nothing consumes them (plugin.json, extension manifests, scripts, docs)",
+    "relocate wrapUntrustedFileContent into src/design/security.ts (its only live consumer); no behavior change",
+    "update package.json files list, tsconfig include/exclude, coverage config, and any script/test globs referencing deleted paths",
+    "add an orphan-guard test asserting the deleted paths do not reappear"
+  ],
+  "acceptance_criteria": [
+    "the orphaned cluster is deleted; wrapUntrustedFileContent survives relocated to src/design/security.ts with its consumer updated, no behavior change",
+    "no live importer or test breaks; npm test, typecheck, and CI-relevant gates pass",
+    "package.json files list and build/coverage configs no longer reference deleted paths",
+    "orphan-guard test fails if the deleted paths reappear (red leg: fails while cluster exists, green after deletion)",
+    "the 33 root agents/*.md prompts are deleted only after verifying nothing consumes them"
+  ],
+  "scope": [
+    "src/providers/",
+    "src/plugins/",
+    "src/agents/",
+    "src/shared/",
+    "src/features/",
+    "src/openclaw/",
+    "src/lib/shared-memory.ts",
+    "state/shared-memory.ts (typo guard: src/state/shared-memory.ts)",
+    "src/design/security.ts",
+    "package.json",
+    "tests/reliability/",
+    ".ai/handoff/autobahn-goals/antigravity-delete-or-cluster.json (typo guard: antigravity-delete-orphan-cluster.json)",
+    ".ai/evidence/antigravity-delete-orphan-cluster.json"
+  ],
+  "verification": [
+    "npm test"
+  ],
+  "coverage_percent": 90,
+  "state": "implementation_ready"
+}
